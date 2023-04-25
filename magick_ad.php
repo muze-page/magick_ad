@@ -81,12 +81,4 @@ function run_magick_ad() {
 run_magick_ad();
 
 
-function stydy_add_button($content) {
-    //判断文章页
-	if(!is_feed() && !is_home() && is_singular() && is_main_query()) {
-		$value="简简单单的晚饭";
-		$content .= $value.$content;
-	}
-	return $content;
-}
-add_filter('wp_head', 'stydy_add_button');
+

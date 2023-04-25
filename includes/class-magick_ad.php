@@ -206,4 +206,6 @@ class Magick_ad {
 		return $this->version;
 	}
 
+	
+
 }

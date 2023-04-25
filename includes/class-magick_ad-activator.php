@@ -32,7 +32,19 @@ class Magick_ad_Activator {
 	public static function activate() {
 
 		//页头添加内容
+		add_action( 'wp_head', array(__CLASS__,'add_hello_header' ));
 
 	}
+
+	//页头添加内容
+	/**
+	 * 
+	 */
+	public static function add_hello_header() {
+		echo '<div style="background-color: yellow; text-align: center;">我在页面顶部</div>';
+	}
+
+	
+	
 
 }
