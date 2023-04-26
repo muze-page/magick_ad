@@ -62,6 +62,11 @@ class Magick_ad_Admin
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/magick_ad-admin-display.php';
 	}
 
+	public function test(){
+		$obj = new Magick_ad_Admin_Display();
+		return $obj->add_hello_header($this->version);
+	}
+
 	/**
 	 * 注册管理区域的样式表。
 	 *

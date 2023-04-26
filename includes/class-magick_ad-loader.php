@@ -55,14 +55,18 @@ class Magick_ad_Loader {
 
 	/**
 	 * 将新操作添加到要在WordPress中注册的集合中。
+	 * 这里对原有add_action进行了改造，
+	 * add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+	 * 
 	 *
 	 * @since    1.0.0
-	 * @param    string               $hook             正在注册的WordPress操作的名称。
-	 * @param    object               $component        对在其上定义操作的对象的实例的引用。
-	 * @param    string               $callback         $组件上的函数定义的名称。
-	 * @param    int                  $priority         Optional. The priority at which the function should be fired. Default is 10.
-	 * @param    int                  $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1.
+	 * @param    string               $hook             正在注册的WordPress操作的名称。 -  'wp_enqueue_scripts'
+	 * @param    object               $component        对在其上定义操作的对象的实例的引用。- $plugin_public 实例化的类
+	 * @param    string               $callback         $组件上的函数定义的名称。 - enqueue_styles 实例化类中的函数
+	 * @param    int                  $priority         可选择的应激发函数的优先级。默认值为10。
+	 * @param    int                  $accepted_args    可选择的应传递给$callback的参数数。默认值为1。
 	 */
+
 	public function add_action( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
 		$this->actions = $this->add( $this->actions, $hook, $component, $callback, $priority, $accepted_args );
 	}

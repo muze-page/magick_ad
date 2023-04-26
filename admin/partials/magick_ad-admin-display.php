@@ -13,10 +13,30 @@
  */
 
  /**
+ * 插件的管理员的功能。
+ *
+ * 执行一些动作
+ *
+ * @package    Magick_ad
+ * @subpackage Magick_ad/admin/partials
+ * @author     Mzue <1355471563@qq.com>
+ */
+
+ class Magick_ad_Admin_Display {
+
+  public function add_hello_header($version){
+    echo '<div style="background-color: #ccb1b1; text-align: center;">我在类中的，当前插件版本是：';
+    echo $version;
+    echo '</div>';
+  }
+
+ }
+ /**
   * 判断有没有加载并启用ACF插件
   */
   function add_hello_header() {
-		echo '<div style="background-color: yellow; text-align: center;">我在页面顶部</div>';
+    
+		echo '<div style="background-color: #bbbba5; text-align: center;">我在页面顶部</div>';
 	}
   //页头添加内容
   add_action( 'wp_head', 'add_hello_header' );

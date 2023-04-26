@@ -149,6 +149,9 @@ class Magick_ad {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
+		//测试下
+		$this->loader->add_action( 'wp_head', $plugin_admin, 'test' );
+
 	}
 
 	/**
