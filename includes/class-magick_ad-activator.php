@@ -32,7 +32,7 @@ class Magick_ad_Activator
 	 */
 	public static function activate()
 	{
-		create_image_view_table();
+		self::create_image_view_table();
 	}
 	// 创建图片展示次数表
 	public static function create_image_view_table()

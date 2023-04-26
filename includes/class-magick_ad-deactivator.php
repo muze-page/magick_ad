@@ -20,7 +20,8 @@
  * @subpackage Magick_ad/includes
  * @author     Mzue <1355471563@qq.com>
  */
-class Magick_ad_Deactivator {
+class Magick_ad_Deactivator
+{
 
 	/**
 	 * 简短描述。（使用期限）
@@ -29,8 +30,16 @@ class Magick_ad_Deactivator {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function deactivate() {
+	public static function deactivate()
+	{
+
+		//self::my_plugin_deactivation_hook();
+
 
 	}
 
+	public static function my_plugin_deactivation_hook()
+	{
+		wp_die('您的插件已成功禁用!!!666。');
+	}
 }

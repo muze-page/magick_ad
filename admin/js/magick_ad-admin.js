@@ -1,21 +1,21 @@
-(function( $ ) {
-	'use strict';
+(function ($) {
+	"use strict";
 
 	/**
-	 * All of the code for your admin-facing JavaScript source
-	 * should reside in this file.
+	 * 面向管理员的JavaScript源代码
+	 *应驻留在此文件中。
 	 *
-	 * Note: It has been assumed you will write jQuery code here, so the
-	 * $ function reference has been prepared for usage within the scope
-	 * of this function.
+	 * Note:假设您将在此处编写jQuery代码，因此
+	 *$function引用已准备好在范围内使用
+	 *这一功能。
 	 *
-	 * This enables you to define handlers, for when the DOM is ready:
+	 * 这使您能够定义处理程序，以便在DOM准备就绪时使用：
 	 *
 	 * $(function() {
 	 *
 	 * });
 	 *
-	 * When the window is loaded:
+	 * 加载窗口时：
 	 *
 	 * $( window ).load(function() {
 	 *
@@ -23,10 +23,13 @@
 	 *
 	 * ...and/or other possibilities.
 	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
+	 * 理想情况下，连接超过
+	 *用于特定页面的单个DOM就绪或窗口加载处理程序。
+	 *尽管WordPress核心中的脚本、插件和主题可能
+	 *实践这一点，我们应该努力在自己的工作中树立更好的榜样。
 	 */
 
-})( jQuery );
+	$(document).ready(function () {
+		//alert('Plugin is now disabled'); // 这里直接调用 alert 函数作为示例
+	});
+})(jQuery);

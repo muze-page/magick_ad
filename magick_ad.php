@@ -35,7 +35,7 @@ if (!defined('WPINC')) {
  * 从1.0.0版本开始，使用SemVer-https://semver.org
  * 将其重命名为您的插件，并在发布新版本时进行更新。
  */
-define('MAGICK_AD_VERSION', '1.0.0');
+define('MAGICK_AD_VERSION', '1.0.5');
 
 /**
  * 插件激活期间运行的代码。
@@ -45,8 +45,7 @@ function activate_magick_ad()
 {
 	require_once plugin_dir_path(__FILE__) . 'includes/class-magick_ad-activator.php';
 
-	//Magick_ad_Activator::activate();
-	Magick_ad_Activator::create_image_view_table();
+	Magick_ad_Activator::activate();
 }
 
 /**
@@ -61,6 +60,12 @@ function deactivate_magick_ad()
 
 register_activation_hook(__FILE__, 'activate_magick_ad');
 register_deactivation_hook(__FILE__, 'deactivate_magick_ad');
+
+//register_deactivation_hook(__FILE__, 'my_plugin_deactivation_hook');
+//function my_plugin_deactivation_hook()
+//{
+//	wp_die('您的插件已成功禁用。');
+//}
 
 /**
  * 用于定义国际化的核心插件类，管理员专用挂钩和面向公众的站点挂钩。
@@ -82,10 +87,10 @@ function run_magick_ad()
 	$plugin = new Magick_ad();
 	$plugin->run();
 }
-//run_magick_ad();
+run_magick_ad();
 
 
 
 
 
-//require_once plugin_dir_path( __FILE__ ) . 'includes/plugin/plugins.php';
+
