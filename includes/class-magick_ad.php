@@ -154,6 +154,9 @@ class Magick_ad
 
 		//测试下
 		$this->loader->add_action('wp_head', $plugin_admin, 'test');
+		//是在后台中
+		if (is_admin()) {
+		}
 		//进行判断，有没有安装ACF插件，有则继续，无则提醒
 		include_once ABSPATH . 'wp-admin/includes/plugin.php';
 		if (!is_plugin_active('advanced-custom-fields-pro/acf.php')) {
@@ -162,8 +165,11 @@ class Magick_ad
 		}
 
 		//屏蔽ACF 的更新提示
-		//add_filter('site_transient_update_plugins', 'wcr_remove_update_notifications');
-		//$this->loader->add_filter('site_transient_update_plugins', $plugin_admin, 'wcr_remove_update_notifications');
+		$this->loader->add_filter('site_transient_update_plugins', $plugin_admin, 'wcr_remove_update_notifications');
+		//添加ACF自定义提示
+		//add_filter('plugin_row_meta', 'my_plugin_add_meta', 10, 2);
+		$this->loader->add_filter('plugin_row_meta', $plugin_admin, 'my_plugin_add_meta','',2);
+		
 	}
 
 	/**

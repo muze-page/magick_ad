@@ -93,12 +93,6 @@ run_magick_ad();
 
 
 
-add_filter('plugin_row_meta', 'my_plugin_add_meta', 10, 2);
 
-function my_plugin_add_meta($links, $file) {
-    // Replace "my-plugin/my-plugin.php" with your plugin's file path
-    if ($file == 'advanced-custom-fields-pro/acf.php') {
-        $links[] = '<a href="#">Custom Text</a>';
-    }
-    return $links;
-}
+
+

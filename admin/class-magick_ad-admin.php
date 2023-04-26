@@ -145,6 +145,9 @@ class Magick_ad_Admin
 	/**
 	 * 屏蔽ACF Pro 插件更新提示
 	 *
+	 * @type    function
+	 * @date    14/06/2016
+	 * 
 	 * @since    1.0.0
 	 */
 	public function wcr_remove_update_notifications($value)
@@ -161,5 +164,17 @@ class Magick_ad_Admin
 		}
 		return $value;
 	}
-	
+
+	/**
+	 * 添加提示信息
+	 */
+	public function my_plugin_add_meta($links, $file)
+	{
+		// Replace "my-plugin/my-plugin.php" with your plugin's file path
+		if ($file == 'advanced-custom-fields-pro/acf.php') {
+			$notice = '<br><span style="color: #8c8c8c;">提示：若需停用本插件，请先停用魔法广告插件</span>';
+			$links[] = $notice;
+		}
+		return $links;
+	}
 }
