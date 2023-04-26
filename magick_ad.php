@@ -78,7 +78,7 @@ function run_magick_ad() {
 	$plugin->run();
 
 }
-run_magick_ad();
+//run_magick_ad();
 
 
 
