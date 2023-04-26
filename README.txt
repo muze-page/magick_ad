@@ -9,6 +9,8 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 广告插件重构版
+# 待安排
+- 删除插件创建的数据库功能
 
 Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
 
