@@ -22,6 +22,8 @@
 class Magick_ad_Admin
 {
 
+
+
 	/**
 	 * The ID of this plugin.
 	 *
@@ -55,14 +57,23 @@ class Magick_ad_Admin
 		$this->load_dependencies();
 	}
 
-	private function load_dependencies() {
+	private function load_dependencies()
+	{
+
+		//载入依赖插件
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/plugin/plugins.php';
+
+
 		/**
 		 * 测试下
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/magick_ad-admin-display.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/magick_ad-admin-display.php';
 	}
 
-	public function test(){
+
+
+	public function test()
+	{
 		$obj = new Magick_ad_Admin_Display();
 		return $obj->add_hello_header($this->version);
 	}
@@ -112,4 +123,43 @@ class Magick_ad_Admin
 
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/magick_ad-admin.js', array('jquery'), $this->version, false);
 	}
+
+
+	/**
+	 * 未安装ACF 插件的警告信息
+	 *
+	 * @since    1.0.0
+	 */
+	public function magick_admin_notice_acf()
+	{
+?>
+		<div class='notice notice-error '>
+			<p>
+				<?php _e('请安装下方提示插件，或禁用魔法广告插件', 'sample-text-domain'); ?>
+			</p>
+		</div>
+<?php
+	}
+
+
+	/**
+	 * 屏蔽ACF Pro 插件更新提示
+	 *
+	 * @since    1.0.0
+	 */
+	public function wcr_remove_update_notifications($value)
+	{
+		// 要屏蔽的插件位置 (在wp-content/plugins文件夹下)
+		$plugins = array(
+			'advanced-custom-fields-pro/acf.php',
+		);
+		foreach ($plugins as $key => $plugin) {
+			if (empty($value->response[$plugin])) {
+				continue;
+			}
+			unset($value->response[$plugin]);
+		}
+		return $value;
+	}
+	
 }

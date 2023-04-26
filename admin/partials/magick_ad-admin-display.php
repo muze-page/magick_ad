@@ -31,6 +31,8 @@ class Magick_ad_Admin_Display
     echo $version;
     echo '</div>';
   }
+
+
 }
 
 ?>

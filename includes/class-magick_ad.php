@@ -24,7 +24,8 @@
  * @subpackage Magick_ad/includes
  * @author     Mzue <1355471563@qq.com>
  */
-class Magick_ad {
+class Magick_ad
+{
 
 	/**
 	 * 负责维护和注册所有供电挂钩的加载器插件
@@ -61,8 +62,9 @@ class Magick_ad {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct() {
-		if ( defined( 'MAGICK_AD_VERSION' ) ) {
+	public function __construct()
+	{
+		if (defined('MAGICK_AD_VERSION')) {
 			$this->version = MAGICK_AD_VERSION;
 		} else {
 			$this->version = '1.0.0';
@@ -73,7 +75,6 @@ class Magick_ad {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-
 	}
 
 	/**
@@ -91,31 +92,31 @@ class Magick_ad {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_dependencies() {
+	private function load_dependencies()
+	{
 
 		/**
 		 * 负责编排的操作和筛选器的类核心插件。
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-magick_ad-loader.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-magick_ad-loader.php';
 
 		/**
 		 * 负责定义国际化功能的类
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-magick_ad-i18n.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-magick_ad-i18n.php';
 
 		/**
 		 * 负责定义在管理区域中发生的所有操作的类。
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-magick_ad-admin.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-magick_ad-admin.php';
 
 		/**
 		 * 负责定义在公众面前发生的所有行动的类别现场一侧。
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-magick_ad-public.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-magick_ad-public.php';
 
 		$this->loader = new Magick_ad_Loader();
-
 	}
 
 	/**
@@ -127,12 +128,12 @@ class Magick_ad {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function set_locale() {
+	private function set_locale()
+	{
 
 		$plugin_i18n = new Magick_ad_i18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
+		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
 	}
 
 	/**
@@ -142,16 +143,27 @@ class Magick_ad {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_admin_hooks() {
+	private function define_admin_hooks()
+	{
 
-		$plugin_admin = new Magick_ad_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Magick_ad_Admin($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		//加载后台的css文件和JS文件
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 
 		//测试下
-		$this->loader->add_action( 'wp_head', $plugin_admin, 'test' );
+		$this->loader->add_action('wp_head', $plugin_admin, 'test');
+		//进行判断，有没有安装ACF插件，有则继续，无则提醒
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
+		if (!is_plugin_active('advanced-custom-fields-pro/acf.php')) {
+			//提醒安装插件
+			$this->loader->add_action('admin_notices', $plugin_admin, 'magick_admin_notice_acf');
+		}
 
+		//屏蔽ACF 的更新提示
+		//add_filter('site_transient_update_plugins', 'wcr_remove_update_notifications');
+		//$this->loader->add_filter('site_transient_update_plugins', $plugin_admin, 'wcr_remove_update_notifications');
 	}
 
 	/**
@@ -161,13 +173,13 @@ class Magick_ad {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_public_hooks() {
+	private function define_public_hooks()
+	{
 
-		$plugin_public = new Magick_ad_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Magick_ad_Public($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
 	}
 
 	/**
@@ -175,7 +187,8 @@ class Magick_ad {
 	 *
 	 * @since    1.0.0
 	 */
-	public function run() {
+	public function run()
+	{
 		$this->loader->run();
 	}
 
@@ -185,7 +198,8 @@ class Magick_ad {
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
-	public function get_plugin_name() {
+	public function get_plugin_name()
+	{
 		return $this->plugin_name;
 	}
 
@@ -195,7 +209,8 @@ class Magick_ad {
 	 * @since     1.0.0
 	 * @return    Magick_ad_Loader    编排插件的挂钩。
 	 */
-	public function get_loader() {
+	public function get_loader()
+	{
 		return $this->loader;
 	}
 
@@ -205,10 +220,8 @@ class Magick_ad {
 	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
 	 */
-	public function get_version() {
+	public function get_version()
+	{
 		return $this->version;
 	}
-
-	
-
 }
