@@ -26,42 +26,46 @@
  */
 
 // 如果直接调用此文件，请中止。
-if ( ! defined( 'WPINC' ) ) {
+if (!defined('WPINC')) {
 	die;
 }
 
 /**
  * 当前插件版本。
-* 从1.0.0版本开始，使用SemVer-https://semver.org
-* 将其重命名为您的插件，并在发布新版本时进行更新。
+ * 从1.0.0版本开始，使用SemVer-https://semver.org
+ * 将其重命名为您的插件，并在发布新版本时进行更新。
  */
-define( 'MAGICK_AD_VERSION', '1.0.0' );
+define('MAGICK_AD_VERSION', '1.0.0');
 
 /**
  * 插件激活期间运行的代码。
  * 此操作记录在includes/class-magick_ad-activator.php中
  */
-function activate_magick_ad() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-magick_ad-activator.php';
-	Magick_ad_Activator::activate();
+function activate_magick_ad()
+{
+	require_once plugin_dir_path(__FILE__) . 'includes/class-magick_ad-activator.php';
+
+	//Magick_ad_Activator::activate();
+	Magick_ad_Activator::create_image_view_table();
 }
 
 /**
  * 在插件停用期间运行的代码。
  * This action is documented in includes/class-magick_ad-deactivator.php
  */
-function deactivate_magick_ad() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-magick_ad-deactivator.php';
+function deactivate_magick_ad()
+{
+	require_once plugin_dir_path(__FILE__) . 'includes/class-magick_ad-deactivator.php';
 	Magick_ad_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_magick_ad' );
-register_deactivation_hook( __FILE__, 'deactivate_magick_ad' );
+register_activation_hook(__FILE__, 'activate_magick_ad');
+register_deactivation_hook(__FILE__, 'deactivate_magick_ad');
 
 /**
  * 用于定义国际化的核心插件类，管理员专用挂钩和面向公众的站点挂钩。
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-magick_ad.php';
+require plugin_dir_path(__FILE__) . 'includes/class-magick_ad.php';
 
 /**
  * 开始执行插件。
@@ -72,13 +76,16 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-magick_ad.php';
  *
  * @since    1.0.0
  */
-function run_magick_ad() {
+function run_magick_ad()
+{
 
 	$plugin = new Magick_ad();
 	$plugin->run();
-
 }
 //run_magick_ad();
 
 
 
+
+
+//require_once plugin_dir_path( __FILE__ ) . 'includes/plugin/plugins.php';
