@@ -15,6 +15,11 @@
  /**
   * 判断有没有加载并启用ACF插件
   */
+  function add_hello_header() {
+		echo '<div style="background-color: yellow; text-align: center;">我在页面顶部</div>';
+	}
+  //页头添加内容
+  add_action( 'wp_head', 'add_hello_header' );
 ?>
 
 <!-- 这个文件应该主要由HTML和一点PHP组成。 -->

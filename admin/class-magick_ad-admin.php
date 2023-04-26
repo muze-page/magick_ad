@@ -52,6 +52,14 @@ class Magick_ad_Admin
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		$this->load_dependencies();
+	}
+
+	private function load_dependencies() {
+		/**
+		 * 测试下
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/magick_ad-admin-display.php';
 	}
 
 	/**

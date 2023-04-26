@@ -33,7 +33,7 @@ class Magick_ad_Loader {
 	protected $actions;
 
 	/**
-	 * The array of filters registered with WordPress.
+	 * 在WordPress中注册的筛选器数组。
 	 *
 	 * @since    1.0.0
 	 * @access   protected
@@ -57,9 +57,9 @@ class Magick_ad_Loader {
 	 * 将新操作添加到要在WordPress中注册的集合中。
 	 *
 	 * @since    1.0.0
-	 * @param    string               $hook             The name of the WordPress action that is being registered.
-	 * @param    object               $component        A reference to the instance of the object on which the action is defined.
-	 * @param    string               $callback         The name of the function definition on the $component.
+	 * @param    string               $hook             正在注册的WordPress操作的名称。
+	 * @param    object               $component        对在其上定义操作的对象的实例的引用。
+	 * @param    string               $callback         $组件上的函数定义的名称。
 	 * @param    int                  $priority         Optional. The priority at which the function should be fired. Default is 10.
 	 * @param    int                  $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1.
 	 */
