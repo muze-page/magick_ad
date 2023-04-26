@@ -94,5 +94,3 @@ run_magick_ad();
 
 
 
-
-

@@ -154,22 +154,36 @@ class Magick_ad
 
 		//测试下
 		$this->loader->add_action('wp_head', $plugin_admin, 'test');
+		//打印广告数组到前台
+		$this->loader->add_action('wp_footer', $plugin_admin, 'get_all_ad');
+
+
+
 		//是在后台中
 		if (is_admin()) {
-		}
-		//进行判断，有没有安装ACF插件，有则继续，无则提醒
-		include_once ABSPATH . 'wp-admin/includes/plugin.php';
-		if (!is_plugin_active('advanced-custom-fields-pro/acf.php')) {
-			//提醒安装插件
-			$this->loader->add_action('admin_notices', $plugin_admin, 'magick_admin_notice_acf');
-		}
+			//进行判断，有没有安装ACF插件，有则继续，无则提醒并暂停
+			include_once ABSPATH . 'wp-admin/includes/plugin.php';
+			if (!is_plugin_active('advanced-custom-fields-pro/acf.php')) {
+				//提醒安装插件
+				$this->loader->add_action('admin_notices', $plugin_admin, 'magick_admin_notice_acf');
+				return;
+			}
 
-		//屏蔽ACF 的更新提示
-		$this->loader->add_filter('site_transient_update_plugins', $plugin_admin, 'wcr_remove_update_notifications');
-		//添加ACF自定义提示
-		//add_filter('plugin_row_meta', 'my_plugin_add_meta', 10, 2);
-		$this->loader->add_filter('plugin_row_meta', $plugin_admin, 'my_plugin_add_meta','',2);
-		
+			//屏蔽ACF 的更新提示
+			$this->loader->add_filter('site_transient_update_plugins', $plugin_admin, 'wcr_remove_update_notifications');
+
+			//添加ACF自定义提示
+			$this->loader->add_filter('plugin_row_meta', $plugin_admin, 'my_plugin_add_meta', '', 2);
+
+			//添加广告插件设置信息
+			$this->loader->add_filter('plugin_action_links_magick_ad/magick_ad.php', $plugin_admin, 'add_option_setting', '', 2);
+
+			//添加广告插件附加信息
+			$this->loader->add_filter('plugin_row_meta', $plugin_admin, 'add_option_msg_setting', '', 2);
+
+			//添加菜单
+			$plugin_admin->add_option_menu_magick_ad();
+		}
 	}
 
 	/**

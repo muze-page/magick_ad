@@ -63,7 +63,8 @@ class Magick_ad_Admin
 		//载入依赖插件
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/plugin/plugins.php';
 
-
+		//载入全局广告
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/magick_ad-admin-ad-all.php';
 		/**
 		 * 测试下
 		 */
@@ -71,11 +72,22 @@ class Magick_ad_Admin
 	}
 
 
-
+	/**
+	 * 测试
+	 */
 	public function test()
 	{
 		$obj = new Magick_ad_Admin_Display();
 		return $obj->add_hello_header($this->version);
+	}
+	/*
+	 *将拿到的配置信息打印的网页底部
+	 *
+	 */
+	public function get_all_ad()
+	{
+		$obj = new Magick_ad_Admin_Ad_All();
+		return $obj->add_msg_bottom();
 	}
 
 	/**
@@ -176,5 +188,54 @@ class Magick_ad_Admin
 			$links[] = $notice;
 		}
 		return $links;
+	}
+
+	/*
+	*添加本插件设置信息
+	*/
+	public function add_option_setting($links)
+	{
+		$links[] = '<a href="' . get_admin_url(null, 'admin.php?page=theme-general-settings') . '">' . __('设置', 'tj') . '</a>';
+		return $links;
+	}
+	/**
+	 * 添加本插件信息
+	 */
+	public function add_option_msg_setting($links, $file)
+	{
+		//增加插件信息
+
+		//if ($file == plugin_basename(__FILE__)) {
+		if ($file == 'magick_ad/magick_ad.php') {
+
+			$links[] = '<a target="_blank" href="https://www.npc.ink/276641.html">使用帮助</a>';
+			$links[] = '<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1355471563">联系QQ</a>';
+		}
+		return $links;
+	}
+
+	/**
+	 * 添加广告菜单
+	 */
+	public function add_option_menu_magick_ad()
+	{
+		//显示菜单
+		//显示菜单选项
+		//https://www.advancedcustomfields.com/resources/options-page/
+		if (function_exists('acf_add_options_page')) {
+
+			//acf_add_options_page();
+			acf_add_options_page(array(
+				'page_title' => '魔法广告插件',
+				'menu_title' => '广告',
+				'menu_slug' => 'theme-general-settings',
+				'capability' => 'edit_posts',
+				'redirect' => false,
+				'post_id' => 'options',
+				'icon_url' => 'dashicons-filter',
+				'update_button' => __('保存'),
+				'updated_message' => __("保存成功"),
+			));
+		}
 	}
 }
