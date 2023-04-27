@@ -24,6 +24,27 @@
 
 class Magick_ad_Admin_Ad_All
 {
+
+    /**
+     * 初始化类并设置其财产。
+     *
+     * @since    1.0.0
+     */
+    public function __construct()
+    {
+
+        $this->load_dependencies();
+    }
+
+    private function load_dependencies()
+    {
+
+        //载入图片广告模块
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/module/magick_ad-admin-ad-img.php';
+        //载入 HTML 广告模块
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/module/magick_ad-admin-ad-html.php';
+    }
+
     /*
     *打印数组用
     */
@@ -69,7 +90,11 @@ class Magick_ad_Admin_Ad_All
         self::p($data);
     }
 
-    //获取广告的内容数组，展示在页面底部
+
+    /**
+     * @since    1.0.0
+     * @param    array $array 待处理的广告内容
+     */
     public function handle_ad_content_arr($array)
     {
         //存储处理好的数据
@@ -101,6 +126,8 @@ class Magick_ad_Admin_Ad_All
             //进行设备条件判断
             $device_content = self::device_show($login_content, $device);
 
+            //对广告内容进行处理
+
 
             $arr[] = $device_content;
         }
@@ -122,21 +149,20 @@ class Magick_ad_Admin_Ad_All
         //若展示效果为展示，则继续
         //若展示效果为随机，则从数组中抽一条
         //若展示效果为隐藏，则返回空
-        switch ($judge) {
-            case "show":
-                $data = $content;
-                break;
-            case "random":
-                $data = self::handle_random_arr($content);
 
-                break;
-            case "hide":
-                $data = [];
-                break;
-            default:
-                echo "错误：没有值";
+        if ($judge === "show") {
+            return $content;
         }
-        return $data;
+        if ($judge === "random") {
+            shuffle($content);
+
+            return reset($content);
+        }
+
+        if ($judge === "hide") {
+            return [];
+        }
+        return [];
     }
 
     /**
@@ -169,7 +195,7 @@ class Magick_ad_Admin_Ad_All
      * @param    string $device 判断条件
      * @return array 处理好的广告内容
      */
-    public function device_show(array $content, string $device): array
+    public function device_show($content, $device)
     {
         //若展示效果为：全平台、仅手机、仅电脑
         if ($device === 'all') {
@@ -188,20 +214,5 @@ class Magick_ad_Admin_Ad_All
 
 
         return [];
-    }
-
-    /**
-     * 输入一个数组，随机输出其中一条数据
-     * @since 1.0.0
-     * @param array $arr 待处理的数组
-     * @return array 返回包含一个值的数组
-     */
-    public function handle_random_arr($arr)
-    {
-        //随机输出数组中的一个数组
-        //乱序该数组
-        shuffle($arr);
-        //取出其中第一个数组
-        return   $arr['0'];
     }
 }
