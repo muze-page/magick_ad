@@ -90,6 +90,16 @@ class Magick_ad_Admin
 		return $obj->add_msg_bottom();
 	}
 
+	/*
+	 *将拿到的处理后的配置信息打印的网页底部
+	 *
+	 */
+	public function get_all_ad_handle()
+	{
+		$obj = new Magick_ad_Admin_Ad_All();
+		return $obj->add_msg_handle();
+	}
+
 	/**
 	 * 注册管理区域的样式表。
 	 *
