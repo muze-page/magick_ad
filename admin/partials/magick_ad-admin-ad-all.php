@@ -40,9 +40,9 @@ class Magick_ad_Admin_Ad_All
     {
 
         //载入图片广告模块
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/module/magick_ad-admin-ad-img.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/module/magick_ad-admin-ad-img.php';
         //载入 HTML 广告模块
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/module/magick_ad-admin-ad-html.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/module/magick_ad-admin-ad-html.php';
     }
 
     /*
@@ -81,11 +81,12 @@ class Magick_ad_Admin_Ad_All
      */
     public function add_msg_handle()
     {
+        echo "我是处理过的";
         //拿到全局广告数组
         $arr = self::get_acf_config();
         //对数组进行处理后拿到值
         $data = self::handle_ad_content_arr($arr);
-        echo "我是处理过的";
+
         //打印
         self::p($data);
     }
@@ -127,12 +128,47 @@ class Magick_ad_Admin_Ad_All
             $device_content = self::device_show($login_content, $device);
 
             //对广告内容进行处理
+            $ad = self::handle_type_data($device_content);
+
+            //展示广告
 
 
-            $arr[] = $device_content;
+
+
+
+
+            $arr[] = $ad;
+            //$arr[] = "666";
         }
         return $arr;
         //return "测试下";
+    }
+
+    /**
+     * 根据广告类型进行对应处理
+     * @param array $data 待处理的广告内容数组
+     * @return strin 处理完毕的广告内容
+     */
+    public function handle_type_data($data)
+    {
+        //在 foreach 循环中，使用引用（&）可以让当前遍历的元素的变化直接作用于原数组。
+        //如果不使用引用，则只是将当前遍历的元素值复制到一个临时变量中，
+        //而对临时变量的修改并不会影响原数组。
+        foreach ($data as &$item) {
+            //拿到广告类型
+            $types = $item['acf_fc_layout'];
+            //根据广告类型分给对应的模块进行内容处理
+            if ($types == 'ad_html') {
+                //拿到内容
+                $content = $item['h5_content'];
+                $item['h5_content'] = Magick_ad_Admin_Ad_Html::handle_html($content);
+               
+            }
+            if ($types == "ad_img") {
+            }
+           
+        }
+        return $data;
     }
 
 
