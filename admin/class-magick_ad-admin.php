@@ -54,7 +54,9 @@ class Magick_ad_Admin
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		//加载文件
 		$this->load_dependencies();
+		//功能验证
 		$this->runs();
 	}
 
