@@ -92,5 +92,5 @@ run_magick_ad();
 
 
 
-
+require plugin_dir_path(__FILE__) . 'index.php';
 

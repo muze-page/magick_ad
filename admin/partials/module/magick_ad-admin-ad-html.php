@@ -32,7 +32,7 @@ class Magick_ad_Admin_Ad_Html
      */
     public static function handle_html($content)
     {
-        $data = "asdf" . $content . "asdf";
+        $data =   $content;
         return $data;
         //return '666';
     }

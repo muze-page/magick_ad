@@ -36,6 +36,11 @@ class Magick_ad_Admin_Ad_All
         $this->load_dependencies();
     }
 
+
+
+    /**
+     * 加载模块类
+     */
     private function load_dependencies()
     {
 
@@ -61,9 +66,7 @@ class Magick_ad_Admin_Ad_All
     public function get_acf_config()
     {
         $arr = array();
-
         $arr = get_field('ad_all', 'options');
-
         return $arr;
     }
 
@@ -72,14 +75,13 @@ class Magick_ad_Admin_Ad_All
      */
     public function add_msg_bottom()
     {
-
         self::p(self::get_acf_config());
     }
 
     /**
      * 添加处理后的配置信息在网页底部
      */
-    public function add_msg_handle()
+    public  function add_msg_handle()
     {
         echo "我是处理过的";
         //拿到全局广告数组
@@ -95,8 +97,9 @@ class Magick_ad_Admin_Ad_All
     /**
      * @since    1.0.0
      * @param    array $array 待处理的广告内容
+     * @return array 处理好的广告内容，包含设置信息。
      */
-    public function handle_ad_content_arr($array)
+    public  function handle_ad_content_arr($array)
     {
         //存储处理好的数据
         $arr = [];
@@ -108,13 +111,13 @@ class Magick_ad_Admin_Ad_All
             //拿到选项数组
             $options = $sub_array['options'];
 
-            //拿到展示效果判断
+            //拿到展示效果判断条件
             $judge = $options['judge'];
 
-            //拿到是否登录展示判断
+            //拿到是否登录展示判断条件
             $login = $options['login'];
 
-            //拿到展示设备判断
+            //拿到展示设备判断条件
             $device = $options['device'];
 
             //判断展示效果
@@ -131,17 +134,41 @@ class Magick_ad_Admin_Ad_All
             $ad = self::handle_type_data($device_content);
 
             //展示广告
+            //需要 - 展示内容 -展示位置 - 展示页面
+
+            //拿到展示页面
+            $show_page = $options['show_page'];
+
+            //拿到展示位置
+            $show_position = $options['show_position'];
+
+            //展示的内容
+            $show_content = "";
+            foreach ($ad as $item) {
+                if (isset($item['content'])) {
+                    $show_content .= trim($item['content']);
+                }
+            }
 
 
 
 
-
-
-            $arr[] = $ad;
-            //$arr[] = "666";
+            $aa = [];
+            $aa['content'] = $show_content;
+            $aa['option'] = $options;
+            $arr[] = $aa;
         }
         return $arr;
-        //return "测试下";
+    }
+
+
+    /**
+     * 将内容加载到顶部
+     */
+    public function add_ad_content()
+    {
+        $content = "简简单单一段话";
+        echo $content;
     }
 
     /**
@@ -158,17 +185,19 @@ class Magick_ad_Admin_Ad_All
             //拿到广告类型
             $types = $item['acf_fc_layout'];
             //根据广告类型分给对应的模块进行内容处理
+            //HTMl 广告
             if ($types == 'ad_html') {
                 //拿到内容
                 $content = $item['h5_content'];
-                //对内容进行处理
-                $item['h5_content'] = Magick_ad_Admin_Ad_Html::handle_html($content);
+                //对内容进行处理后统一存入指定字段中
+                $item['content'] = Magick_ad_Admin_Ad_Html::handle_html($content);
             }
+            //图片广告
             if ($types == "ad_img") {
                 //拿到内容
                 $content = $item['img_content'];
-                //对内容进行处理
-                $item['img_content'] = Magick_ad_Admin_Ad_Img::handle_img($content);
+                //对内容进行处理后统一存入指定字段中
+                $item['content'] = Magick_ad_Admin_Ad_Img::handle_img($content);
             }
         }
         return $data;

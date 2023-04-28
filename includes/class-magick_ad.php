@@ -154,7 +154,7 @@ class Magick_ad
 
 		//测试下
 		$this->loader->add_action('wp_head', $plugin_admin, 'test');
-		//打印广告数组到前台
+		//打印原始广告数组到前台
 		$this->loader->add_action('wp_footer', $plugin_admin, 'get_all_ad');
 		//打印处理好的广告数组到前台
 		$this->loader->add_action('wp_footer', $plugin_admin, 'get_all_ad_handle');
