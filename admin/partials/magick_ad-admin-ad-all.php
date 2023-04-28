@@ -161,12 +161,15 @@ class Magick_ad_Admin_Ad_All
             if ($types == 'ad_html') {
                 //拿到内容
                 $content = $item['h5_content'];
+                //对内容进行处理
                 $item['h5_content'] = Magick_ad_Admin_Ad_Html::handle_html($content);
-               
             }
             if ($types == "ad_img") {
+                //拿到内容
+                $content = $item['img_content'];
+                //对内容进行处理
+                $item['img_content'] = Magick_ad_Admin_Ad_Img::handle_img($content);
             }
-           
         }
         return $data;
     }
