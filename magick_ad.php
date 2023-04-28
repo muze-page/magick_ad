@@ -86,11 +86,11 @@ function run_magick_ad()
 
 	$plugin = new Magick_ad();
 	$plugin->run();
+	
 }
 run_magick_ad();
 
 
 
-
+//测试功能
 require plugin_dir_path(__FILE__) . 'index.php';
-

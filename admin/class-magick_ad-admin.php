@@ -55,6 +55,7 @@ class Magick_ad_Admin
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 		$this->load_dependencies();
+		$this->runs();
 	}
 
 	private function load_dependencies()
@@ -81,7 +82,7 @@ class Magick_ad_Admin
 		return $obj->add_hello_header($this->version);
 	}
 	/*
-	 *将拿到的配置信息打印的网页底部
+	 *将拿到的配置信息输出
 	 *
 	 */
 	public function get_all_ad()
@@ -91,6 +92,12 @@ class Magick_ad_Admin
 		$arr['config'] = $obj->add_msg_bottom(); //配置信息
 		$arr['handle'] =  $obj->add_msg_handle(); //处理后的信息
 		return $arr;
+	}
+
+	//加载文件
+	public function runs()
+	{
+		new Magick_ad_Admin_Ad_All();
 	}
 
 

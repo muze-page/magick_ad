@@ -63,4 +63,4 @@ class My_Plugin
 }
 
 // 实例化插件类
-$my_plugin = new My_Plugin();
+//$my_plugin = new My_Plugin();
