@@ -121,15 +121,6 @@ class Magick_ad_Admin_Ad_All
                 }
             }
 
-            //准备选项
-
-            //拿到展示页面
-            $show_page = $options['show_page'];
-            
-            
-
-            //拿到展示位置
-            $show_position = $options['show_position'];
 
 
 
