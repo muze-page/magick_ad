@@ -28,8 +28,13 @@ class Magick_ad_Admin_Ad_Doing
     /**
      * 加载广告内容
      */
-    public function do_ad_content()
+    public static function do_ad_content($config)
     {
+        echo "简简单单的数据";
+        echo $config;
+        //拿到配置数据
+        //$config = get_field('ad_all', 'options');
+        self::p($config);
 
 
         $my_contents = array(
@@ -69,5 +74,15 @@ class Magick_ad_Admin_Ad_Doing
                     break;
             }
         }
+    }
+
+    /*
+    *打印数组用
+    */
+    public static function p($data)
+    {
+        echo '<pre>';
+        print_r($data);
+        echo '</pre>';
     }
 }

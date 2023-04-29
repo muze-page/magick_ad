@@ -64,3 +64,8 @@ class My_Plugin
 
 // 实例化插件类
 //$my_plugin = new My_Plugin();
+
+
+$config = get_field('ad_all', 'options');
+echo "大计划";
+echo $config;

@@ -104,6 +104,16 @@ class Magick_ad_Admin
 		return $arr;
 	}
 
+	/**
+	 * 将广告信息输出
+	 */
+	public function show_ad()
+	{
+		$config = get_field('ad_all', 'options');
+		
+		Magick_ad_Admin_Ad_Doing::do_ad_content($config);
+	}
+
 
 
 
