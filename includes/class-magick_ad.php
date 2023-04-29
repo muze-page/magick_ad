@@ -155,12 +155,10 @@ class Magick_ad
 		//顶部打印测试内容
 		$this->loader->add_action('wp_head', $plugin_admin, 'test');
 		//打印广告数组到前台底部
-		//$this->loader->add_action('wp_footer', $plugin_admin, 'get_all_ad');
+		$this->loader->add_action('wp_footer', $plugin_admin, 'get_all_ad');
 
 		//加载广告内容
-		$plugin_admin->show_ad();
-
-
+		$this->loader->add_action('init', $plugin_admin, 'show_ad');
 
 		//是在后台中
 		if (is_admin()) {
@@ -171,6 +169,9 @@ class Magick_ad
 				$this->loader->add_action('admin_notices', $plugin_admin, 'magick_admin_notice_acf');
 				return;
 			}
+			//添加选项菜单
+			$plugin_admin->add_option_menu_magick_ad();
+
 
 			//屏蔽ACF 的更新提示
 			$this->loader->add_filter('site_transient_update_plugins', $plugin_admin, 'wcr_remove_update_notifications');
@@ -183,9 +184,6 @@ class Magick_ad
 
 			//添加广告插件附加信息
 			$this->loader->add_filter('plugin_row_meta', $plugin_admin, 'add_option_msg_setting', '', 2);
-
-			//添加菜单
-			$plugin_admin->add_option_menu_magick_ad();
 		}
 	}
 

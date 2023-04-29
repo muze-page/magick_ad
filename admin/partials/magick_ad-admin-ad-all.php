@@ -110,22 +110,26 @@ class Magick_ad_Admin_Ad_All
             //对广告内容进行处理
             $ad = self::handle_type_data($device_content);
 
-            //展示广告
-            //需要 - 展示内容 -展示位置 - 展示页面
 
-            //拿到展示页面
-            $show_page = $options['show_page'];
 
-            //拿到展示位置
-            $show_position = $options['show_position'];
-
-            //展示的内容
+            //准备展示的内容
             $show_content = "";
+            //将同一位置展示的内容按次序拼接
             foreach ($ad as $item) {
                 if (isset($item['content'])) {
                     $show_content .= trim($item['content']);
                 }
             }
+
+            //准备选项
+
+            //拿到展示页面
+            $show_page = $options['show_page'];
+            
+            
+
+            //拿到展示位置
+            $show_position = $options['show_position'];
 
 
 

@@ -92,6 +92,7 @@ class Magick_ad_Admin
 	{
 		//准备数据
 		$config = get_field('ad_all', 'options');
+		echo '<h1>有趣的内容</h1>';
 		//实例化用到的类
 		$obj = new Magick_ad_Admin_Ad_All();
 		//基本展示数据
@@ -101,7 +102,7 @@ class Magick_ad_Admin
 		//处理过的数据
 		$arr['handle'] = $obj->p($obj->handle_ad_content_arr($config));
 
-		return $arr;
+		
 	}
 
 	/**
@@ -109,9 +110,16 @@ class Magick_ad_Admin
 	 */
 	public function show_ad()
 	{
-		$config = get_field('ad_all', 'options');
-		
-		Magick_ad_Admin_Ad_Doing::do_ad_content($config);
+
+		//获取选项值
+		$configs = get_field('ad_all', 'options');
+
+		//实例化用到的类
+		$obj = new Magick_ad_Admin_Ad_All();
+		//将选项进行处理
+		$data = $obj->handle_ad_content_arr($configs);
+
+		Magick_ad_Admin_Ad_Doing::do_ad_content($data);
 	}
 
 
@@ -254,7 +262,7 @@ class Magick_ad_Admin
 
 			//acf_add_options_page();
 			acf_add_options_page(array(
-				'page_title' => '魔法广告插件',
+				'page_title' => '魔法广告',
 				'menu_title' => '广告',
 				'menu_slug' => 'theme-general-settings',
 				'capability' => 'edit_posts',

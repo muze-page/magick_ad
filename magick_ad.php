@@ -72,6 +72,8 @@ register_deactivation_hook(__FILE__, 'deactivate_magick_ad');
  */
 require plugin_dir_path(__FILE__) . 'includes/class-magick_ad.php';
 
+
+
 /**
  * 开始执行插件。
  *
@@ -86,7 +88,6 @@ function run_magick_ad()
 
 	$plugin = new Magick_ad();
 	$plugin->run();
-	
 }
 run_magick_ad();
 
