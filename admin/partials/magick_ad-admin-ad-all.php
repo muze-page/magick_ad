@@ -62,38 +62,13 @@ class Magick_ad_Admin_Ad_All
         echo '</pre>';
     }
 
-    /**
-     * 获取ACF的配置信息
-     */
-    public function get_acf_config()
-    {
-        $arr = array();
-        $arr = get_field('ad_all', 'options');
-        return $arr;
-    }
 
-    /**
-     * 添加原始配置信息在网页底部
-     */
-    public function add_msg_bottom()
-    {
-        self::p(self::get_acf_config());
-    }
 
-    /**
-     * 添加处理后的配置信息在网页底部
-     */
-    public  function add_msg_handle()
-    {
-        echo "我是处理过的";
-        //拿到全局广告数组
-        $arr = self::get_acf_config();
-        //对数组进行处理后拿到值
-        $data = self::handle_ad_content_arr($arr);
 
-        //打印
-        self::p($data);
-    }
+
+
+
+
 
 
     /**

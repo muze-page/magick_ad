@@ -56,9 +56,6 @@ class Magick_ad_Admin
 		$this->version = $version;
 		//加载文件
 		$this->load_dependencies();
-		//功能验证
-		
-		$this->do_ad_content();
 	}
 
 	private function load_dependencies()
@@ -67,8 +64,11 @@ class Magick_ad_Admin
 		//载入依赖插件
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/plugin/plugins.php';
 
-		//载入全局广告
+		//载入广告处理类
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/magick_ad-admin-ad-all.php';
+
+		//载入广告加载类
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/magick_ad-admin-ad-doing.php';
 		/**
 		 * 测试下
 		 */
@@ -90,10 +90,17 @@ class Magick_ad_Admin
 	 */
 	public function get_all_ad()
 	{
-		$arr = [];
+		//准备数据
+		$config = get_field('ad_all', 'options');
+		//实例化用到的类
 		$obj = new Magick_ad_Admin_Ad_All();
-		$arr['config'] = $obj->add_msg_bottom(); //配置信息
-		$arr['handle'] =  $obj->add_msg_handle(); //处理后的信息
+		//基本展示数据
+		$arr['config'] = $obj->p($config);
+		//说明文本
+		$arr['msg'] = $obj->p("下面是处理过的");
+		//处理过的数据
+		$arr['handle'] = $obj->p($obj->handle_ad_content_arr($config));
+
 		return $arr;
 	}
 
@@ -247,51 +254,6 @@ class Magick_ad_Admin
 				'update_button' => __('保存'),
 				'updated_message' => __("保存成功"),
 			));
-		}
-	}
-
-	/**
-	 * 加载广告内容
-	 */
-	public function do_ad_content()
-	{
-
-		$my_contents = array(
-			array(
-				'position' => 'wp_head',
-				'condition' => 'is_single',
-				'content' => '我是第一段话1<br/>'
-			),
-			array(
-				'position' => 'wp_head',
-				'condition' => 'is_single',
-				'content' => '我是第二段话2<br/>'
-			)
-
-		);
-
-		foreach ($my_contents as $my_content) {
-			$position = $my_content['position'];
-			$condition = $my_content['condition'];
-			$content = $my_content['content'];
-
-			switch ($position) {
-				case 'wp_head':
-					add_action($position, function () use ($condition, $content) {
-						if (call_user_func($condition)) {
-							echo $content;
-						}
-					});
-					break;
-
-				case 'wp_footer':
-					add_action($position, function () use ($condition, $content) {
-						if (call_user_func($condition)) {
-							echo $content;
-						}
-					});
-					break;
-			}
 		}
 	}
 }
