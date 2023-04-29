@@ -1,0 +1,2193 @@
+[
+    {
+        "key": "group_6373638767615",
+        "title": "广告位",
+        "fields": [
+            {
+                "key": "field_6385de0251210",
+                "label": "全局广告",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_6385de0b51211",
+                "label": "全局广告",
+                "name": "ad_all",
+                "aria-label": "",
+                "type": "repeater",
+                "instructions": "在此选择您需要的广告类型",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "table",
+                "pagination": 0,
+                "min": 0,
+                "max": 0,
+                "collapsed": "field_6385de8c51215",
+                "button_label": "新建广告组",
+                "rows_per_page": 20,
+                "sub_fields": [
+                    {
+                        "key": "field_6385de8c51215",
+                        "label": "内容",
+                        "name": "content",
+                        "aria-label": "",
+                        "type": "flexible_content",
+                        "instructions": "在此选择您需要的广告类型",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "60",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layouts": {
+                            "layout_6385de9b0cd12": {
+                                "key": "layout_6385de9b0cd12",
+                                "name": "ad_img",
+                                "label": "图片内容",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_63e2178e29143",
+                                        "label": "内容",
+                                        "name": "",
+                                        "aria-label": "",
+                                        "type": "tab",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "placement": "top",
+                                        "endpoint": 0
+                                    },
+                                    {
+                                        "key": "field_6449d36940565",
+                                        "label": "内容",
+                                        "name": "img_content",
+                                        "aria-label": "",
+                                        "type": "group",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "layout": "block",
+                                        "sub_fields": [
+                                            {
+                                                "key": "field_6385deb051216",
+                                                "label": "图片",
+                                                "name": "img",
+                                                "aria-label": "",
+                                                "type": "image",
+                                                "instructions": "可在图片中填写替代文本与说明文字",
+                                                "required": 0,
+                                                "conditional_logic": 0,
+                                                "wrapper": {
+                                                    "width": "",
+                                                    "class": "",
+                                                    "id": ""
+                                                },
+                                                "return_format": "array",
+                                                "library": "all",
+                                                "min_width": "",
+                                                "min_height": "",
+                                                "min_size": "",
+                                                "max_width": "",
+                                                "max_height": "",
+                                                "max_size": "",
+                                                "mime_types": "",
+                                                "preview_size": "medium"
+                                            },
+                                            {
+                                                "key": "field_6385debc51217",
+                                                "label": "链接",
+                                                "name": "link",
+                                                "aria-label": "",
+                                                "type": "link",
+                                                "instructions": "可以通过勾选链接中的”在新标签页中打开链接“选项，让客户点击图片后在新选项页中查看链接内容。",
+                                                "required": 0,
+                                                "conditional_logic": 0,
+                                                "wrapper": {
+                                                    "width": "",
+                                                    "class": "",
+                                                    "id": ""
+                                                },
+                                                "return_format": "array"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "key": "field_63e217b829144",
+                                        "label": "配置",
+                                        "name": "",
+                                        "aria-label": "",
+                                        "type": "tab",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "placement": "top",
+                                        "endpoint": 0
+                                    },
+                                    {
+                                        "key": "field_63e30d57ec6bd",
+                                        "label": "配置",
+                                        "name": "option",
+                                        "aria-label": "",
+                                        "type": "group",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "layout": "block",
+                                        "sub_fields": [
+                                            {
+                                                "key": "field_63e217c629145",
+                                                "label": "隐藏水印",
+                                                "name": "watermark",
+                                                "aria-label": "",
+                                                "type": "true_false",
+                                                "instructions": "默认隐藏水印，水印将显示在图片中的右下角",
+                                                "required": 0,
+                                                "conditional_logic": 0,
+                                                "wrapper": {
+                                                    "width": "",
+                                                    "class": "",
+                                                    "id": ""
+                                                },
+                                                "message": "",
+                                                "default_value": 0,
+                                                "ui_on_text": "显示",
+                                                "ui_off_text": "隐藏",
+                                                "ui": 1
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "key": "field_6449e202393c8",
+                                        "label": "监听",
+                                        "name": "",
+                                        "aria-label": "",
+                                        "type": "tab",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "placement": "top",
+                                        "endpoint": 0
+                                    },
+                                    {
+                                        "key": "field_6449e20c393c9",
+                                        "label": "监听",
+                                        "name": "listen",
+                                        "aria-label": "",
+                                        "type": "group",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "layout": "block",
+                                        "sub_fields": [
+                                            {
+                                                "key": "field_6447316bc189e",
+                                                "label": "广告计划",
+                                                "name": "name",
+                                                "aria-label": "",
+                                                "type": "text",
+                                                "instructions": "方便记忆的监听名",
+                                                "required": 0,
+                                                "conditional_logic": 0,
+                                                "wrapper": {
+                                                    "width": "",
+                                                    "class": "",
+                                                    "id": ""
+                                                },
+                                                "default_value": "",
+                                                "maxlength": "",
+                                                "placeholder": "",
+                                                "prepend": "",
+                                                "append": ""
+                                            },
+                                            {
+                                                "key": "field_6449d3dbb3654",
+                                                "label": "展示监听",
+                                                "name": "view",
+                                                "aria-label": "",
+                                                "type": "true_false",
+                                                "instructions": "统计广告展示次数",
+                                                "required": 0,
+                                                "conditional_logic": 0,
+                                                "wrapper": {
+                                                    "width": "50",
+                                                    "class": "",
+                                                    "id": ""
+                                                },
+                                                "message": "",
+                                                "default_value": 0,
+                                                "ui_on_text": "开启",
+                                                "ui_off_text": "关闭",
+                                                "ui": 1
+                                            },
+                                            {
+                                                "key": "field_6449d3fcb3655",
+                                                "label": "点击监听",
+                                                "name": "click",
+                                                "aria-label": "",
+                                                "type": "true_false",
+                                                "instructions": "统计链接点击次数",
+                                                "required": 0,
+                                                "conditional_logic": 0,
+                                                "wrapper": {
+                                                    "width": "50",
+                                                    "class": "",
+                                                    "id": ""
+                                                },
+                                                "message": "",
+                                                "default_value": 0,
+                                                "ui_on_text": "开启",
+                                                "ui_off_text": "关闭",
+                                                "ui": 1
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            },
+                            "layout_6385def051218": {
+                                "key": "layout_6385def051218",
+                                "name": "ad_html",
+                                "label": "HTML内容",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_6385def851219",
+                                        "label": "HTML",
+                                        "name": "h5_content",
+                                        "aria-label": "",
+                                        "type": "wysiwyg",
+                                        "instructions": "",
+                                        "required": 1,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "tabs": "all",
+                                        "toolbar": "full",
+                                        "media_upload": 1,
+                                        "delay": 1
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            },
+                            "layout_6385e185b0fc3": {
+                                "key": "layout_6385e185b0fc3",
+                                "name": "ad_carousel",
+                                "label": "轮播图内容",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_639c19d6607bd",
+                                        "label": "幻灯片",
+                                        "name": "box",
+                                        "aria-label": "",
+                                        "type": "repeater",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "collapsed": "field_639c1ac315c4d",
+                                        "min": 0,
+                                        "max": 0,
+                                        "layout": "table",
+                                        "button_label": "添加新幻灯",
+                                        "rows_per_page": 20,
+                                        "sub_fields": [
+                                            {
+                                                "key": "field_639c1ac315c4d",
+                                                "label": "图片",
+                                                "name": "img",
+                                                "aria-label": "",
+                                                "type": "image",
+                                                "instructions": "幻灯展示用的图片",
+                                                "required": 0,
+                                                "conditional_logic": 0,
+                                                "wrapper": {
+                                                    "width": "",
+                                                    "class": "",
+                                                    "id": ""
+                                                },
+                                                "return_format": "array",
+                                                "preview_size": "medium",
+                                                "library": "all",
+                                                "min_width": "",
+                                                "min_height": "",
+                                                "min_size": "",
+                                                "max_width": "",
+                                                "max_height": "",
+                                                "max_size": "",
+                                                "mime_types": "",
+                                                "parent_repeater": "field_639c19d6607bd"
+                                            },
+                                            {
+                                                "key": "field_639c1aab15c4c",
+                                                "label": "链接",
+                                                "name": "link",
+                                                "aria-label": "",
+                                                "type": "link",
+                                                "instructions": "点击幻灯片打开的链接",
+                                                "required": 0,
+                                                "conditional_logic": 0,
+                                                "wrapper": {
+                                                    "width": "",
+                                                    "class": "",
+                                                    "id": ""
+                                                },
+                                                "return_format": "array",
+                                                "parent_repeater": "field_639c19d6607bd"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            }
+                        },
+                        "min": "",
+                        "max": "",
+                        "button_label": "添加广告",
+                        "parent_repeater": "field_6385de0b51211"
+                    },
+                    {
+                        "key": "field_639822553c59d",
+                        "label": "配置",
+                        "name": "options",
+                        "aria-label": "",
+                        "type": "group",
+                        "instructions": "对于广告组的显示类型配置",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "40",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layout": "block",
+                        "parent_repeater": "field_6385de0b51211",
+                        "sub_fields": [
+                            {
+                                "key": "field_6385de2151212",
+                                "label": "是否展示",
+                                "name": "judge",
+                                "aria-label": "",
+                                "type": "button_group",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "show": "展示",
+                                    "random": "随机",
+                                    "hide": "隐藏"
+                                },
+                                "default_value": "show",
+                                "return_format": "value",
+                                "allow_null": 0,
+                                "layout": "horizontal"
+                            },
+                            {
+                                "key": "field_63e2fc02593a7",
+                                "label": "登录展示",
+                                "name": "login",
+                                "aria-label": "",
+                                "type": "button_group",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "displas": "均展示",
+                                    "login": "登录",
+                                    "no_login": "非登录"
+                                },
+                                "default_value": "displas",
+                                "return_format": "value",
+                                "allow_null": 0,
+                                "layout": "horizontal"
+                            },
+                            {
+                                "key": "field_6385de5551213",
+                                "label": "展示平台",
+                                "name": "device",
+                                "aria-label": "",
+                                "type": "button_group",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "all": "全平台",
+                                    "phone": "仅手机",
+                                    "computer": "仅电脑"
+                                },
+                                "default_value": "all",
+                                "return_format": "value",
+                                "allow_null": 0,
+                                "layout": "horizontal"
+                            },
+                            {
+                                "key": "field_6449da6eb43bd",
+                                "label": "展示位置",
+                                "name": "",
+                                "aria-label": "",
+                                "type": "message",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "",
+                                "new_lines": "wpautop",
+                                "esc_html": 0
+                            },
+                            {
+                                "key": "field_6449d6a357acc",
+                                "label": "展示页面",
+                                "name": "show_page",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "is_main_site": "全站",
+                                    "is_home": "仅首页",
+                                    "is_single": "仅文章页",
+                                    "is_category": "仅分类页",
+                                    "is_tag": "仅标签页",
+                                    "is_page": "仅单页",
+                                    "is_search": "仅搜索结果页",
+                                    "is_404": "仅404页",
+                                    "is_author": "仅作者页"
+                                },
+                                "default_value": "is_main_site",
+                                "return_format": "value",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": ""
+                            },
+                            {
+                                "key": "field_6449d6d157acd",
+                                "label": "展示位置",
+                                "name": "show_position",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_6449d6a357acc",
+                                            "operator": "!=",
+                                            "value": "is_single"
+                                        },
+                                        {
+                                            "field": "field_6449d6a357acc",
+                                            "operator": "!=",
+                                            "value": "is_page"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "wp_head": "顶部",
+                                    "wp_footer": "底部"
+                                },
+                                "default_value": "wp_head",
+                                "return_format": "value",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": ""
+                            },
+                            {
+                                "key": "field_6449d71457ace",
+                                "label": "页面展示",
+                                "name": "show_position",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_6449d6a357acc",
+                                            "operator": "==",
+                                            "value": "is_single"
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "field": "field_6449d6a357acc",
+                                            "operator": "==",
+                                            "value": "is_page"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "50",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "wp_head": "顶部",
+                                    "loop_start": "循环前",
+                                    "title_top": "标题前",
+                                    "title_bottom": "标题后",
+                                    "single_top": "文章顶部",
+                                    "single_three": "文章第三段",
+                                    "single_bottom": "文章底部",
+                                    "comment_form_before": "评论区上方",
+                                    "comment_form_after": "评论区下方",
+                                    "wp_footer": "底部"
+                                },
+                                "default_value": "wp_head",
+                                "return_format": "value",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "key": "field_6392f4b78f5a2",
+                "label": "指定广告",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_6392f441d86e3",
+                "label": "指定广告",
+                "name": "add_ad_appoint",
+                "aria-label": "",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "table",
+                "pagination": 0,
+                "min": 0,
+                "max": 0,
+                "collapsed": "field_6392f441d86e4",
+                "button_label": "添加新广告",
+                "rows_per_page": 20,
+                "sub_fields": [
+                    {
+                        "key": "field_6392f441d86e4",
+                        "label": "内容",
+                        "name": "content",
+                        "aria-label": "",
+                        "type": "flexible_content",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layouts": {
+                            "layout_6385de9b0cd12": {
+                                "key": "layout_6385de9b0cd12",
+                                "name": "ad_img",
+                                "label": "图片内容",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_63e44f39b5925",
+                                        "label": "内容",
+                                        "name": "",
+                                        "aria-label": "",
+                                        "type": "tab",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "placement": "top",
+                                        "endpoint": 0
+                                    },
+                                    {
+                                        "key": "field_6392f441d86e5",
+                                        "label": "图片",
+                                        "name": "img",
+                                        "aria-label": "",
+                                        "type": "image",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "return_format": "array",
+                                        "preview_size": "thumbnail",
+                                        "library": "all",
+                                        "min_width": "",
+                                        "min_height": "",
+                                        "min_size": "",
+                                        "max_width": "",
+                                        "max_height": "",
+                                        "max_size": "",
+                                        "mime_types": ""
+                                    },
+                                    {
+                                        "key": "field_6392f441d86e6",
+                                        "label": "链接",
+                                        "name": "link",
+                                        "aria-label": "",
+                                        "type": "link",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "return_format": ""
+                                    },
+                                    {
+                                        "key": "field_63e44f45b5926",
+                                        "label": "配置",
+                                        "name": "",
+                                        "aria-label": "",
+                                        "type": "tab",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "placement": "top",
+                                        "endpoint": 0
+                                    },
+                                    {
+                                        "key": "field_63e44f5ab5927",
+                                        "label": "选项",
+                                        "name": "option",
+                                        "aria-label": "",
+                                        "type": "group",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "layout": "block",
+                                        "sub_fields": [
+                                            {
+                                                "key": "field_63e44f97b5928",
+                                                "label": "隐藏水印",
+                                                "name": "watermark",
+                                                "aria-label": "",
+                                                "type": "true_false",
+                                                "instructions": "默认隐藏水印，水印将显示在图片中的右下角",
+                                                "required": 0,
+                                                "conditional_logic": 0,
+                                                "wrapper": {
+                                                    "width": "",
+                                                    "class": "",
+                                                    "id": ""
+                                                },
+                                                "message": "",
+                                                "default_value": 0,
+                                                "ui_on_text": "显示",
+                                                "ui_off_text": "隐藏",
+                                                "ui": 1
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            },
+                            "layout_6385def051218": {
+                                "key": "layout_6385def051218",
+                                "name": "ad_html",
+                                "label": "HTML内容",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_6392f441d86e7",
+                                        "label": "HTML",
+                                        "name": "content",
+                                        "aria-label": "",
+                                        "type": "wysiwyg",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "tabs": "all",
+                                        "toolbar": "full",
+                                        "media_upload": 1,
+                                        "delay": 1
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            },
+                            "layout_63a0287d701af": {
+                                "key": "layout_63a0287d701af",
+                                "name": "ad_carousel",
+                                "label": "轮播图",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_63a02888701b0",
+                                        "label": "",
+                                        "name": "",
+                                        "aria-label": "",
+                                        "type": "clone",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "clone": [
+                                            "field_639c19d6607bd"
+                                        ],
+                                        "display": "seamless",
+                                        "layout": "block",
+                                        "prefix_label": 0,
+                                        "prefix_name": 0
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            }
+                        },
+                        "button_label": "添加模块",
+                        "min": "",
+                        "max": "",
+                        "parent_repeater": "field_6392f441d86e3"
+                    },
+                    {
+                        "key": "field_6392fbe59ffd2",
+                        "label": "配置",
+                        "name": "options",
+                        "aria-label": "",
+                        "type": "group",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "0",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layout": "block",
+                        "parent_repeater": "field_6392f441d86e3",
+                        "sub_fields": [
+                            {
+                                "key": "field_6392f463d86f7",
+                                "label": "指定文章",
+                                "name": "location",
+                                "aria-label": "",
+                                "type": "post_object",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "post_type": [
+                                    "post"
+                                ],
+                                "taxonomy": "",
+                                "allow_null": 0,
+                                "multiple": 1,
+                                "return_format": "id",
+                                "ui": 1
+                            },
+                            {
+                                "key": "field_63e45112a43f0",
+                                "label": "克隆一下",
+                                "name": "11_",
+                                "aria-label": "",
+                                "type": "clone",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "clone": [
+                                    "field_6385de2151212",
+                                    "field_63e2fc02593a7",
+                                    "field_6385de5551213",
+                                    "field_6385de6d51214"
+                                ],
+                                "display": "seamless",
+                                "layout": "block",
+                                "prefix_label": 0,
+                                "prefix_name": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "key": "field_63787c457b45b",
+                "label": "其他广告",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_6449cfe586dc3",
+                "label": "其他广告",
+                "name": "其他广告",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_6449cffc86dc4",
+                        "label": "弹窗广告",
+                        "name": "",
+                        "aria-label": "",
+                        "type": "tab",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placement": "top",
+                        "endpoint": 0
+                    },
+                    {
+                        "key": "field_6377620532919",
+                        "label": "弹窗广告",
+                        "name": "ad_notification",
+                        "aria-label": "",
+                        "type": "group",
+                        "instructions": "弹窗广告配置",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layout": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_63787bfac1dc9",
+                                "label": "开关",
+                                "name": "ad_notification_switch",
+                                "aria-label": "",
+                                "type": "button_group",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": [
+                                    "关闭弹窗",
+                                    "简洁样式弹窗",
+                                    "谷歌样式弹窗"
+                                ],
+                                "allow_null": 0,
+                                "default_value": "",
+                                "layout": "horizontal",
+                                "return_format": "value"
+                            },
+                            {
+                                "key": "field_63787c8fb7c39",
+                                "label": "弹出周期？",
+                                "name": "ad_notification_cycle",
+                                "aria-label": "",
+                                "type": "range",
+                                "instructions": "默认1天弹出一次",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63787bfac1dc9",
+                                            "operator": "!=",
+                                            "value": "0"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": 1,
+                                "min": 1,
+                                "max": 365,
+                                "step": "",
+                                "prepend": "",
+                                "append": "天"
+                            },
+                            {
+                                "key": "field_63848b629b9fb",
+                                "label": "谷歌广告-打开按钮",
+                                "name": "ad_notification_button-link",
+                                "aria-label": "",
+                                "type": "link",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63787bfac1dc9",
+                                            "operator": "==",
+                                            "value": "2"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "return_format": "url"
+                            },
+                            {
+                                "key": "field_63849ed007a1a",
+                                "label": "谷歌广告-打开按钮文本",
+                                "name": "ad_notification_button-text",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "按钮文本",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63787bfac1dc9",
+                                            "operator": "==",
+                                            "value": "2"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "打开",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_63848ba09b9fc",
+                                "label": "谷歌广告-品牌LOGO",
+                                "name": "ad_notification_logo",
+                                "aria-label": "",
+                                "type": "image",
+                                "instructions": "推荐尺寸：1200X300",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63787bfac1dc9",
+                                            "operator": "==",
+                                            "value": "2"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "return_format": "url",
+                                "preview_size": "medium",
+                                "library": "all",
+                                "min_width": "",
+                                "min_height": "",
+                                "min_size": "",
+                                "max_width": "",
+                                "max_height": "",
+                                "max_size": "",
+                                "mime_types": ""
+                            },
+                            {
+                                "key": "field_63787cd5b7c3a",
+                                "label": "弹窗标题",
+                                "name": "ad_notification_title",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "不填则不显示标题",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63787bfac1dc9",
+                                            "operator": "!=",
+                                            "value": "0"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            },
+                            {
+                                "key": "field_63787cf2b7c3b",
+                                "label": "弹窗内容",
+                                "name": "ad_notification_content",
+                                "aria-label": "",
+                                "type": "wysiwyg",
+                                "instructions": "纯图片建议比例：4:3",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63787bfac1dc9",
+                                            "operator": "!=",
+                                            "value": "0"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "tabs": "all",
+                                "toolbar": "full",
+                                "media_upload": 1,
+                                "delay": 1
+                            },
+                            {
+                                "key": "field_6378aa4aafc4c",
+                                "label": "调试按钮",
+                                "name": "ad_notification_debug",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "在页面底部添加一个展示弹窗的按钮，点击即可查看弹窗效果",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63787bfac1dc9",
+                                            "operator": "!=",
+                                            "value": "0"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "",
+                                "default_value": 0,
+                                "ui": 1,
+                                "ui_on_text": "启用",
+                                "ui_off_text": "关闭"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "field_6449d00a86dc5",
+                        "label": "两侧广告",
+                        "name": "",
+                        "aria-label": "",
+                        "type": "tab",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placement": "top",
+                        "endpoint": 0
+                    },
+                    {
+                        "key": "field_63e37182292db",
+                        "label": "两侧广告",
+                        "name": "ad_both_sides",
+                        "aria-label": "",
+                        "type": "group",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layout": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_63e371b0e7d7c",
+                                "label": "是否启用",
+                                "name": "both_sides_hide",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "",
+                                "default_value": 0,
+                                "ui_on_text": "启用",
+                                "ui_off_text": "禁用",
+                                "ui": 1
+                            },
+                            {
+                                "key": "field_63e371c1e7d7d",
+                                "label": "左内容",
+                                "name": "left",
+                                "aria-label": "",
+                                "type": "wysiwyg",
+                                "instructions": "推荐图片尺寸：180X500，用span标签包裹广告，可启用默认样式",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63e371b0e7d7c",
+                                            "operator": "==",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "tabs": "all",
+                                "toolbar": "full",
+                                "media_upload": 1,
+                                "delay": 1
+                            },
+                            {
+                                "key": "field_63e371cee7d7e",
+                                "label": "右内容",
+                                "name": "right",
+                                "aria-label": "",
+                                "type": "wysiwyg",
+                                "instructions": "推荐图片尺寸：180X500，用span标签包裹广告，可启用默认样式",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63e371b0e7d7c",
+                                            "operator": "==",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "tabs": "all",
+                                "toolbar": "full",
+                                "media_upload": 1,
+                                "delay": 1
+                            },
+                            {
+                                "key": "field_63e371dbe7d7f",
+                                "label": "两边距离",
+                                "name": "sides",
+                                "aria-label": "",
+                                "type": "range",
+                                "instructions": "广告距离两端推荐100px",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63e371b0e7d7c",
+                                            "operator": "==",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": 100,
+                                "min": 0,
+                                "max": 1000,
+                                "step": "",
+                                "prepend": "",
+                                "append": "px"
+                            },
+                            {
+                                "key": "field_63e371f0e7d80",
+                                "label": "顶部距离",
+                                "name": "top",
+                                "aria-label": "",
+                                "type": "range",
+                                "instructions": "广告距离顶部，推荐300px",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63e371b0e7d7c",
+                                            "operator": "==",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": 300,
+                                "min": 0,
+                                "max": 1000,
+                                "step": "",
+                                "prepend": "",
+                                "append": "px"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "field_6449d02ddab06",
+                        "label": "底部横栏广告",
+                        "name": "",
+                        "aria-label": "",
+                        "type": "tab",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placement": "top",
+                        "endpoint": 0
+                    },
+                    {
+                        "key": "field_63e4572e63967",
+                        "label": "底部横栏广告",
+                        "name": "ad_bottom_bar",
+                        "aria-label": "",
+                        "type": "group",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layout": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_63e457c2f0c8e",
+                                "label": "是否启用",
+                                "name": "bottom_hide",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "此广告展示在全站底部",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "",
+                                "default_value": 0,
+                                "ui_on_text": "启用",
+                                "ui_off_text": "禁用",
+                                "ui": 1
+                            },
+                            {
+                                "key": "field_63e4574e63968",
+                                "label": "底部广告内容",
+                                "name": "bottom_content",
+                                "aria-label": "",
+                                "type": "wysiwyg",
+                                "instructions": "展示在全站底部的广告，图片推荐尺寸：720X90",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63e457c2f0c8e",
+                                            "operator": "==",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "tabs": "all",
+                                "toolbar": "full",
+                                "media_upload": 1,
+                                "delay": 1
+                            },
+                            {
+                                "key": "field_63e45826f0c8f",
+                                "label": "弹出周期",
+                                "name": "bottom_eject",
+                                "aria-label": "",
+                                "type": "range",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63e457c2f0c8e",
+                                            "operator": "==",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": 1,
+                                "min": 1,
+                                "max": 365,
+                                "step": "",
+                                "prepend": "",
+                                "append": "天"
+                            },
+                            {
+                                "key": "field_63e48e07724fa",
+                                "label": "开启调试",
+                                "name": "bottom_bar_debug",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "启用后，将在屏幕下方生成按钮，点击即可清理广告的Cookie，调试后记得关闭",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63e457c2f0c8e",
+                                            "operator": "==",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "",
+                                "default_value": 0,
+                                "ui_on_text": "启用调试按钮",
+                                "ui_off_text": "关闭调试按钮",
+                                "ui": 1
+                            },
+                            {
+                                "key": "field_63ea0b296a953",
+                                "label": "选项",
+                                "name": "options",
+                                "aria-label": "",
+                                "type": "group",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_63e457c2f0c8e",
+                                            "operator": "==",
+                                            "value": "1"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "layout": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_63ea0b546a954",
+                                        "label": "展示平台（待测试）",
+                                        "name": "display-platform",
+                                        "aria-label": "",
+                                        "type": "button_group",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "choices": [
+                                            "默认",
+                                            "仅电脑端",
+                                            "仅PC端"
+                                        ],
+                                        "default_value": 0,
+                                        "return_format": "value",
+                                        "allow_null": 0,
+                                        "layout": "horizontal"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "key": "field_63dc5e8a13f29",
+                "label": "设置",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_6449d24c99da4",
+                "label": "设置",
+                "name": "设置",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_6449d26699da5",
+                        "label": "ACF",
+                        "name": "",
+                        "aria-label": "",
+                        "type": "tab",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placement": "top",
+                        "endpoint": 0
+                    },
+                    {
+                        "key": "field_6449d27999da6",
+                        "label": "ACF",
+                        "name": "acf",
+                        "aria-label": "",
+                        "type": "group",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layout": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_63e34dc5be713",
+                                "label": "隐藏字段",
+                                "name": "acf_hide",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "message": "",
+                                "default_value": 0,
+                                "ui_on_text": "显示字段",
+                                "ui_off_text": "隐藏字段",
+                                "ui": 1
+                            }
+                        ]
+                    },
+                    {
+                        "key": "field_6449d28b99da7",
+                        "label": "监听",
+                        "name": "",
+                        "aria-label": "",
+                        "type": "tab",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "placement": "top",
+                        "endpoint": 0
+                    },
+                    {
+                        "key": "field_6449d29e99da8",
+                        "label": "监听",
+                        "name": "监听",
+                        "aria-label": "",
+                        "type": "group",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layout": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_6449d2ab99da9",
+                                "label": "有效浏览",
+                                "name": "有效浏览",
+                                "aria-label": "",
+                                "type": "range",
+                                "instructions": "多少秒内的一次浏览算作有效浏览",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "min": "",
+                                "max": 86400,
+                                "step": "",
+                                "prepend": "",
+                                "append": "秒"
+                            },
+                            {
+                                "key": "field_6449d2fb99daa",
+                                "label": "有效点击",
+                                "name": "有效点击",
+                                "aria-label": "",
+                                "type": "range",
+                                "instructions": "多少秒以内的点击算作有效点击",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "min": "",
+                                "max": 86400,
+                                "step": "",
+                                "prepend": "",
+                                "append": "秒"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "key": "field_63856f5ccbb8d",
+                "label": "选项卡（测试中）",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_63dc62c06f8d4",
+                "label": "高级广告（调试中）",
+                "name": "asdfsadf",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_63784ea0bda63",
+                        "label": "专业元素添加（开发中）",
+                        "name": "repeater_element",
+                        "aria-label": "",
+                        "type": "repeater",
+                        "instructions": "专业人士使用，很强大的自定义添加",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "collapsed": "",
+                        "min": 0,
+                        "max": 0,
+                        "layout": "table",
+                        "button_label": "添加行",
+                        "rows_per_page": 20,
+                        "sub_fields": [
+                            {
+                                "key": "field_63784fb9bda67",
+                                "label": "添加的内容",
+                                "name": "element_content",
+                                "aria-label": "",
+                                "type": "wysiwyg",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "tabs": "all",
+                                "toolbar": "full",
+                                "media_upload": 1,
+                                "delay": 0,
+                                "parent_repeater": "field_63784ea0bda63"
+                            },
+                            {
+                                "key": "field_63784f1dbda64",
+                                "label": "修改的页面",
+                                "name": "element_page",
+                                "aria-label": "",
+                                "type": "radio",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": [
+                                    "首页",
+                                    "文章页",
+                                    "单页"
+                                ],
+                                "allow_null": 0,
+                                "other_choice": 0,
+                                "default_value": "",
+                                "layout": "vertical",
+                                "return_format": "value",
+                                "save_other_choice": 0,
+                                "parent_repeater": "field_63784ea0bda63"
+                            },
+                            {
+                                "key": "field_63784f7abda65",
+                                "label": "目标ID元素",
+                                "name": "element_id",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "离目标最近的ID元素",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": "",
+                                "parent_repeater": "field_63784ea0bda63"
+                            },
+                            {
+                                "key": "field_63784fa1bda66",
+                                "label": "离目标最近的class",
+                                "name": "element_class",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": "",
+                                "parent_repeater": "field_63784ea0bda63"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "key": "field_63dc621fab631",
+                "label": "测试下字段",
+                "name": "测试下字段",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "",
+                "sub_fields": [
+                    {
+                        "key": "field_6392fe18eee8c",
+                        "label": "大段内容",
+                        "name": "大段内容",
+                        "aria-label": "",
+                        "type": "flexible_content",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layouts": {
+                            "layout_6392fe21508ba": {
+                                "key": "layout_6392fe21508ba",
+                                "name": "",
+                                "label": "",
+                                "display": "block",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_6392fe29eee8d",
+                                        "label": "阿斯顿发斯蒂芬",
+                                        "name": "阿斯顿发斯蒂芬",
+                                        "aria-label": "",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "maxlength": ""
+                                    },
+                                    {
+                                        "key": "field_6392fe31eee8e",
+                                        "label": "阿斯顿发斯蒂芬阿斯蒂芬阿斯蒂芬",
+                                        "name": "阿斯顿发斯蒂芬阿斯蒂芬阿斯蒂芬",
+                                        "aria-label": "",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "default_value": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": "",
+                                        "maxlength": ""
+                                    }
+                                ],
+                                "min": "",
+                                "max": ""
+                            }
+                        },
+                        "button_label": "添加行",
+                        "min": "",
+                        "max": ""
+                    },
+                    {
+                        "key": "field_639824e6b2251",
+                        "label": "img",
+                        "name": "img",
+                        "aria-label": "",
+                        "type": "button_group",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "red": "<img decoding=\"async\" alt=\"222\" class=\"syl-page-img\" src=\"http:\/\/kdx.mqzj.top\/wp-content\/uploads\/2022\/12\/plain.png\">",
+                            "res": "<img decoding=\"async\" alt=\"222\" class=\"syl-page-img\" src=\"http:\/\/kdx.mqzj.top\/wp-content\/uploads\/2022\/12\/plain.png\">"
+                        },
+                        "allow_null": 0,
+                        "default_value": "",
+                        "layout": "horizontal",
+                        "return_format": "value"
+                    },
+                    {
+                        "key": "field_63dc5ff562e65",
+                        "label": "简单分组",
+                        "name": "水电费撒打发斯蒂芬",
+                        "aria-label": "",
+                        "type": "group",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layout": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_63e2fbb846fe3",
+                                "label": "1",
+                                "name": "11",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": ""
+                            },
+                            {
+                                "key": "field_63e2fbbf46fe4",
+                                "label": "2",
+                                "name": "22",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "field_63dc65940f5f0",
+                        "label": "消息",
+                        "name": "",
+                        "aria-label": "",
+                        "type": "message",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "message": "<div class=\"user-data\">\r\n        <div class=\"data-item\">\r\n            <div class=\"icon\" style=\"background-image:url(https:\/\/p5.ssl.qhimg.com\/t01bda78253a6640398.png)\"><\/div>\r\n            <div class=\"right\">\r\n                <div class=\"amount\"><span class=\"num\">100<\/span>万<\/div>\r\n                <div class=\"desc\">注册客户数<\/div>\r\n            <\/div>\r\n        <\/div>\r\n        <div class=\"data-item\">\r\n            <div class=\"icon\" style=\"background-image:url(https:\/\/p4.ssl.qhimg.com\/t010319dab6802cfbfe.png)\"><\/div>\r\n            <div class=\"right\">\r\n                <div class=\"amount\"><span class=\"num\">1500<\/span>万<\/div>\r\n                <div class=\"desc\">最高同时在线人数<\/div>\r\n            <\/div>\r\n        <\/div>\r\n        <div class=\"data-item\">\r\n            <div class=\"icon\" style=\"background-image:url(https:\/\/p1.ssl.qhimg.com\/t01f9fbff16eb500869.png)\"><\/div>\r\n            <div class=\"right\">\r\n                <div class=\"amount\"><span class=\"num\">2000<\/span>万<\/div>\r\n                <div class=\"desc\">终端用户数<\/div>\r\n            <\/div>\r\n        <\/div>\r\n    <\/div>\r\n    <style>\r\n        .user-data {\r\n            position: absolute;\r\n            left: 50%;\r\n            transform: translate(-50%, -50%);\r\n            display: flex;\r\n            align-items: center;\r\n            justify-content: center;\r\n            width: 1200px;\r\n            height: 100px;\r\n            border: 1px solid #fff;\r\n            border-radius: 8px;\r\n            background: linear-gradient(180deg, #f4f5f8 4%, hsla(0, 0%, 100%, .7));\r\n            box-shadow: -4px 0 8px 0 rgb(37 56 108 \/ 5%), 0 2px 6px 0 rgb(37 56 108 \/ 15%), 0 10px 20px 0 rgb(49 70 125 \/ 10%);\r\n            -webkit-backdrop-filter: blur(27px);\r\n            backdrop-filter: blur(27px);\r\n            z-index: 20;\r\n        }\r\n\r\n        .data-item {\r\n            width: 33.33333%;\r\n            height: 66px;\r\n            position: relative;\r\n            display: flex;\r\n            align-items: center;\r\n        }\r\n\r\n        .icon {\r\n            margin-left: 105px;\r\n            width: 70px;\r\n            height: 70px;\r\n            background-size: cover;\r\n            background-repeat: no-repeat;\r\n        }\r\n\r\n        .right {\r\n            margin-left: 16px;\r\n            font-size: 14px;\r\n            color: #191919;\r\n        }\r\n\r\n        .amount {\r\n            height: 44px;\r\n            line-height: 44px;\r\n        }\r\n\r\n        .num {\r\n            font-family: PingFangSC-Medium;\r\n            color: #0256ff;\r\n            font-size: 36px;\r\n        }\r\n\r\n        .desc {\r\n            height: 22px;\r\n            line-height: 22px;\r\n        }\r\n\r\n        .user-data .data-item:after {\r\n            position: absolute;\r\n            right: 0;\r\n            content: \"\";\r\n            width: 2px;\r\n            height: 48px;\r\n            background-image: linear-gradient(90deg, #fff 0, #fff 50%, #dedede 0, #dedede);\r\n        }\r\n\r\n        .user-data {\r\n            margin-top: 8em;\r\n        }\r\n    <\/style>",
+                        "new_lines": "",
+                        "esc_html": 0
+                    },
+                    {
+                        "key": "field_63e2fb782639a",
+                        "label": "重复器",
+                        "name": "重复器",
+                        "aria-label": "",
+                        "type": "repeater",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "layout": "table",
+                        "pagination": 0,
+                        "min": 0,
+                        "max": 0,
+                        "collapsed": "",
+                        "button_label": "添加行",
+                        "rows_per_page": 20,
+                        "sub_fields": [
+                            {
+                                "key": "field_63e2fb852639b",
+                                "label": "1",
+                                "name": "11",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "parent_repeater": "field_63e2fb782639a"
+                            },
+                            {
+                                "key": "field_63e2fb8e2639c",
+                                "label": "2",
+                                "name": "22",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "parent_repeater": "field_63e2fb782639a"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "theme-general-settings"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "left",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "功能强大且丰富的广告",
+        "show_in_rest": 0
+    }
+]
