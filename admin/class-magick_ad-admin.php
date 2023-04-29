@@ -57,7 +57,8 @@ class Magick_ad_Admin
 		//加载文件
 		$this->load_dependencies();
 		//功能验证
-		$this->runs();
+		
+		$this->do_ad_content();
 	}
 
 	private function load_dependencies()
@@ -96,11 +97,7 @@ class Magick_ad_Admin
 		return $arr;
 	}
 
-	//加载文件
-	public function runs()
-	{
-		new Magick_ad_Admin_Ad_All();
-	}
+
 
 
 
@@ -250,6 +247,51 @@ class Magick_ad_Admin
 				'update_button' => __('保存'),
 				'updated_message' => __("保存成功"),
 			));
+		}
+	}
+
+	/**
+	 * 加载广告内容
+	 */
+	public function do_ad_content()
+	{
+
+		$my_contents = array(
+			array(
+				'position' => 'wp_head',
+				'condition' => 'is_single',
+				'content' => '我是第一段话1<br/>'
+			),
+			array(
+				'position' => 'wp_head',
+				'condition' => 'is_single',
+				'content' => '我是第二段话2<br/>'
+			)
+
+		);
+
+		foreach ($my_contents as $my_content) {
+			$position = $my_content['position'];
+			$condition = $my_content['condition'];
+			$content = $my_content['content'];
+
+			switch ($position) {
+				case 'wp_head':
+					add_action($position, function () use ($condition, $content) {
+						if (call_user_func($condition)) {
+							echo $content;
+						}
+					});
+					break;
+
+				case 'wp_footer':
+					add_action($position, function () use ($condition, $content) {
+						if (call_user_func($condition)) {
+							echo $content;
+						}
+					});
+					break;
+			}
 		}
 	}
 }
