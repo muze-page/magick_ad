@@ -109,77 +109,113 @@ class Magick_ad_Admin_Ad_Doing
             switch ($position) {
                     //页面顶部
                 case 'wp_head':
-                    add_action($position, function () use ($condition, $ad_content) {
-                        if (call_user_func($condition)) {
-
-                            echo $ad_content;
-                        }
-                    });
+                    self::add_ad_wp_head($condition, $ad_content);
                     break;
                     //页面底部
                 case 'wp_footer':
-                    add_action($position, function () use ($condition, $ad_content) {
-                        if (call_user_func($condition)) {
-                            echo $ad_content;
-                        }
-                    });
+                    self::add_ad_wp_footer($condition, $ad_content);
                     break;
 
                     //页面循环前
                 case 'loop_start':
-                    add_action('loop_start', function () use ($condition, $ad_content) {
-                        if (call_user_func($condition)) {
-                            if (is_main_query()) {
-                                // do stuff
-                                echo $ad_content;
-                            }
-                        }
-                    });
+
+                    self::add_ad_loop_start($condition, $ad_content);
+
                     break;
                     //页面循环后
                 case 'loop_end':
-                    add_action('loop_end', function () use ($condition, $ad_content) {
-                        if (call_user_func($condition)) {
-                            if (is_main_query()) {
-                                // do stuff
-                                echo $ad_content;
-                            }
-                        }
-                    });
+                    self::add_ad_loop_end($condition, $ad_content);
+
                     break;
                     //评论区上方
                 case 'comment_form_before':
-                    add_action($position, function () use ($condition, $ad_content) {
-                        if (call_user_func($condition)) {
-                            echo $ad_content;
-                        }
-                    });
+                    self::add_ad_comment_form_before($condition, $ad_content);
                     break;
                     //评论区下方
                 case 'comment_form_after':
-                    add_action($position, function () use ($condition, $ad_content) {
-                        if (call_user_func($condition)) {
-                            echo $ad_content;
-                        }
-                    });
+                    self::add_ad_comment_form_after($condition, $ad_content);
                     break;
             }
         }
     }
 
     /**
-     * 添加内容到页面顶部
+     * 添加广告到页面顶部
      */
-    public static function add_ad_page_after($condition, $ad_content)
+    private static function add_ad_wp_head($condition, $ad_content)
     {
-        //判断当前页面
-        if (call_user_func($condition)) {
-            echo $ad_content;
-        }
+        add_action('wp_head', function () use ($condition, $ad_content) {
+            if (call_user_func($condition)) {
+                echo $ad_content;
+            }
+        });
     }
     /**
-     * 添加内容到页面底部
+     * 添加广告到页面底部
      */
+    private static function add_ad_wp_footer($condition, $ad_content)
+    {
+        add_action('wp_footer', function () use ($condition, $ad_content) {
+            if (call_user_func($condition)) {
+                echo $ad_content;
+            }
+        });
+    }
+
+    /**
+     * 添加广告到循环前
+     */
+    private static function add_ad_loop_start($condition, $ad_content)
+    {
+        add_action('loop_start', function () use ($condition, $ad_content) {
+            if (call_user_func($condition)) {
+                //是主循环吗？
+                if (is_main_query()) {
+                    // do stuff
+                    echo $ad_content;
+                }
+            }
+        });
+    }
+    /**
+     * 添加广告到循环后
+     */
+    private static function add_ad_loop_end($condition, $ad_content)
+    {
+        add_action('loop_end', function () use ($condition, $ad_content) {
+            if (call_user_func($condition)) {
+                //是主循环吗？
+                if (is_main_query()) {
+                    // do stuff
+                    echo $ad_content;
+                }
+            }
+        });
+    }
+
+    /**
+     * 添加广告到评论框开始前
+     */
+    private static function add_ad_comment_form_before($condition, $ad_content)
+    {
+        add_action('comment_form_before', function () use ($condition, $ad_content) {
+            if (call_user_func($condition)) {
+                echo $ad_content;
+            }
+        });
+    }
+    /**
+     * 添加广告到评论框结束后
+     */
+    private static function add_ad_comment_form_after($condition, $ad_content)
+    {
+        add_action('comment_form_after', function () use ($condition, $ad_content) {
+            if (call_user_func($condition)) {
+                echo $ad_content;
+            }
+        });
+    }
+
 
     /*
     *打印数组用
