@@ -42,27 +42,23 @@ class Magick_ad_Admin_Ad_Doing
             $position = $my_content['option']['show_position'];
 
 
-            //文章标题上方
+            //文章标题上方添加内容
             if ($position == 'title_top') {
-                //add_action('the_title', function ($title, $id) use ($condition, $ad_content) {
-                //    if (call_user_func($condition) && $id == get_the_ID()) {
-                //        $title .=  $ad_content;
-                //        echo $title;
-                //    }
-                //},10,2);
-
-
-                function custom_title_filters($title, $id)
-                {
-                    // 判断当前页面是否为文章页
-                    if (is_single() && $id == get_the_ID()) {
-                        // 添加一句话到标题下方
-                        $title .= '<br><span>你好666</span>';
+                add_action('the_title', function ($title, $id) use ($condition, $ad_content) {
+                    if (call_user_func($condition) && $id == get_the_ID()) {
+                        $title =  $ad_content . $title;
                     }
                     return $title;
-                }
-
-                add_filter('the_title', 'custom_title_filters', 10, 2);
+                }, 10, 2);
+            }
+            //文章标题下方添加内容
+            if ($position == 'title_bottom') {
+                add_action('the_title', function ($title, $id) use ($condition, $ad_content) {
+                    if (call_user_func($condition) && $id == get_the_ID()) {
+                        $title .=  $ad_content;
+                    }
+                    return $title;
+                }, 10, 2);
             }
 
             //文章内容上方
@@ -72,7 +68,7 @@ class Magick_ad_Admin_Ad_Doing
                         $ad_content .=  $cont;
                         echo $ad_content;
                     }
-                });
+                }, 10, 2);
             }
             //文章内容第三段
             if ($position == 'single_three') {
@@ -87,7 +83,7 @@ class Magick_ad_Admin_Ad_Doing
                         }
                         echo $content;
                     }
-                });
+                }, 10, 2);
             }
             //文章内容下方
             if ($position == 'single_bottom') {
@@ -96,13 +92,13 @@ class Magick_ad_Admin_Ad_Doing
                         $ad_content = $cont . $ad_content;
                         echo $ad_content;
                     }
-                });
+                }, 10, 2);
             }
 
 
 
 
-
+            //通用
             switch ($position) {
                     //页面顶部
                 case 'wp_head':
