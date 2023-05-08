@@ -127,7 +127,18 @@ class Magick_ad_Admin_Ad_Doing
 
                     //页面循环前
                 case 'loop_start':
-                    add_action($position, function () use ($condition, $ad_content) {
+                    add_action('loop_start', function () use ($condition, $ad_content) {
+                        if (call_user_func($condition)) {
+                            if (is_main_query()) {
+                                // do stuff
+                                echo $ad_content;
+                            }
+                        }
+                    });
+                    break;
+                    //页面循环后
+                case 'loop_end':
+                    add_action('loop_end', function () use ($condition, $ad_content) {
                         if (call_user_func($condition)) {
                             if (is_main_query()) {
                                 // do stuff
@@ -155,6 +166,20 @@ class Magick_ad_Admin_Ad_Doing
             }
         }
     }
+
+    /**
+     * 添加内容到页面顶部
+     */
+    public static function add_ad_page_after($condition, $ad_content)
+    {
+        //判断当前页面
+        if (call_user_func($condition)) {
+            echo $ad_content;
+        }
+    }
+    /**
+     * 添加内容到页面底部
+     */
 
     /*
     *打印数组用
