@@ -42,69 +42,6 @@ class Magick_ad_Admin_Ad_Doing
             $position = $my_content['option']['show_position'];
 
 
-            //            //文章标题上方添加内容
-            //            if ($position == 'title_top') {
-            //                add_action('the_title', function ($title, $id) use ($condition, $ad_content) {
-            //                    if (call_user_func($condition) && in_the_loop() && $id == get_the_ID()) {
-            //                        $title =  $ad_content . $title;
-            //                        return $title;
-            //                    } else {
-            //                        return $title;
-            //                    }
-            //                }, 10, 2);
-            //            }
-            //            //文章标题下方添加内容
-            //            if ($position == 'title_bottom') {
-            //                add_filter('the_title', function ($title, $id) use ($condition, $ad_content) {
-            //                    //判断，是当前文章
-            //                    if (call_user_func($condition) && in_the_loop() && $id == get_the_ID()) {
-            //                        //获取文章标题
-            //
-            //                        $title .=  $ad_content;
-            //                        return $title;
-            //                    } else {
-            //                        return $title;
-            //                    }
-            //                }, 10, 2);
-            //            }
-            //
-            //            //文章内容上方
-            //            if ($position == 'single_top') {
-            //                add_action('the_content', function ($cont) use ($condition, $ad_content) {
-            //                    if (call_user_func($condition)) {
-            //                        $ad_content .=  $cont;
-            //                        echo $ad_content;
-            //                    }
-            //                }, 10, 2);
-            //            }
-            //            //文章内容第三段
-            //            if ($position == 'single_three') {
-            //                add_action('the_content', function ($content) use ($condition, $ad_content) {
-            //                    if (call_user_func($condition)) {
-            //                        $paragraphs = explode('</p>', $content); // 按照 </p> 分割文章内容
-            //                        if (count($paragraphs) >= 3) { // 如果文章至少有 3 段
-            //                            // 在第三段的结尾处添加自定义文本
-            //                            $paragraphs[2] .= $ad_content;
-            //                            // 将各段重新连接起来
-            //                            $content = implode('</p>', $paragraphs);
-            //                        }
-            //                        echo $content;
-            //                    }
-            //                }, 10, 2);
-            //            }
-            //            //文章内容下方
-            //            if ($position == 'single_bottom') {
-            //                add_action('the_content', function ($cont) use ($condition, $ad_content) {
-            //                    if (call_user_func($condition)) {
-            //                        $ad_content = $cont . $ad_content;
-            //                        echo $ad_content;
-            //                    }
-            //                }, 10, 2);
-            //            }
-
-
-
-
             //通用
             switch ($position) {
                     //页面顶部
