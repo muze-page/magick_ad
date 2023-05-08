@@ -45,19 +45,26 @@ class Magick_ad_Admin_Ad_Doing
             //文章标题上方添加内容
             if ($position == 'title_top') {
                 add_action('the_title', function ($title, $id) use ($condition, $ad_content) {
-                    if (call_user_func($condition) && $id == get_the_ID()) {
+                    if (call_user_func($condition) && in_the_loop() && $id == get_the_ID()) {
                         $title =  $ad_content . $title;
+                        return $title;
+                    } else {
+                        return $title;
                     }
-                    return $title;
                 }, 10, 2);
             }
             //文章标题下方添加内容
             if ($position == 'title_bottom') {
-                add_action('the_title', function ($title, $id) use ($condition, $ad_content) {
-                    if (call_user_func($condition) && $id == get_the_ID()) {
+                add_filter('the_title', function ($title, $id) use ($condition, $ad_content) {
+                    //判断，是当前文章
+                    if (call_user_func($condition) && in_the_loop() && $id == get_the_ID()) {
+                        //获取文章标题
+
                         $title .=  $ad_content;
+                        return $title;
+                    } else {
+                        return $title;
                     }
-                    return $title;
                 }, 10, 2);
             }
 
