@@ -168,8 +168,10 @@ class Magick_ad_Admin_Ad_All
             if ($types == "ad_img") {
                 //拿到内容
                 $content = $item['img_content'];
+                //拿到配置
+                $option = $item['img_option'];
                 //对内容进行处理后统一存入指定字段中
-                $item['content'] = Magick_ad_Admin_Ad_Img::handle_img($content);
+                $item['content'] = Magick_ad_Admin_Ad_Img::handle_img($content, $option);
             }
         }
         return $data;

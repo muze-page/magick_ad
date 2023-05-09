@@ -95,11 +95,13 @@ class Magick_ad_Admin_Ad_Img
      * 处理内容中的值
      * @since    1.0.0
      * @param    string $content 待处理的广告内容
+     * @param    string $option 广告选项
      * @return string $data 处理好的广告内容
      */
-    public static function handle_img($content)
+    public static function handle_img($content, $option)
     {
-
+        //css样式
+        $style = "";
 
         $url = $content['link'];
         //拿到链接
@@ -108,26 +110,25 @@ class Magick_ad_Admin_Ad_Img
         $url_title = $url['title'];
         //拿到跳转
         $url_target = $url['target'];
-        //进行处理
-        //if ($url_link) {
-        //    $url_link = 'href=' . $url_link;
-        //}
-        //if ($url_target) {
-        //    $url_target = 'target=' . $url_target;
-        //}
+
 
         //拿到图片
         $img = $content['img'];
         //拿到图片链接 - 原图
         $img_url = $img['url'];
-
-
-
         //拿到图片描述
         $img_alt = $img['alt'];
         //替代文本
         $img_title = $img['description'];
         //合并输出
+
+        //拿水印开关
+        $watermark_switch = $option['watermark'];
+        $watermark = $watermark_switch == 1 ? "<div class='magick_adTag'>广告</div>" : '';
+        //圆角弧度
+        $radian = $option['radian'] . 'px';
+
+
 
 
 
@@ -139,12 +140,17 @@ class Magick_ad_Admin_Ad_Img
         $tail = "</a>";
 
         //准备图片 - 原图
-        $right_img = "<img src=\"{$img_url}\" alt=\"{$img_alt}\" title=\"{$img_title}\">";
+        $right_img = "<img 
+        src=\"{$img_url}\" 
+        alt=\"{$img_alt}\" 
+        title=\"{$img_title}\"
+        style='border-radius:" . $radian . ";'
+        >";
 
 
         //拼接
 
-        $data = $head . $right_img . $tail;
+        $data = "<div class='magick_img'>" . $watermark . $head . $right_img . $tail  . "</div>";
 
         return $data;
     }
