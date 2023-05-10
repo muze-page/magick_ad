@@ -7,7 +7,8 @@ Tested up to: 3.4
 Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
+# 介绍
+vite文件夹用于打包js和css文件用
 广告插件重构版
 # 待安排
 - 删除插件创建的数据库功能
