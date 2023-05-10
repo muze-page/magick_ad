@@ -12,9 +12,9 @@ vite文件夹用于打包js和css文件用
 广告插件重构版
 # 待安排
 - 删除插件创建的数据库功能
-- 添加内容到文章页标题顶部还在研究中
+
 # bug
-- 使用文章顶部添加广告或文章底部添加广告，则无法在文章第三段添加广告
+
 
 Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
 
