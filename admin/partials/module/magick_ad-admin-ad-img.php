@@ -124,7 +124,7 @@ class Magick_ad_Admin_Ad_Img
 
         //拿水印开关
         $watermark_switch = $option['watermark'];
-        $watermark = $watermark_switch == 1 ? "<div class='magick_adTag'>广告</div>" : '';
+        $watermark = $watermark_switch == 1 ? "<div class='mgad_tag'>广告</div>" : '';
         //圆角弧度
         $radian = $option['radian'] . 'px';
 
@@ -150,7 +150,7 @@ class Magick_ad_Admin_Ad_Img
 
         //拼接
 
-        $data = "<div class='magick_img'>" . $watermark . $head . $right_img . $tail  . "</div>";
+        $data = "<div class='mgad_block_img'>" . $watermark . $head . $right_img . $tail  . "</div>";
 
         return $data;
     }
