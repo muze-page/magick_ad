@@ -32,7 +32,7 @@ class Magick_ad_Admin_Ad_Doing
     public static function do_ad_content($config)
     {
         //判断数组是否存在且有值
-        $switch_arr = isset($array) && !empty($array);
+        $switch_arr = isset($config) && !empty($config);
         if (!$switch_arr) {
             return "数组无值或不存在！";
         }
@@ -106,6 +106,7 @@ class Magick_ad_Admin_Ad_Doing
     private static function add_ad_wp_head($condition, $ad_content)
     {
         add_filter('wp_head', function () use ($condition, $ad_content) {
+
             if (call_user_func($condition)) {
                 echo $ad_content;
             }
