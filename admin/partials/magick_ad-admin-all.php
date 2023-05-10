@@ -22,7 +22,7 @@
  * @author     Mzue <1355471563@qq.com>
  */
 
-class Magick_ad_Admin_Ad_All
+class Magick_ad_Admin_All
 {
 
 

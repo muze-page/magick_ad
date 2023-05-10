@@ -65,10 +65,12 @@ class Magick_ad_Admin
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/plugin/plugins.php';
 
 		//载入广告处理类
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/magick_ad-admin-ad-all.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/magick_ad-admin-all.php';
 
 		//载入广告加载类
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/magick_ad-admin-ad-doing.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/magick_ad-admin-doing.php';
+		//载入广告展示类
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/magick_ad-admin-count.php';
 		/**
 		 * 测试下
 		 */
@@ -94,16 +96,14 @@ class Magick_ad_Admin
 		$config = get_field('ad_all', 'options');
 		echo '<h1>有趣的内容</h1>';
 		//实例化用到的类
-		$obj = new Magick_ad_Admin_Ad_All();
+		$obj = new Magick_ad_Admin_All();
 		//基本展示数据
 		$arr['config'] = $obj->p($config);
 		//说明文本
 		$arr['msg'] = $obj->p("下面是处理过的");
 		//处理过的数据
-		
-		$arr['handle'] = $obj->p($obj->handle_ad_content_arr($config));
 
-		
+		$arr['handle'] = $obj->p($obj->handle_ad_content_arr($config));
 	}
 
 	/**
@@ -116,11 +116,11 @@ class Magick_ad_Admin
 		$configs = get_field('ad_all', 'options');
 
 		//实例化用到的类
-		$obj = new Magick_ad_Admin_Ad_All();
+		$obj = new Magick_ad_Admin_All();
 		//将选项进行处理
 		$data = $obj->handle_ad_content_arr($configs);
 
-		Magick_ad_Admin_Ad_Doing::do_ad_content($data);
+		Magick_ad_Admin_Doing::do_ad_content($data);
 	}
 
 
