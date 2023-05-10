@@ -31,7 +31,11 @@ class Magick_ad_Admin_Ad_Doing
      */
     public static function do_ad_content($config)
     {
-
+        //判断数组是否存在且有值
+        $switch_arr = isset($array) && !empty($array);
+        if (!$switch_arr) {
+            return "数组无值或不存在！";
+        }
 
         foreach ($config as $my_content) {
             //拿到广告内容
@@ -93,6 +97,8 @@ class Magick_ad_Admin_Ad_Doing
             }
         }
     }
+
+
 
     /**
      * 添加广告到页面顶部

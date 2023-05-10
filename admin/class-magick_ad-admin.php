@@ -100,6 +100,7 @@ class Magick_ad_Admin
 		//说明文本
 		$arr['msg'] = $obj->p("下面是处理过的");
 		//处理过的数据
+		
 		$arr['handle'] = $obj->p($obj->handle_ad_content_arr($config));
 
 		
