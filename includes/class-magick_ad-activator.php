@@ -32,6 +32,7 @@ class Magick_ad_Activator
 	 */
 	public static function activate()
 	{
+		//添加数据表，存储广告信息
 		self::create_image_view_table();
 	}
 	// 创建图片展示次数表
