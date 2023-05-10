@@ -160,42 +160,53 @@ class Magick_ad_Admin_Ad_Doing
      */
     private static function add_ad_single_before($condition, $ad_content)
     {
-        add_filter('the_content', function ($content) use ($condition, $ad_content) {
+
+        $add = function ($content) use ($condition, $ad_content) {
+            //保底输出，有则加，无则原
+            $new_content = $content;
             if (call_user_func($condition)) {
-                $ad_content .=  $content;
-                echo $ad_content;
+                $new_content = $ad_content . $content;
             }
-        });
+            return $new_content;
+        };
+        add_filter('the_content', $add);
     }
     /**
      * 添加广告到第三段
      */
     private static function add_ad_single_three($condition, $ad_content)
     {
-        add_filter('the_content', function ($content) use ($condition, $ad_content) {
+        $add = function ($content) use ($condition, $ad_content) {
+            //保底输出，有则加，无则原
+            $res = $content;
             if (call_user_func($condition)) {
                 $paragraphs = explode('</p>', $content); // 按照 </p> 分割文章内容
                 if (count($paragraphs) >= 3) { // 如果文章至少有 3 段
                     // 在第三段的结尾处添加自定义文本
                     $paragraphs[2] .= $ad_content;
                     // 将各段重新连接起来
-                    $content = implode('</p>', $paragraphs);
+                    $res = implode('</p>', $paragraphs);
                 }
-                echo $content;
             }
-        }, 10, 2);
+            return $res;
+        };
+
+        add_filter('the_content', $add);
     }
     /**
      * 添加广告到内容后
      */
     private static function add_ad_single_after($condition, $ad_content)
     {
-        add_filter('the_content', function ($content) use ($condition, $ad_content) {
+        $add = function ($content) use ($condition, $ad_content) {
+            //保底输出，有则加，无则原
+            $res = $content;
             if (call_user_func($condition)) {
-                $ad_content =  $content . $ad_content;
-                echo $ad_content;
+                $res =  $content . $ad_content;
             }
-        });
+            return $res;
+        };
+        add_filter('the_content', $add);
     }
 
     /**
