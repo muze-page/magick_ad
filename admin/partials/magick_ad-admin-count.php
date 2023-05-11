@@ -34,24 +34,33 @@ class Magick_ad_Admin_Count
     private static function record_image_view()
     {
         $record_ad_view = function () {
-            $ad_id = $_POST['ad_id'];
-            $type = $_POST['type'];
+
+            $data = json_decode(stripslashes($_POST['data']), true);
+
+            $ad_id = $data['id'];
+            $type = $data['type'];
+
 
 
             global $wpdb;
             $table_name = $wpdb->prefix . 'npc_ad_count';
             // 插入记录到数据库中
-            $wpdb->insert(
+            $result = $wpdb->insert(
                 $table_name,
                 array(
                     'ad_id' => $ad_id,
                     'ad_type' => $type,
-                    //'ad_id' => "666",
-                    //'ad_type' => "click",
+
                 )
             );
             // 返回响应给前端 AJAX 请求
-            echo "数据保存成功！";
+            if ($result === false) {
+                $response = array('success' => false, 'data' => $wpdb->last_error);
+            } else {
+                $response = array('success' => true, 'data' => 'Success!');
+            }
+
+            echo json_encode($response);
             //用于终止 PHP 的运行，可以避免在处理 AJAX 请求时生成多余的 HTML 代码。
             wp_die();
         };

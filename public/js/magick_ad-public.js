@@ -39,7 +39,7 @@ function record_image_view(image_id) {
   const tj = () => {
     jQuery.ajax({
       type: "POST",
-      url: "/wp-admin/admin-ajax.php",
+      url: frontend_ajax_object.ajaxurl,
       data: {
         action: "record_image_view",
         image_id: image_id,
@@ -67,25 +67,15 @@ function record_image_view(image_id) {
 
 //重复统计
 function record_image_views(data) {
-  const obj = {
-    id: 888,
-    type: "男",
-  };
-
-  console.log("我执行了");
-  console.log(JSON.stringify(obj));
-  console.log(JSON.stringify(data));
   //开始统计
-  const tj = () => {
+  const tj = (data) => {
     jQuery.ajax({
       type: "POST",
       url: "/wp-admin/admin-ajax.php",
       data: {
         action: "record_image_view",
         //需要发送的数据，在此处转换为 JSON 字符串
-        //data: JSON.stringify(data),
-        ad_id: data.id,
-        type: data.type,
+        data: JSON.stringify(data),
       },
       success: function (response) {
         console.log(response);
@@ -97,7 +87,7 @@ function record_image_views(data) {
       },
     });
   };
-  tj();
+  tj(data);
 }
 
 jQuery(document).ready(function ($) {
