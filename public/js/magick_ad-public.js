@@ -30,6 +30,7 @@
    */
 })(jQuery);
 
+//url: '<?php echo admin_url('admin-ajax.php'); ?>',
 //3小时算一次
 function record_image_view(image_id) {
   console.log("我执行了");
@@ -65,9 +66,15 @@ function record_image_view(image_id) {
 }
 
 //重复统计
-function record_image_views(image_id, name) {
+function record_image_views(data) {
+  const obj = {
+    id: 888,
+    type: "男",
+  };
+
   console.log("我执行了");
-  console.log(image_id);
+  console.log(JSON.stringify(obj));
+  console.log(JSON.stringify(data));
   //开始统计
   const tj = () => {
     jQuery.ajax({
@@ -75,10 +82,18 @@ function record_image_views(image_id, name) {
       url: "/wp-admin/admin-ajax.php",
       data: {
         action: "record_image_view",
-        image_id: image_id,
+        //需要发送的数据，在此处转换为 JSON 字符串
+        //data: JSON.stringify(data),
+        ad_id: data.id,
+        type: data.type,
       },
       success: function (response) {
-        //alert(response)
+        console.log(response);
+        console.log("数据保存成功！");
+      },
+      error: function (xhr, status, error) {
+        console.error(xhr, status, error);
+        console.log("数据保存失败！");
       },
     });
   };
