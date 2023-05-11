@@ -179,7 +179,7 @@ class Magick_ad_Admin
 		 */
 
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/magick_ad-admin.js', array('jquery'), $this->version, false);
-		
+
 	}
 
 
