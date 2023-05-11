@@ -160,6 +160,9 @@ class Magick_ad
 		//加载广告内容
 		$this->loader->add_action('init', $plugin_admin, 'show_ad');
 
+		//统计广告内容
+		$this->loader->add_action('init', $plugin_admin, 'ad_view');
+
 		//是在后台中
 		if (is_admin()) {
 			//进行判断，有没有安装ACF插件，有则继续，无则提醒并暂停

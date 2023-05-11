@@ -69,7 +69,8 @@ class Magick_ad_Admin
 
 		//载入广告加载类
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/magick_ad-admin-doing.php';
-		//载入广告展示类
+
+		//载入广告展示统计类
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/magick_ad-admin-count.php';
 		/**
 		 * 测试下
@@ -121,6 +122,13 @@ class Magick_ad_Admin
 		$data = $obj->handle_ad_content_arr($configs);
 
 		Magick_ad_Admin_Doing::do_ad_content($data);
+	}
+
+	//加载广告展示处理类
+	public function ad_view()
+	{
+		$obj = new Magick_ad_Admin_Count();
+		return $obj->run();
 	}
 
 
