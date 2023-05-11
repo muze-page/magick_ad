@@ -95,14 +95,14 @@ class Magick_ad_Admin_Ad_Img
      * 处理内容中的值
      * @since    1.0.0
      * @param    string $content 待处理的广告内容
-     * @param    string $option 广告选项
+     * @param    array $option 广告选项
+     *  @param    array $option 监听选项
      * @return string $data 处理好的广告内容
      */
-    public static function handle_img($content, $option)
+    public static function handle_img($content, $option, $listen)
     {
-        //css样式
-        $style = "";
 
+        //图片链接
         $url = $content['link'];
         //拿到链接
         $url_link = $url['url'];
@@ -129,6 +129,25 @@ class Magick_ad_Admin_Ad_Img
         $radian = $option['radian'] . 'px';
 
 
+        //统计选项
+        //获取计划名
+        $name = $listen['ad_name'];
+        //获取唯一ID
+        $id = $listen['ad_id'];
+        //展示开关
+        $switch_view = $listen['view'];
+        //点击开关
+        $switch_click = $listen['click'];
+
+        //组合数据
+        $load_views = $switch_view == 1 ? "record_image_views({id:" . $id . ",type:'view'})" : '';
+        $load_click = $switch_click == 1 ? "record_image_views({id:" . $id . ",type:'click'})" : '';
+
+        //展示监听
+        //onload="record_image_views({id:2666,type:'click'})"
+        //点击监听
+        //onClick="record_image_views({id:2,type:'click'})"
+
 
 
 
@@ -136,7 +155,13 @@ class Magick_ad_Admin_Ad_Img
 
 
         //准备链接
-        $head = "<a href=\"{$url_link}\" target=\"{$url_target}\" title=\"{$url_title}\">";
+        $head = "<a 
+        href=\"{$url_link}\" 
+        target=\"{$url_target}\" 
+        title=\"{$url_title}\"
+        onClick=\"{$load_click}\"
+        
+        >";
         $tail = "</a>";
 
         //准备图片 - 原图
@@ -144,6 +169,7 @@ class Magick_ad_Admin_Ad_Img
         src=\"{$img_url}\" 
         alt=\"{$img_alt}\" 
         title=\"{$img_title}\"
+        onload=\"{$load_views}\"
         style='border-radius:" . $radian . ";'
         >";
 

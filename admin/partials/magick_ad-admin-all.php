@@ -177,8 +177,10 @@ class Magick_ad_Admin_All
                 $content = $item['img_content'];
                 //拿到配置
                 $option = $item['img_option'];
+                //拿到监听
+                $listen = $item['img_listen'];
                 //对内容进行处理后统一存入指定字段中
-                $item['content'] = Magick_ad_Admin_Ad_Img::handle_img($content, $option);
+                $item['content'] = Magick_ad_Admin_Ad_Img::handle_img($content, $option, $listen);
             }
         }
         return $data;
