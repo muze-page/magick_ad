@@ -1,1 +1,22 @@
-.mgad_block_img{position:relative}.mgad_block_img .mgad_tag{background-color:#000;border:1px solid #ebebeb;border-radius:5px;bottom:10px;right:10px;color:#ebebeb;font-size:12px;line-height:27px;opacity:.5;position:absolute;text-align:center;width:45px;z-index:1}.mgad_block_img img{width:100%}
+/*广告图标用CSS*/
+.mgad_block_img {
+  position: relative;
+}
+.mgad_block_img .mgad_tag {
+  background-color: #000;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  bottom: 10px;
+  right: 10px;
+  color: #ebebeb;
+  font-size: 12px;
+  line-height: 27px;
+  opacity: 0.5;
+  position: absolute;
+  text-align: center;
+  width: 45px;
+  z-index: 1;
+}
+.mgad_block_img img {
+  width: 100%;
+}
