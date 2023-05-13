@@ -184,16 +184,17 @@ class Magick_ad_Admin_Count
             $data[] = array(
 
                 'id' => $row->ad_id, //广告ID
-                'date' => $row->date, //时间
                 'count' => $row->count, //展现次数
+                'date' => $row->date, //时间
+
             );
         }
 
         // Enqueue the script file
-        wp_enqueue_script('my-image-views-vue',  plugin_dir_url( __DIR__ ) . 'js/vue.global.js', array(), '1.0', true);
-        wp_enqueue_script('my-image-views-echarts',  plugin_dir_url( __DIR__ ) . 'js/echarts.js', array(), '1.0', true);
-        wp_enqueue_script('my-image-views-script',  plugin_dir_url( __DIR__ ) . 'js/my-image-views.js', array(), '1.7', true);
-
+        wp_enqueue_script('my-image-views-vue',  plugin_dir_url(__DIR__) . 'js/vue.global.js', array(), '1.0', true);
+        wp_enqueue_script('my-image-views-echarts',  plugin_dir_url(__DIR__) . 'js/echarts.js', array(), '1.0', true);
+        wp_enqueue_script('my-image-views-test',  plugin_dir_url(__DIR__) . 'js/test.js', array(), '1.7', true);
+        wp_enqueue_script('my-image-views-script',  plugin_dir_url(__DIR__) . 'js/my-image-views.js', array(), '1.7', true);
         wp_add_inline_script('my-image-views-script', sprintf('const imageViewsData = %s;', json_encode($data)), 'before');
 
         // Display the menu HTML
@@ -202,6 +203,9 @@ class Magick_ad_Admin_Count
         <br />
 
         <div id="Application"></div>
+        <br />
+<h3>666</h3>
+        <div id="mgad_show_count"></div>
 
     ';
     }
