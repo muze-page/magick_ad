@@ -3,6 +3,8 @@ import "./style.css";
 import App from "./App.vue";
 
 createApp(App).mount("#mgad_show_count");
+
+
 //准备数据
 const mock = [
   { id: "95266", date: "2023-05-11", count: "13" },

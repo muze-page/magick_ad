@@ -2,8 +2,12 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 //gzip压缩
 import viteCompression from "vite-plugin-compression";
-// 引入rollup-plugin-visualizer模块
+// 引入rollup-plugin-visualizer模块，进行打包分析
 import { visualizer } from "rollup-plugin-visualizer";
+
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,14 +24,21 @@ export default defineConfig({
       gzipSize: true, // 收集 gzip 大小并将其显示
       brotliSize: true, // 收集 brotli 大小并将其显示
     }),
+    //自动导入
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
   ],
   build: {
     rollupOptions: {
-      output: {
-        entryFileNames: "index.js", // 打包的文件名
-        chunkFileNames: "[name].js", // 代码分割后的文件名
-        assetFileNames: "[name][extname]", // 资源文件的文件名
-      },
+      //output: {
+      //  entryFileNames: "index.js", // 打包的文件名
+      //  chunkFileNames: "[name].js", // 代码分割后的文件名
+      //  assetFileNames: "[name][extname]", // 资源文件的文件名
+      //},
     },
   },
 });
