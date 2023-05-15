@@ -85,12 +85,11 @@ const handleData = (data) => {
   //获取展示数据
   const list = arrData(data, id, date);
 
-  //处理下时间 - 例子
-  const handleDate = date.map((item) => item.slice(8));
+
 
   const obj = {
     id: id,
-    date: date,
+    date: date.reverse(),
     data: list,
   };
   return obj;

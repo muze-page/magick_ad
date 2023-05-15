@@ -47,12 +47,14 @@ const handleCount = (a) => {
       b.push(newItem);
     }
   });
+  b.sort((a, b) => new Date(b.date) - new Date(a.date));
   return b;
 };
 
 if (import.meta.env.VITE_APP_MOCK === "true") {
   //模拟数据
   dataList.value = handleCount(data);
+  console.log(handleCount(data));
 } else {
   //正式数据
   dataList.value = handleCount(dataLocal);

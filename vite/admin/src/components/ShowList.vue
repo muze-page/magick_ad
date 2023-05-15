@@ -6,7 +6,6 @@ const props = defineProps({
   data: Array,
 });
 
-
 // 表头常量
 const COLUMNS = ["Id", "计划", "次数", "类型", "时间"];
 
@@ -22,8 +21,18 @@ const filterRowsById = (rows, id) => {
   return rows.filter((row) => row.id.toString() === id);
 };
 
+// 根据类型过滤数据
+const filterRowsByType = (rows, selectedType) => {
+  if (!selectedType) {
+    // 如果没有选择类型
+    return rows;
+  }
+  return rows.filter((row) => row.type === selectedType);
+};
+
 // 响应式变量
 const selectedId = ref("");
+const selectedType = ref("");
 
 // 计算属性
 const rows = computed(() =>
@@ -32,18 +41,24 @@ const rows = computed(() =>
       id: item.id,
       计划: "暂无",
       count: item.count,
-      type: item.type,
+      type: item.type === "click" ? "点击" : "展示",
       date: item.date.slice(5),
     }))
-    .sort((a, b) => b.date - a.date)
+    //按时间排序
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
 );
 
 //筛选后的数据
 const filteredRows = computed(() => {
-  return filterRowsById(rows.value, selectedId.value);
+  let tempRows = filterRowsById(rows.value, selectedId.value);
+  return filterRowsByType(tempRows, selectedType.value);
 });
-//提供ID列表
+
+// 提供ID列表和类型列表
 const distinctIds = computed(() => distinct(rows.value.map((row) => row.id)));
+const distinctTypes = computed(() =>
+  distinct(rows.value.map((row) => row.type))
+);
 </script>
 
 <template>
@@ -58,8 +73,17 @@ const distinctIds = computed(() => distinct(rows.value.map((row) => row.id)));
       </option>
     </select>
 
-    <!-- 表格部分 -->
-    <table class="widefat" width="300px">
+    <!-- 添加一个选择类型的下拉列表 -->
+    <label for="selected-type">请选择类型：</label>
+    <select id="selected-type" v-model="selectedType">
+      <option value="">全部</option>
+      <option v-for="item in distinctTypes" :key="item" :value="item">
+        {{ item }}
+      </option>
+    </select>
+
+    <!--表格部分 -->
+    <table>
       <thead>
         <tr>
           <th v-for="column in COLUMNS" :key="column">{{ column }}</th>

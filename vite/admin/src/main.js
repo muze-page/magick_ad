@@ -1,9 +1,9 @@
 import { createApp } from "vue";
 import "./style.css";
 import App from "./App.vue";
+import "default-passive-events";
 
 createApp(App).mount("#mgad_show_count");
-
 
 //准备数据
 const mock = [
