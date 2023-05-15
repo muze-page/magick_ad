@@ -1,29 +1,22 @@
 // 引入Mock文件，由于 Vite 不支持require()方法所以改用import
 import Mock from "mockjs";
 
-// 随机选取 id 和 date，并生成 20 条数据
-const data = [];
-const ids = ["9527", "9526", "9528"];
-const dates = [
-  "2023-05-07",
-  "2023-05-08",
-  "2023-05-09",
-  "2023-05-10",
-  "2023-05-11",
-  "2023-05-12",
-  "2023-05-13",
-];
-for (let i = 0; i < ids.length; i++) {
-  const id = ids[i];
-  for (let j = 0; j < dates.length; j++) {
-    const date = dates[j];
-    const count = Mock.Random.integer(120, 200);
-    data.push({
-      id,
-      date,
-      count,
-    });
-  }
+const baseAdId = 95226; // ad_id 的基准值
+const data = []; // 存储生成的广告数据
+
+// 生成20条广告数据
+for (let i = 0; i < 10; i++) {
+  const startDate = new Date('2023-05-07').getTime();
+  const endDate = new Date('2023-05-13').getTime() - 1; // 区间右侧不包含，所以这里需要减一毫秒
+  const randomDate = new Date(Mock.Random.integer(startDate, endDate));
+  
+  data.push({
+    id: i + 1,
+    ad_id: (baseAdId - Mock.Random.integer(1, 2)).toString(),
+    ad_type: Mock.Random.pick(['view', 'click']),
+    ad_time: randomDate.getFullYear() + '-' + (randomDate.getMonth() + 1) + '-' + randomDate.getDate() + ' ' + randomDate.getHours() + ':' + randomDate.getMinutes() + ':' + randomDate.getSeconds(),
+  });
 }
+
 
 export { data };
