@@ -1,10 +1,14 @@
 <script setup>
 import ShowChart from "./ShowChart.vue";
-import { ref, computed } from "vue";
+import { computed, ref } from "vue";
 
 const props = defineProps({
   data: Array,
 });
+
+
+// 表头常量
+const COLUMNS = ["Id", "计划", "次数", "类型", "时间"];
 
 // 定义一个去重处理函数
 const distinct = (arr) => [...new Set(arr)];
@@ -18,9 +22,12 @@ const filterRowsById = (rows, id) => {
   return rows.filter((row) => row.id.toString() === id);
 };
 
-// 数据部分
-const data = computed(() => {
-  const rows = props.data
+// 响应式变量
+const selectedId = ref("");
+
+// 计算属性
+const rows = computed(() =>
+  props.data
     .map((item) => ({
       id: item.id,
       计划: "暂无",
@@ -28,77 +35,45 @@ const data = computed(() => {
       type: item.type,
       date: item.date.slice(5),
     }))
-    .sort((a, b) => a.date - b.date);
-  const distinctIds = distinct(rows.map((row) => row.id));
-  return { rows, distinctIds };
-});
+    .sort((a, b) => b.date - a.date)
+);
 
-// 模板部分
-const selectedId = ref("");
-const templateData = computed(() => {
-  const { rows, distinctIds } = data.value;
-  const filteredRows = filterRowsById(rows, selectedId.value);
-  return {
-    COLUMNS: ["Id", "计划", "次数", "类型", "时间"],
-    rows: filteredRows,
-    distinctIds: [""].concat(distinctIds),
-  };
+//筛选后的数据
+const filteredRows = computed(() => {
+  return filterRowsById(rows.value, selectedId.value);
 });
+//提供ID列表
+const distinctIds = computed(() => distinct(rows.value.map((row) => row.id)));
 </script>
 
 <template>
   <div class="content">
-    <!-- 下拉列表选择ID -->
-    <div class="filter-dropdown">
-      <label for="selected-id">请选择ID：</label>
-      <select id="selected-id" v-model="selectedId">
-        <option v-for="id in templateData.distinctIds" :key="id" :value="id">
-          {{ id }}
-        </option>
-      </select>
-    </div>
+    <!-- 如果选择了“现有 ID”，则显示一个下拉列表，供用户选择已有的 ID -->
+
+    <label for="selected-id">请选择现有 ID：</label>
+    <select id="selected-id" v-model="selectedId">
+      <option value="">全部</option>
+      <option v-for="id in distinctIds" :key="id" :value="id">
+        {{ id }}
+      </option>
+    </select>
 
     <!-- 表格部分 -->
     <table class="widefat" width="300px">
       <thead>
         <tr>
-          <th v-for="column in templateData.COLUMNS" :key="column">
-            {{ column }}
-          </th>
+          <th v-for="column in COLUMNS" :key="column">{{ column }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(row, index) in templateData.rows" :key="index">
+        <tr v-for="(row, index) in filteredRows" :key="index">
           <td v-for="(value, key) in row" :key="key">{{ value }}</td>
         </tr>
       </tbody>
     </table>
   </div>
   <!---->
-  <ShowChart :data="templateData.rows"></ShowChart>
+  <ShowChart :data="filteredRows"></ShowChart>
 </template>
 
-<style scoped>
-label {
-  display: inline-block;
-  width: 120px;
-}
-
-select {
-  width: 200px;
-  padding: 5px;
-  border-radius: 5px;
-  outline: none;
-  border: 1px solid #ccc;
-}
-
-table {
-  margin-top: 20px;
-}
-
-th,
-td {
-  padding: 5px;
-  text-align: center;
-}
-</style>
+<style scoped></style>
