@@ -1,18 +1,24 @@
 import { createApp } from "vue";
 import "./style.css";
 import App from "./App.vue";
-import "default-passive-events";
 
-createApp(App).mount("#mgad_show_count");
+const app = createApp(App);
+
+app.mount("#mgad_show_count");
 
 //准备数据
 const mock = [
-  { id: "95266", date: "2023-05-11", count: "13" },
-  { id: "9527", date: "2023-05-11", count: "55" },
-  { id: "9527", date: "2023-05-12", count: "45" },
-  { id: "9527", date: "2023-05-13", count: "35" },
-  { id: "9527", date: "2023-05-14", count: "25" },
-  { id: "9527", date: "2023-05-15", count: "15" },
+  { id: "57", ad_id: "95266", ad_type: "view", ad_time: "2023-05-10 17:47:20" },
+  { id: "57", ad_id: "95267", ad_type: "view", ad_time: "2023-05-11 17:47:20" },
+  { id: "57", ad_id: "95266", ad_type: "view", ad_time: "2023-05-13 17:47:20" },
+  {
+    id: "57",
+    ad_id: "95267",
+    ad_type: "click",
+    ad_time: "2023-05-12 17:47:20",
+  },
+  { id: "57", ad_id: "95266", ad_type: "view", ad_time: "2023-05-11 17:47:20" },
+  { id: "57", ad_id: "95266", ad_type: "view", ad_time: "2023-05-11 17:47:20" },
 ];
 //将数据写入本地
 const add = (data) => {

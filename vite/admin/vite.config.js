@@ -5,6 +5,7 @@ import viteCompression from "vite-plugin-compression";
 // 引入rollup-plugin-visualizer模块，进行打包分析
 import { visualizer } from "rollup-plugin-visualizer";
 
+//自动导入
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
