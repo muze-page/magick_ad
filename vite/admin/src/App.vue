@@ -1,6 +1,8 @@
 <script setup>
-import ShowList from './components/ShowList.vue';
-import ShowChart from './components/ShowChart.vue';
+import ShowList from "./components/ShowList.vue";
+import ShowChart from "./components/ShowChart.vue";
+//模拟数据
+//import { data as mockLocal } from "./mock/index.js";
 //拿到数据
 //读取本地浏览器数据
 const readLocal = localStorage.getItem("magick_ad_count");
@@ -10,7 +12,9 @@ const mockLocal = JSON.parse(readLocal);
 
 <template>
   <ShowList :data="mockLocal"></ShowList>
+  <!--
   <ShowChart :data="mockLocal"></ShowChart>
+  -->
 </template>
 
 <style scoped></style>
