@@ -103,6 +103,7 @@ class Magick_ad_Admin_Count
         $results = $wpdb->get_results("SELECT * FROM $table_name WHERE ad_time > '$past_6_months';");
         //---------------------------------获取数据
         wp_enqueue_script('my-image-views-test',  plugin_dir_url(__DIR__) . 'js/test.js', array(), '1.9', true);
+        wp_enqueue_script('my-image-views-script',  plugin_dir_url(__DIR__) . 'js/my-image-views.js', array(), '1.9', true);
         //将数据传给JS
         wp_add_inline_script('my-image-views-script', sprintf('const imageViewsData = %s;', json_encode($results)), 'before');
 
@@ -111,6 +112,11 @@ class Magick_ad_Admin_Count
         echo '
         
         <div class="wrap">
+        
+
+        
+     
+
         <div id="mgad_show_count"></div>
         </div>
 

@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from "vue";
 import ShowList from "./components/ShowList.vue";
-import ShowChart from "./components/ShowChart.vue";
 //模拟数据
 import { data } from "./mock/index.js";
 //拿到数据
@@ -22,7 +21,13 @@ const handleCount = (a) => {
   // 遍历 a 数组
   a.forEach((item) => {
     // 获取当前广告记录的日期和时间
-    let adDate = item.ad_time.split(" ")[0];
+    let timeStr = item.ad_time;
+    const date = new Date(timeStr);
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const result = `${month}-${day}`;
+    //处理后赋值
+    let adDate = result;
 
     // 在 b 数组中查找是否已经有对应广告记录
     let index = b.findIndex(

@@ -42,7 +42,7 @@ const rows = computed(() =>
       计划: "暂无",
       count: item.count,
       type: item.type === "click" ? "点击" : "展示",
-      date: item.date.slice(5),
+      date: item.date,
     }))
     //按时间排序
     .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -62,40 +62,39 @@ const distinctTypes = computed(() =>
 </script>
 
 <template>
-  <div class="content">
-    <!-- 如果选择了“现有 ID”，则显示一个下拉列表，供用户选择已有的 ID -->
+  <!-- 如果选择了“现有 ID”，则显示一个下拉列表，供用户选择已有的 ID -->
 
-    <label for="selected-id">请选择现有 ID：</label>
-    <select id="selected-id" v-model="selectedId">
-      <option value="">全部</option>
-      <option v-for="id in distinctIds" :key="id" :value="id">
-        {{ id }}
-      </option>
-    </select>
+  <label for="selected-id">请选择现有 ID：</label>
+  <select id="selected-id" v-model="selectedId">
+    <option value="">全部</option>
+    <option v-for="id in distinctIds" :key="id" :value="id">
+      {{ id }}
+    </option>
+  </select>
 
-    <!-- 添加一个选择类型的下拉列表 -->
-    <label for="selected-type">请选择类型：</label>
-    <select id="selected-type" v-model="selectedType">
-      <option value="">全部</option>
-      <option v-for="item in distinctTypes" :key="item" :value="item">
-        {{ item }}
-      </option>
-    </select>
+  <!-- 添加一个选择类型的下拉列表 -->
+  <label for="selected-type">请选择类型：</label>
+  <select id="selected-type" v-model="selectedType">
+    <option value="">全部</option>
+    <option v-for="item in distinctTypes" :key="item" :value="item">
+      {{ item }}
+    </option>
+  </select>
 
-    <!--表格部分 -->
-    <table>
-      <thead>
-        <tr>
-          <th v-for="column in COLUMNS" :key="column">{{ column }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(row, index) in filteredRows" :key="index">
-          <td v-for="(value, key) in row" :key="key">{{ value }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <!--表格部分 -->
+  <table class="wp-list-table widefat fixed striped">
+    <thead>
+      <tr>
+        <th v-for="column in COLUMNS" :key="column">{{ column }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(row, index) in filteredRows" :key="index">
+        <td v-for="(value, key) in row" :key="key">{{ value }}</td>
+      </tr>
+    </tbody>
+  </table>
+
   <!---->
   <ShowChart :data="filteredRows"></ShowChart>
 </template>
