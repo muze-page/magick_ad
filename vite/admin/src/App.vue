@@ -17,7 +17,7 @@ const dataList = ref();
 if (import.meta.env.VITE_APP_MOCK === "true") {
   //模拟数据
   dataList.value = count;
-  console.log(count);
+  
 } else {
   //正式数据
   dataList.value = dataLocal;

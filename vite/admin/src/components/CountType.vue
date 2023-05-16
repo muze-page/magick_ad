@@ -8,16 +8,13 @@ const props = defineProps({
   data: Array,
 });
 
-
 //对传来的数据进行处理
 //处理传来的值
 //{id: "58", ad_id: "95266", ad_type: "view", ad_time: "2023-05-11 17:47:20"}
 // { id: "95266", date: "2023-05-11", count: "13" },
 
-
 //时间排序
 //b.sort((a, b) => new Date(b.date) - new Date(a.date));
-
 
 // 筛选数据
 const filterRows = (rows, id, type) => {
@@ -32,7 +29,7 @@ const selectedType = ref(""); //类型筛选
 
 // 计算属性
 const rows = computed(() =>
- props.data.map((item) => ({
+  props.data.map((item) => ({
     id: item.id,
     计划: "暂无",
     count: item.count,
@@ -59,14 +56,17 @@ const distinctIds = computed(() => distinctValues(sortedRows.value, "id"));
 const distinctTypes = computed(() => distinctValues(sortedRows.value, "type"));
 
 //提取筛选后的展示类型
-const viewData = computed(() =>
-  sortedRows.value.filter((row) => row.type === "view")
+// 筛选type为"view"的数据，生成新的计算属性viewData
+const viewData = computed(() => 
+   sortedRows.value.filter((row) => row.type === "view")
 );
 
 //提取筛选后的点击类型
 const clickData = computed(() =>
   sortedRows.value.filter((row) => row.type === "click")
 );
+
+
 </script>
 
 <template>
