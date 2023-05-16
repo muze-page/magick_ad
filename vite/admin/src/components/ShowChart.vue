@@ -31,6 +31,7 @@ echarts.use([
 //接收数据
 const props = defineProps({
   data: Array,
+  name: String,
 });
 
 //将数据处理成所需格式
@@ -85,8 +86,6 @@ const handleData = (data) => {
   //获取展示数据
   const list = arrData(data, id, date);
 
-
-
   const obj = {
     id: id,
     date: date.reverse(),
@@ -111,7 +110,7 @@ const showEcharts = (item) => {
   // 准备数据
   const option = {
     title: {
-      text: "广告效果统计",
+      text: props.name,
     },
     tooltip: {
       trigger: "axis",
@@ -161,6 +160,8 @@ watch(
     showEcharts(data);
   }
 );
+
+console.log(props.data);
 </script>
 <template>
   <div ref="main" style="width: 600px; height: 400px"></div>

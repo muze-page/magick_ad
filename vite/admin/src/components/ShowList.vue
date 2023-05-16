@@ -59,10 +59,24 @@ const distinctIds = computed(() => distinct(rows.value.map((row) => row.id)));
 const distinctTypes = computed(() =>
   distinct(rows.value.map((row) => row.type))
 );
+//提取
+
+//提取筛选后的展示类型
+const viewData = computed(() => {
+  return filteredRows.value.filter((row) => row.type === "展示");
+});
+console.log(filteredRows.value);
+console.log(viewData.value);
+
+//提取筛选后的点击类型
+const clickData = computed(() => {
+  return filteredRows.value.filter((row) => row.type === "点击");
+});
 </script>
 
 <template>
-  <el-select v-model="selectedId" filterable placeholder="Select">
+  <!-- 如果选择了“现有 ID”，则显示一个下拉列表，供用户选择已有的 ID -->
+  <el-select v-model="selectedId" filterable placeholder="请选择现有 ID">
     <el-option
       v-for="item in distinctIds"
       :key="item"
@@ -70,24 +84,15 @@ const distinctTypes = computed(() =>
       :value="item"
     />
   </el-select>
-  <!-- 如果选择了“现有 ID”，则显示一个下拉列表，供用户选择已有的 ID -->
-
-  <label for="selected-id">请选择现有 ID：</label>
-  <select id="selected-id" v-model="selectedId">
-    <option value="">全部</option>
-    <option v-for="id in distinctIds" :key="id" :value="id">
-      {{ id }}
-    </option>
-  </select>
-
   <!-- 添加一个选择类型的下拉列表 -->
-  <label for="selected-type">请选择类型：</label>
-  <select id="selected-type" v-model="selectedType">
-    <option value="">全部</option>
-    <option v-for="item in distinctTypes" :key="item" :value="item">
-      {{ item }}
-    </option>
-  </select>
+  <el-select v-model="selectedType" filterable placeholder="请选择类型">
+    <el-option
+      v-for="item in distinctTypes"
+      :key="item"
+      :label="item"
+      :value="item"
+    />
+  </el-select>
 
   <!--表格部分 -->
   <table class="wp-list-table widefat fixed striped">
@@ -103,8 +108,12 @@ const distinctTypes = computed(() =>
     </tbody>
   </table>
 
-  <!---->
-  <ShowChart :data="filteredRows"></ShowChart>
+  <!--统计表-->
+  <br />
+  <!--展示图-->
+  <ShowChart :data="viewData" name="展示图"></ShowChart>
+  <!--点击图-->
+  <ShowChart :data="clickData" name="点击图"></ShowChart>
 </template>
 
 <style scoped></style>
