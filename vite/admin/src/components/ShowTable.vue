@@ -12,7 +12,7 @@ const rows = computed(() =>
       id: item.id,
       计划: "暂无",
       count: item.count,
-      type: item.type,
+      type: item.type === "click"?"点击":"展示",
       date: `${month}-${day}`, // 将时间字符串改为 02-14 格式
     };
   })
