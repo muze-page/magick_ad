@@ -69,7 +69,7 @@ const handleData = (data) => {
     //注意: forEach() 对于空数组是不会执行回调函数的。
     id.forEach((item) => {
       const a = data.filter((index) => index.id === item); // 筛选出所有id为指定值的数据 组成包含对象的数组
-     
+
       // 拿到展示的值
       //map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。
 
@@ -85,7 +85,7 @@ const handleData = (data) => {
 
       // 组成数组
       const arr = {
-        name: item,//Id 信息
+        name: item, //Id 信息
         data: result.reverse(), //时间反转了，这里也要反转下
         type: "line", // 配置信息
         smooth: true, // 配置信息
@@ -99,12 +99,19 @@ const handleData = (data) => {
   const id = getArr(data, "id");
   // 获取时间数组
   const date = getArr(data, "date");
+  //保留月和日
+  const newArr = date.map((timeString) => {
+    const shortTimeString = timeString.replace("-", "");
+    const formattedTimeString =
+      shortTimeString.slice(4, 6) + "-" + shortTimeString.slice(7, 9);
+    return formattedTimeString;
+  });
   // 获取展示数据
   const list = arrData(data, id, date);
 
   const obj = {
     id: id,
-    date: [...date].reverse(), // 创建一个新的反转后的数组
+    date: [...newArr].reverse(), // 创建一个新的反转后的数组
     data: list,
   };
   return obj;
