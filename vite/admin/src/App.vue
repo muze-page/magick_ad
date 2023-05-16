@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import ShowList from "./components/ShowList.vue";
 //模拟数据
-import { data } from "./mock/index.js";
+//import { data } from "./mock/index.js";
 //拿到数据
 //读取本地浏览器数据
 const readLocal = localStorage.getItem("magick_ad_count");

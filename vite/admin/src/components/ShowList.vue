@@ -62,6 +62,14 @@ const distinctTypes = computed(() =>
 </script>
 
 <template>
+  <el-select v-model="selectedId" filterable placeholder="Select">
+    <el-option
+      v-for="item in distinctIds"
+      :key="item"
+      :label="item"
+      :value="item"
+    />
+  </el-select>
   <!-- 如果选择了“现有 ID”，则显示一个下拉列表，供用户选择已有的 ID -->
 
   <label for="selected-id">请选择现有 ID：</label>
