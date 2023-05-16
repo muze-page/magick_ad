@@ -161,7 +161,7 @@ watch(
   }
 );
 
-console.log(props.data);
+
 </script>
 <template>
   <div ref="main" style="width: 600px; height: 400px"></div>
