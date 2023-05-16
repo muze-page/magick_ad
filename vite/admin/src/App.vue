@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import CountArr from "./components/CountArr.vue";
 //模拟数据
-import { count } from "./mock/index.js";
+//import { count } from "./mock/index.js";
 //拿到数据
 
 //读取本地浏览器数据

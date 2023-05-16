@@ -1,10 +1,9 @@
 import { createApp } from "vue";
-import "./style.css";
+//import "./style.css";
 import App from "./App.vue";
 import ElementPlus from "element-plus";
 import zhCn from "element-plus/dist/locale/zh-cn.mjs";
-//浏览器报错
-//import "default-passive-events";
+
 
 const app = createApp(App);
 //中文化
@@ -33,4 +32,4 @@ const add = (data) => {
   const obj = JSON.stringify(data);
   localStorage.setItem("magick_ad_count_data", obj);
 };
-add(mock);
+//add(mock);
