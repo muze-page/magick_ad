@@ -31,6 +31,6 @@ const mock = [
 //将数据写入本地
 const add = (data) => {
   const obj = JSON.stringify(data);
-  localStorage.setItem("magick_ad_count", obj);
+  localStorage.setItem("magick_ad_count_data", obj);
 };
 add(mock);

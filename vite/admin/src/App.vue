@@ -6,7 +6,7 @@ import { count } from "./mock/index.js";
 //拿到数据
 
 //读取本地浏览器数据
-const readLocal = localStorage.getItem("magick_ad_count");
+const readLocal = localStorage.getItem("magick_ad_count_data");
 //解析JSON字符串
 const dataLocal = JSON.parse(readLocal);
 //待传递的数据

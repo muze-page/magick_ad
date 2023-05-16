@@ -105,9 +105,9 @@ class Magick_ad_Admin_Count
         ";
         $results = $wpdb->get_results($query);
         //待输出的值
-        $data = array();
+        $datass = array();
         foreach ($results as $result) {
-            array_push($data, array(
+            array_push($datass, array(
                 'id' => $result->ad_id,
                 'date' => $result->ad_date,
                 'count' => $result->ad_count,
@@ -123,25 +123,21 @@ class Magick_ad_Admin_Count
         $past_6_months = date('Y-m-d H:i:s', strtotime('-6 months'));
         $results = $wpdb->get_results("SELECT * FROM $table_name WHERE ad_time > '$past_6_months';");
         //---------------------------------获取数据
-        wp_enqueue_style('example-small-css', plugin_dir_url(__DIR__) . 'css/test.css', array(), '1.1', true);
-        wp_enqueue_script('my-image-views-test',  plugin_dir_url(__DIR__) . 'js/test.js', array(), '1.1', true);
+        wp_enqueue_style('example-small-css', plugin_dir_url(__DIR__) . 'css/test.css', array(), '1.112', true);
+        wp_enqueue_script('my-image-views-test',  plugin_dir_url(__DIR__) . 'js/test.js', array(), '1.112', true);
 
-        wp_enqueue_script('my-image-views-script',  plugin_dir_url(__DIR__) . 'js/my-image-views.js', array(), '1.3', true);
+        wp_enqueue_script('my-image-views-script',  plugin_dir_url(__DIR__) . 'js/my-image-views.js', array(), '1.51', true);
+
         //将数据传给JS
-        wp_add_inline_script('my-image-views-script', sprintf('const imageViewsData = %s;', json_encode($data)), 'before');
+        wp_add_inline_script('my-image-views-script', sprintf('const adCountData = %s;', json_encode($datass)), 'before');
 
 
         //展示内容
         echo '
         
-        <div class="wrap">
         
-
-        
-     
-
         <div id="mgad_show_count"></div>
-        </div>
+        
 
     ';
     }
