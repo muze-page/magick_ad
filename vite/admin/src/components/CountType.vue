@@ -1,4 +1,5 @@
 <script setup>
+//ID和类型筛选
 import ShowChart from "./ShowChart.vue";
 import ShowTable from "./ShowTable.vue";
 import { computed, ref } from "vue";
@@ -54,27 +55,11 @@ const handleCount = (a) => {
   return b;
 };
 
-
-
-// 定义一个去重处理函数
-const distinct = (arr) => [...new Set(arr)];
-
-// 根据ID过滤数据
-const filterRowsById = (rows, id) => {
-  if (!id) {
-    // 如果没有选择ID
-    return rows;
-  }
-  return rows.filter((row) => row.id.toString() === id);
-};
-
-// 根据类型过滤数据
-const filterRowsByType = (rows, selectedType) => {
-  if (!selectedType) {
-    // 如果没有选择类型
-    return rows;
-  }
-  return rows.filter((row) => row.type === selectedType);
+// 筛选数据
+const filterRows = (rows, id, type) => {
+  return rows
+    .filter((row) => !id || row.id.toString() === id)
+    .filter((row) => !type || row.type === type);
 };
 
 // 响应式变量
@@ -83,45 +68,50 @@ const selectedType = ref(""); //类型筛选
 
 // 计算属性
 const rows = computed(() =>
-  handleCount(props.data)
-    .map((item) => ({
-      id: item.id,
-      计划: "暂无",
-      count: item.count,
-      type: item.type === "click" ? "点击" : "展示",
-      date: item.date,
-    }))
+  handleCount(props.data).map((item) => ({
+    id: item.id,
+    计划: "暂无",
+    count: item.count,
+    type: item.type,
+    date: item.date,
+  }))
+);
+
+// 筛选后的数据
+const sortedRows = computed(() =>
+  filterRows(rows.value, selectedId.value, selectedType.value).sort(
     //按时间排序
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    (a, b) => new Date(b.date) - new Date(a.date)
+  )
 );
 
-//筛选后的数据
-const filteredRows = computed(() => {
-  let tempRows = filterRowsById(rows.value, selectedId.value);
-  return filterRowsByType(tempRows, selectedType.value);
-});
+// 提取字段并去重
+const distinctValues = (rows, field) => [
+  ...new Set(rows.map((row) => row[field])),
+];
 
-// 提供ID列表和类型列表
-const distinctIds = computed(() => distinct(rows.value.map((row) => row.id)));
-const distinctTypes = computed(() =>
-  distinct(rows.value.map((row) => row.type))
-);
-//提取
+// 提供 ID 列表和类型列表
+const distinctIds = computed(() => distinctValues(sortedRows.value, "id"));
+const distinctTypes = computed(() => distinctValues(sortedRows.value, "type"));
 
 //提取筛选后的展示类型
-const viewData = computed(() => {
-  return filteredRows.value.filter((row) => row.type === "展示");
-});
+const viewData = computed(() =>
+  sortedRows.value.filter((row) => row.type === "view")
+);
 
 //提取筛选后的点击类型
-const clickData = computed(() => {
-  return filteredRows.value.filter((row) => row.type === "点击");
-});
+const clickData = computed(() =>
+  sortedRows.value.filter((row) => row.type === "click")
+);
 </script>
 
 <template>
-  <!-- 如果选择了“现有 ID”，则显示一个下拉列表，供用户选择已有的 ID -->
-  <el-select v-model="selectedId" filterable placeholder="请选择现有 ID">
+  <el-select
+    v-model="selectedId"
+    filterable
+    clearable
+    placeholder="请选择现有 ID"
+  >
     <el-option
       v-for="item in distinctIds"
       :key="item"
@@ -129,8 +119,13 @@ const clickData = computed(() => {
       :value="item"
     />
   </el-select>
-  <!-- 添加一个选择类型的下拉列表 -->
-  <el-select v-model="selectedType" filterable placeholder="请选择类型">
+
+  <el-select
+    v-model="selectedType"
+    filterable
+    clearable
+    placeholder="请选择类型"
+  >
     <el-option
       v-for="item in distinctTypes"
       :key="item"
@@ -139,12 +134,13 @@ const clickData = computed(() => {
     />
   </el-select>
 
-
   <!--统计表-->
   <br />
-  <ShowTable :data="filteredRows"></ShowTable>
+  <ShowTable :data="sortedRows"></ShowTable>
+
   <!--展示图-->
   <ShowChart :data="viewData" name="展示图"></ShowChart>
+
   <!--点击图-->
   <ShowChart :data="clickData" name="点击图"></ShowChart>
 </template>
