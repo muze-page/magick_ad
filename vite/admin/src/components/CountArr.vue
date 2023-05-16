@@ -6,7 +6,9 @@ const props = defineProps({
   data: Array,
 });
 
+
 //{ id: "62", ad_id: "95270", ad_type: "view", ad_time: "2023-05-16 16:55:10" },
+//{id: '95225', type: 'click', date: '2023-05-14', count: 65}
 
 //时间筛选
 //拿到当前时间戳
@@ -53,12 +55,11 @@ const shortcuts = [
 const startTime = ref(startTimestamp);
 const endTime = ref(endTimestamp);
 
-
 const filteredRows = computed(() =>
   props.data.filter(
     (row) =>
-      Date.parse(row.ad_time) >= startTime.value &&
-      Date.parse(row.ad_time) <= endTime.value
+      Date.parse(row.date) >= startTime.value &&
+      Date.parse(row.date) <= endTime.value
   )
 );
 //监听时间变化

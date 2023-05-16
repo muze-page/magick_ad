@@ -97,16 +97,37 @@ class Magick_ad_Admin_Count
     {
         global $wpdb;
         $table_name = $wpdb->prefix . 'npc_ad_count';
-        $where_clause = '';
-        // 查询过去 6 个月的数据
+        //查下所有时间的统计数据
+        $query = "
+        SELECT ad_id, ad_type, DATE(ad_time) as ad_date, COUNT(*) as ad_count 
+        FROM $table_name
+        GROUP BY ad_id, ad_type, ad_date
+        ";
+        $results = $wpdb->get_results($query);
+        //待输出的值
+        $data = array();
+        foreach ($results as $result) {
+            array_push($data, array(
+                'id' => $result->ad_id,
+                'date' => $result->ad_date,
+                'count' => $result->ad_count,
+                'type' => $result->ad_type,
+            ));
+        }
+        echo '<pre>';
+        print_r($data);
+        echo '</pre>';
+       
+
+        // 查询过去 6 个月的详细数据
         $past_6_months = date('Y-m-d H:i:s', strtotime('-6 months'));
         $results = $wpdb->get_results("SELECT * FROM $table_name WHERE ad_time > '$past_6_months';");
         //---------------------------------获取数据
         wp_enqueue_script('my-image-views-test',  plugin_dir_url(__DIR__) . 'js/test.js', array(), '1.1', true);
 
-        wp_enqueue_script('my-image-views-script',  plugin_dir_url(__DIR__) . 'js/my-image-views.js', array(), '1.2', true);
+        wp_enqueue_script('my-image-views-script',  plugin_dir_url(__DIR__) . 'js/my-image-views.js', array(), '1.3', true);
         //将数据传给JS
-        wp_add_inline_script('my-image-views-script', sprintf('const imageViewsData = %s;', json_encode($results)), 'before');
+        wp_add_inline_script('my-image-views-script', sprintf('const imageViewsData = %s;', json_encode($data)), 'before');
 
 
         //展示内容

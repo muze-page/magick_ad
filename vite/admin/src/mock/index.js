@@ -5,7 +5,7 @@ const baseAdId = 95226; // ad_id 的基准值
 const data = []; // 存储生成的广告数据
 
 // 生成20条广告数据
-for (let i = 0; i < 100000; i++) {
+for (let i = 0; i < 10; i++) {
   const startDate = new Date("2023-03-14").getTime();
   const endDate = new Date("2023-05-17").getTime() - 1; // 区间右侧不包含，所以这里需要减一毫秒
   const randomDate = new Date(Mock.Random.integer(startDate, endDate));
@@ -18,4 +18,22 @@ for (let i = 0; i < 100000; i++) {
   });
 }
 
-export { data };
+//生成统计数据
+const count = [];
+// 时间范围
+const startDate = new Date("2023-02-14");
+const endDate = new Date("2023-05-17");
+
+// 生成广告数据
+for (let date = startDate; date <= endDate; date.setDate(date.getDate() + 1)) {
+  const dateString = date.toISOString().slice(0, 10);
+  for (let type of ["view", "click"]) {
+    count.push({
+      id: (baseAdId - Mock.Random.integer(1, 2)).toString(),
+      type,
+      date: dateString,
+      count: Mock.Random.natural(60, 100),
+    });
+  }
+}
+export { data, count };
