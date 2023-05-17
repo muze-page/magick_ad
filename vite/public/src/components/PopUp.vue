@@ -13,7 +13,7 @@ const handlePopUp = computed<boolean>(() => props.data?.type === "concise");
 //const handlePopUp = true;
 </script>
 <template>
-  {{ props.data }}666
+ 
   <div v-if="handlePopUp">
     <!--简洁广告-->
     <Concise :data="props.data?.concise"></Concise>
