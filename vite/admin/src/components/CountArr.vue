@@ -14,7 +14,7 @@ const props = defineProps({
 //拿到当前时间戳
 const today = new Date(); // 获取当前时间
 today.setHours(0, 0, 0, 0); // 设置为今天的0点
-const startTimestamp = today.getTime(); // 获取今天0点的时间戳
+const startTimestamp = today.getTime()- 3600 * 1000 * 24 * 7; // 获取一周前0点的时间戳
 today.setHours(23, 59, 59, 999); // 设置为今天的23点59分59秒
 const endTimestamp = today.getTime(); // 获取今天24点的时间戳
 

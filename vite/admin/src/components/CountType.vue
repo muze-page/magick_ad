@@ -57,16 +57,14 @@ const distinctTypes = computed(() => distinctValues(sortedRows.value, "type"));
 
 //提取筛选后的展示类型
 // 筛选type为"view"的数据，生成新的计算属性viewData
-const viewData = computed(() => 
-   sortedRows.value.filter((row) => row.type === "view")
+const viewData = computed(() =>
+  sortedRows.value.filter((row) => row.type === "view")
 );
 
 //提取筛选后的点击类型
 const clickData = computed(() =>
   sortedRows.value.filter((row) => row.type === "click")
 );
-
-
 </script>
 
 <template>
@@ -101,12 +99,25 @@ const clickData = computed(() =>
   <!--统计表-->
   <br />
   <ShowTable :data="sortedRows"></ShowTable>
+  <div class="echart">
+    <!--展示图-->
+    <ShowChart :data="viewData" name="展示图"></ShowChart>
 
-  <!--展示图-->
-  <ShowChart :data="viewData" name="展示图"></ShowChart>
-
-  <!--点击图-->
-  <ShowChart :data="clickData" name="点击图"></ShowChart>
+    <!--点击图-->
+    <ShowChart :data="clickData" name="点击图"></ShowChart>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.el-select {
+  margin: -4px 5px 3px;
+}
+
+:deep(.el-input__inner) {
+  background-color: #fff00000;
+  border: 0px;
+}
+:deep(.el-input__inner:focus) {
+  box-shadow: none;
+}
+</style>
