@@ -2,6 +2,7 @@
 import PopUp from "./components/PopUp.vue";
 import Banner from "./components/Banner.vue";
 //准备配置数据
+
 const data = {
   popup: {
     //弹窗广告
@@ -12,10 +13,10 @@ const data = {
       cycle: 200, //弹出周期 - 秒
       title: "你好呀", //广告标题
       content: "大大方方", //广告内容
-      debug: true, //调试模式
+      debug: false, //调试模式
     },
     google: {
-      //简洁广告
+      //谷歌广告
       cycle: 200, //弹出周期 - 秒
       title: "你好呀", //广告标题
       content: "大大方方", //广告内容
@@ -29,10 +30,12 @@ const data = {
     switch: true, //广告开关
     type: "footer", //广告类型
     footer: {
+      //广告最高200像素
       cycle: 200, //弹出周期 - 秒
       device: "all", //展示平台 all pc phone
-      content: '我是广告内容', //广告内容
-      debug: true, //调试模式
+      content:
+        "<h2>我是广告内容</h2><h2>我是广告内容</h2><h2>我是广告内容</h2>", //广告内容
+      debug: false, //调试模式
     },
   },
 };

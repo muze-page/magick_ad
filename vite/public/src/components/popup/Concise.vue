@@ -55,8 +55,7 @@ const checkLocalStorage = () => {
 showAd.value = checkLocalStorage();
 </script>
 <template>
-  我是简洁弹窗
-  <pre>{{ props.data }}</pre>
+  
   <div class="magick_main" v-show="showAd">
     <div class="sec">
       <div class="set">

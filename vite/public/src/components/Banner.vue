@@ -9,8 +9,6 @@ const props = defineProps({
 const handleBanner = computed<boolean>(() => props.data?.type === "footer");
 </script>
 <template>
-  横幅
-  <pre>{{ props.data }}</pre>
   <div v-if="handleBanner">
     <!--底部横幅广告-->
     <BannerFooter :data="props.data?.footer"></BannerFooter>

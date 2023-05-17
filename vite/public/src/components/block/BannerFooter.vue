@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 //底部横幅功能
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watchEffect } from "vue";
 const props = defineProps({
   data: Object,
 });
@@ -16,17 +16,13 @@ const item = ref({
 const time = props.data?.cycle;
 
 // 定义响应式数据
-const msg = ref("↓");
 const show = ref(false);
+//图标
+const msg = ref();
 
 // 开关广告状态
 const switchButton = () => {
   show.value = !show.value;
-  if (show.value) {
-    msg.value = "↓";
-  } else {
-    msg.value = "↑";
-  }
 };
 
 // 检查指定的 localStorage 是否存在，不存在则创建并存入时间为当前时间
@@ -55,6 +51,10 @@ const clearLocal = () => {
 onMounted(() => {
   show.value = checkLocalStorage();
 });
+watchEffect(() => {
+  //监听图标变化
+  msg.value = show.value ? "︾" : "︽";
+});
 </script>
 <template>
   <div id="magcik_ad_bottom_bar">
@@ -68,7 +68,7 @@ onMounted(() => {
     <transition name="ad-bar-fade">
       <div class="bottom-bar-box" v-if="show">
         <div class="bottom-bar-content">
-          {{ item.content }}
+          <div v-html="item.content"></div>
         </div>
       </div>
     </transition>
@@ -79,25 +79,25 @@ onMounted(() => {
 </template>
 <style scoped lang="less">
 #magcik_ad_bottom_bar .bottom-bar-box {
-  display: block;
-  width: 100% !important;
+  
+  width: 100%;
   height: auto;
   bottom: 0px;
-  clear: none !important;
-  float: none !important;
+  clear: none;
+  float: none;
   left: 0px;
-  margin: 0px !important;
-  max-height: none !important;
-  max-width: none !important;
+  margin: 0px;
+  max-height: none;
+  max-width: none;
   opacity: 1;
-  overflow: visible !important;
-  padding: 0px !important;
+  overflow: visible;
+  padding: 0px;
   position: fixed;
-  right: auto !important;
-  top: auto !important;
-  visibility: visible !important;
+  right: auto;
+  top: auto;
+  visibility: visible;
   z-index: 2147483647;
-  background: #fafafa !important;
+  background: #fafafa;
   /*核心内容框动画*/
   animation: BarBoxA 0.1s;
   display: flex;
@@ -107,8 +107,8 @@ onMounted(() => {
   line-height: 38px;
 }
 #magcik_ad_bottom_bar .bottom-bar-content {
-  max-width: 720px;
-  max-height: 90px;
+ 
+  max-height: 200px;
   margin: 0 auto;
   display: table-cell;
   vertical-align: middle;
@@ -134,7 +134,7 @@ onMounted(() => {
 }
 #magcik_ad_bottom_bar .ad-bar-actives {
   animation: adBarAc 0.1s;
-  bottom: 80px;
+  bottom: 200px;
   position: fixed;
   padding: 10px 20px;
   cursor: pointer;
@@ -186,6 +186,7 @@ onMounted(() => {
   /*vertical-align: baseline;
         */
 }
+
 /*移动端优化样式*/
 @media screen and (min-width: 768px) {
   .ad-bar-actives {
@@ -222,6 +223,4 @@ onMounted(() => {
     height: 90px;
   }
 }
-
-
 </style>
