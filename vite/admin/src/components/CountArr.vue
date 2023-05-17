@@ -50,7 +50,7 @@ const shortcuts = [
   },
 ];
 
-//定义默认筛选的开始时间和结束时间
+//定义筛选的开始时间和结束时间
 
 const startTime = ref(startTimestamp);
 const endTime = ref(endTimestamp);
