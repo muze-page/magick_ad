@@ -28,7 +28,7 @@ const switchButton = () => {
 // 检查指定的 localStorage 是否存在，不存在则创建并存入时间为当前时间
 // 若存在，则对比当前时间与存储时间差值，大于 20 秒则继续展示广告，反之不展示广告
 const checkLocalStorage = () => {
-  const localStorageName = "mad_display_banner_footer";
+  const localStorageName = "magick_ad_display_banner_footer";
   const currentTime = new Date().getTime();
   const storedTime = localStorage.getItem(localStorageName);
 
@@ -42,7 +42,7 @@ const checkLocalStorage = () => {
 
 // 清除本地记录并刷新页面
 const clearLocal = () => {
-  localStorage.removeItem("mad_display_banner_footer");
+  localStorage.removeItem("magick_ad_display_banner_footer");
   alert("页面刷新后展示广告");
   // 重新加载页面
   location.reload();
@@ -74,7 +74,7 @@ watchEffect(() => {
     </transition>
   </div>
   <div v-if="item.debug">
-    <button @click="clearLocal()">展示广告</button>
+    <button @click="clearLocal()">展示底部横幅广告</button>
   </div>
 </template>
 <style scoped lang="less">
