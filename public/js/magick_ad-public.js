@@ -71,7 +71,7 @@ function record_image_views(data) {
   const tj = (data) => {
     jQuery.ajax({
       type: "POST",
-      url: "/wp-admin/admin-ajax.php",
+      url: public.ajaxurl,
       data: {
         action: "record_image_view",
         //需要发送的数据，在此处转换为 JSON 字符串
@@ -102,3 +102,14 @@ jQuery(document).ready(function ($) {
     });
   });
 });
+
+//PHP准备的数据
+console.log(public.ajaxurl);
+console.info(public.ad_public_data);
+//将数据写入本地
+const add = (data) => {
+  const obj = JSON.stringify(data);
+  localStorage.setItem("magick_ad_public_data", obj);
+};
+//手动添加记录
+add(public.ad_public_data);

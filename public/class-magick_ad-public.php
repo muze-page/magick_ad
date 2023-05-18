@@ -62,12 +62,8 @@ class Magick_ad_Public
 		//载入更多广告
 		require_once plugin_dir_path(dirname(__FILE__)) . 'public/partials/magick_ad-public-more.php';
 	}
-	//测试
-	public function test()
-	{
-		$obj = new Magick_ad_Public_More();
-		return $obj->add_hello_header($this->version);
-	}
+
+
 	//准备原始更多广告数据
 	public function get_all_ad()
 	{
@@ -82,6 +78,17 @@ class Magick_ad_Public
 		$arr['msg'] = $obj->p("下面是处理过的更多广告");
 		//处理过的数据
 		$arr['handle'] = $obj->p($obj->handle_more_ad($config));
+	}
+
+	//准备前台浏览器添加信息
+	public function ad_public_data()
+	{
+		//准备数据
+		$config = get_field('ad_more', 'options');
+		//实例化
+		$obj = new Magick_ad_Public_More();
+
+		return $obj->handle_more_ad($config);
 	}
 
 	/**
@@ -129,8 +136,9 @@ class Magick_ad_Public
 
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/magick_ad-public.js', array('jquery'), $this->version, false);
 		//传递一些变量给JS
-		wp_localize_script('frontend-ajax', 'frontend_ajax_object', array(
+		wp_localize_script($this->plugin_name, 'public', array(
 			'ajaxurl' => admin_url('admin-ajax.php'),
+			'ad_public_data' => self::ad_public_data(),
 		));
 	}
 }

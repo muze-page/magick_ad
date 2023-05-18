@@ -205,8 +205,7 @@ class Magick_ad
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
 
-		//顶部打印测试内容
-		$this->loader->add_action('wp_footer', $plugin_public, 'test');
+
 		//打印广告数组到前台底部
 		$this->loader->add_action('wp_footer', $plugin_public, 'get_all_ad');
 	}
