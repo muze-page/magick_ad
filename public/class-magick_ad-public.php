@@ -112,6 +112,8 @@ class Magick_ad_Public
 		 */
 
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/magick_ad-public.css', array(), $this->version, 'all');
+		//加载打包后的css文件
+		wp_enqueue_style($this->plugin_name . "-vite", plugin_dir_url(__FILE__) . 'css/vite.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -135,6 +137,8 @@ class Magick_ad_Public
 		 */
 
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/magick_ad-public.js', array('jquery'), $this->version, false);
+		//加载打包后的js文件
+		wp_enqueue_script($this->plugin_name . "-vite", plugin_dir_url(__FILE__) . 'js/vite.js', array(), $this->version, false);
 		//传递一些变量给JS
 		wp_localize_script($this->plugin_name, 'public', array(
 			'ajaxurl' => admin_url('admin-ajax.php'),
