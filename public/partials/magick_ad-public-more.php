@@ -36,7 +36,7 @@ class Magick_ad_Public_More
         $add_id =  function () {
             echo '<div id="mgad_public"></div>';
         };
-        add_action('wp_head', $add_id);
+        add_action('wp_footer', $add_id);
     }
     /*
     *打印数组用

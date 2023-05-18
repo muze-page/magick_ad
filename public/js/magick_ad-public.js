@@ -31,26 +31,29 @@
 })(jQuery);
 
 //url: '<?php echo admin_url('admin-ajax.php'); ?>',
-//3小时算一次
-function record_image_view(image_id) {
-  console.log("我执行了");
-  console.log(image_id);
+//3小时算一次观看
+function record_image_view(data) {
   //发出统计
   const tj = () => {
     jQuery.ajax({
       type: "POST",
-      url: frontend_ajax_object.ajaxurl,
+      url: public.ajaxurl,
       data: {
         action: "record_image_view",
-        image_id: image_id,
+        data: JSON.stringify(data),
       },
       success: function (response) {
-        alert(response);
+        console.log(response);
+        console.log("数据保存成功！");
+      },
+      error: function (xhr, status, error) {
+        console.error(xhr, status, error);
+        console.log("数据保存失败！");
       },
     });
   };
 
-  let lastClickTime = parseInt(localStorage.getItem("lastClickTime")) || "0";
+  let lastClickTime = parseInt(localStorage.getItem("mad_lastViewTime")) || "0";
   //拿到当前时间
   const now = Date.now();
   if (now - lastClickTime < 3 * 60 * 60 * 1000) {
@@ -60,7 +63,44 @@ function record_image_view(image_id) {
   }
 
   // 更新lastClickTime并写入localStorage
-  localStorage.setItem("lastClickTime", now);
+  localStorage.setItem("mad_lastViewTime", now);
+  //发出统计请求
+  tj();
+}
+//3小时算一次点击
+function record_image_click(data) {
+  //发出统计
+  const tj = () => {
+    jQuery.ajax({
+      type: "POST",
+      url: public.ajaxurl,
+      data: {
+        action: "record_image_view",
+        data: JSON.stringify(data),
+      },
+      success: function (response) {
+        console.log(response);
+        console.log("数据保存成功！");
+      },
+      error: function (xhr, status, error) {
+        console.error(xhr, status, error);
+        console.log("数据保存失败！");
+      },
+    });
+  };
+
+  let lastClickTime =
+    parseInt(localStorage.getItem("mad_lastClickTime")) || "0";
+  //拿到当前时间
+  const now = Date.now();
+  if (now - lastClickTime < 3 * 60 * 60 * 1000) {
+    // 如果与上次点击时间相差不到3小时，则不算一次有效点击
+    console.log("等等吧");
+    return;
+  }
+
+  // 更新lastClickTime并写入localStorage
+  localStorage.setItem("mad_lastClickTime", now);
   //发出统计请求
   tj();
 }

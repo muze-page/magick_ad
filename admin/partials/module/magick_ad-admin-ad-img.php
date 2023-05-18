@@ -140,8 +140,8 @@ class Magick_ad_Admin_Ad_Img
         $switch_click = $listen['click'];
 
         //组合数据
-        $load_views = $switch_view == 1 ? "record_image_views({id:" . $id . ",type:'view'})" : '';
-        $load_click = $switch_click == 1 ? "record_image_views({id:" . $id . ",type:'click'})" : '';
+        $load_views = $switch_view == 1 ? "record_image_view({id:" . $id . ",type:'view'})" : '';
+        $load_click = $switch_click == 1 ? "record_image_click({id:" . $id . ",type:'click'})" : '';
 
         //展示监听
         //onload="record_image_views({id:2666,type:'click'})"

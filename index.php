@@ -49,9 +49,4 @@ function transfer_comments_to_article($post_id, $comment_ids)
 
 
 
-function add_hello_footers()
-{
 
-    echo '<div id="mgad_public"></div>';
-}
-//add_action('wp_head', 'add_hello_footers');
