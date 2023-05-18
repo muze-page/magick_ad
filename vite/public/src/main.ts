@@ -8,41 +8,38 @@ const app = createApp(App);
 app.mount("#mgad_public");
 
 //const datas = {
-//    popup: {
-//      //弹窗广告
-//      switch: true, //广告开关
-//      type: "concise", //广告类型
-//      concise: {
-//        //简洁广告
-//        cycle: 200, //弹出周期 - 秒
-//        title: "你好呀", //广告标题
-//        content: "大大方方", //广告内容
-//        debug: true, //调试模式
+//  "popup": {
+//      "switch": "true",
+//      "type": "concise",
+//      "concise": {
+//          "cycle": "72",
+//          "title": "我是简单标题",
+//          "content": "<p>我是弹窗内容</p>\n",
+//          "debug": "true"
 //      },
-//      google: {
-//        //谷歌广告
-//        cycle: 200, //弹出周期 - 秒
-//        title: "你好呀", //广告标题
-//        content: "大大方方", //广告内容
-//        link: "https://www.dongbd.com", //打开链接
-//        text_open: "打开", //打开按钮文本
-//        logo: "https://www.dongbd.com", //品牌LOGO
-//      },
-//    },
-//    //横幅广告
-//    banner: {
-//      switch: true, //广告开关
-//      type: "footer", //广告类型
-//      footer: {
-//        //广告最高200像素
-//        cycle: 200, //弹出周期 - 秒
-//        device: "all", //展示平台 all pc phone
-//        content:
-//          "<h2>我是广告内容</h2><h2>我是广告内容</h2><h2>我是广告内容</h2>", //广告内容
-//        debug: true, //调试模式
-//      },
-//    },
-//  };
+//      "google": []
+//  },
+//  "both_sides": {
+//      "switch": "true",
+//      "type": "default",
+//      "default": {
+//          "left_content": "<p>左边的内容</p>\n",
+//          "right_content": "<p>右边的内容</p>\n",
+//          "sides": "100",
+//          "top": "300"
+//      }
+//  },
+//  "bottom_banner": {
+//      "switch": "true",
+//      "type": "footer",
+//      "footer": {
+//          "cycle": "1",
+//          "content": "<p>我是横栏广告内容</p>\n",
+//          "debug": "true",
+//          "display": "true"
+//      }
+//  }
+//};
 //
 //  //将数据写入本地
 //const add = (data:any) => {

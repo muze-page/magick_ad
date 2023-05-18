@@ -47,20 +47,11 @@ function transfer_comments_to_article($post_id, $comment_ids)
 //}, 10, 3);
 
 
-//前台加载
-function public_ad_style()
-{
-    $ver = "3.1.2";
-    wp_enqueue_style('test-small-css', plugin_dir_url(__FILE__) . 'test/test.css', array(), $ver, false);
-    //底部载入JS文件，
-    wp_enqueue_script('test-meat-script', plugin_dir_url(__FILE__) . 'test/test.js', array(), $ver, true);
-    wp_enqueue_script('test-meat-s', plugin_dir_url(__FILE__) . 'test/plugin.js', array(), $ver, true);
-}
-//add_action('wp_enqueue_scripts', 'public_ad_style');
+
 
 function add_hello_footers()
 {
-    
+
     echo '<div id="mgad_public"></div>';
 }
-//add_action('wp_head', 'add_hello_footers');
+add_action('wp_head', 'add_hello_footers');

@@ -66,7 +66,7 @@ showAd.value = checkLocalStorage();
       <div class="ad_box">
         <div class="ad_main">
           <h2>{{ item.title }}</h2>
-          <span>{{ item.content }}</span>
+          <span v-html="item.content"></span>
         </div>
       </div>
     </div>
