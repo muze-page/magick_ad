@@ -56,8 +56,20 @@ class Magick_ad_Public_More
 
         // 处理弹窗广告数组
         if (isset($arr['popup'])) {
-            $popupArr = self::handle_popup($arr['popup']);
-            $obj['popup'] = $popupArr;
+            $data = self::handle_popup($arr['popup']);
+            $obj['popup'] = $data;
+        }
+
+        // 处理两侧广告数组
+        if (isset($arr['both_sides'])) {
+            $data = self::handle_both_sides($arr['both_sides']);
+            $obj['both_sides'] = $data;
+        }
+
+        // 处理底部横栏广告数组
+        if (isset($arr['bottom_banner'])) {
+            $data = self::handle_bottom_banner($arr['bottom_banner']);
+            $obj['bottom_banner'] = $data;
         }
 
         // 返回处理后的对象
@@ -67,11 +79,12 @@ class Magick_ad_Public_More
 
     /**
      * 传入弹窗广告数据
+     * 传出处理后的数组
      */
     public function handle_popup($arr)
     {
         // 初始化弹窗广告数组
-        $popupArr = array(
+        $data = array(
             'switch' => 'false', // 默认广告未开启
             'type' => '',
             'concise' => array(),
@@ -79,28 +92,28 @@ class Magick_ad_Public_More
         );
 
         // 判断广告是否开启
-        if ($arr['switch'] !== 'off') {
+        if ($arr['switch'] == '1') {
 
             // 简洁形式广告
-            $popupArr['switch'] = 'true';
-            if ($arr['switch'] == 'concise') {
-                $popupArr['type'] = 'concise';
-                $popupArr['concise'] = array(
+            $data['switch'] = 'true';
+            if ($arr['type'] == 'concise') {
+                $data['type'] = 'concise';
+                $data['concise'] = array(
                     'cycle' => $arr['cycle'],
                     'title' => $arr['title'],
                     'content' => $arr['content'],
-                    'debug' => $arr['debug']
+                    'debug' => isset($arr['debug']) && $arr['debug'] == 1 ? 'true' : 'false',
                 );
             }
 
             // Google 广告
-            if ($arr['switch'] == 'google') {
-                $popupArr['type'] = 'google';
-                $popupArr['google'] = array(
+            if ($arr['type'] == 'google') {
+                $data['type'] = 'google';
+                $data['google'] = array(
                     'cycle' => $arr['cycle'],
                     'title' => $arr['title'],
                     'content' => $arr['content'],
-                    'debug' => $arr['debug'],
+                    'debug' => isset($arr['debug']) && $arr['debug'] == 1 ? 'true' : 'false',
                     'link' => $arr['google_button-link'],
                     'text_open' => $arr['google_button-text'],
                     'logo' => $arr['google_logo']
@@ -108,6 +121,82 @@ class Magick_ad_Public_More
             }
         }
 
-        return $popupArr;
+        return $data;
+    }
+    /**
+     * 处理两侧广告
+     */
+    public function handle_both_sides($arr)
+    {
+        // 初始化弹窗广告数组
+        $data = array(
+            'switch' => 'false', // 默认广告未开启
+            'type' => '',
+            'default' => array(),
+        );
+        // 判断广告是否开启
+        if (isset($arr['switch']) && $arr['switch'] == '1') {
+            // 设置广告详情
+            $data = array(
+                'switch' => 'true',
+                'type' => 'default',
+                'default' => array(
+                    'left_content' => $arr['left_content'],
+                    'right_content' => $arr['right_content'],
+                    'sides' => $arr['sides'],
+                    'top' => $arr['top'],
+                ),
+            );
+        }
+
+        return $data;
+    }
+
+    /**
+     * 传入横幅广告数组
+     * 传出横幅广告数组
+     */
+    public function handle_bottom_banner($arr)
+    {
+        // 初始化弹窗广告数组
+        $data = array(
+            'switch' => 'false', // 默认广告未开启
+            'type' => '',
+            'footer' => array(),
+        );
+
+        // 判断设备类型
+        $device = wp_is_mobile() ? 'phone' : 'computer';
+
+        // 判断广告是否开启
+        if (isset($arr['switch']) && $arr['switch'] == '1') {
+
+            // 设置 display 值
+            if ($arr['display'] == 'all') {
+                $display = 'true';
+            } elseif ($arr['display'] == 'computer' && $device == 'computer') {
+                $display = 'true';
+            } elseif ($arr['display'] == 'phone' && $device == 'phone') {
+                $display = 'true';
+            } else {
+                $display = 'false';
+            }
+
+            // 设置广告详情
+            $data = array(
+                'switch' => 'true',
+                'type' => 'footer',
+                'footer' => array(
+                    'cycle' => $arr['cycle'],
+                    'content' => $arr['content'],
+                    'debug' => isset($arr['debug']) && $arr['debug'] == 1 ? 'true' : 'false',
+                    'display' => $display,
+                ),
+            );
+        }
+
+        return $data;
     }
 }
+
+//请继续改进上述代码，
