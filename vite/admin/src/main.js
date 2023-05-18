@@ -12,17 +12,18 @@ app.use(ElementPlus, {
 
 app.mount("#mgad_show_count");
 
-//准备数据
-const mock = [
-  { id: "2666", date: "2023-05-15", count: "3", type: "click" },
-  { id: "2666", date: "2023-05-16", count: "6", type: "click" },
-  { id: "2666", date: "2023-05-17", count: "2", type: "click" },
-  { id: "2666", date: "2023-05-18", count: "3", type: "click" },
-  { id: "2666", date: "2023-05-19", count: "9", type: "view" },
-];
 //将数据写入本地
 const add = (data) => {
   const obj = JSON.stringify(data);
   localStorage.setItem("magick_ad_count_data", obj);
 };
-//add(mock);
+const modulePath = "./mock/index.js";
+if (import.meta.env.VITE_APP_MOCK === "true") {
+  //模拟数据
+  const { count } = await import(modulePath);
+  //模拟数据写入本地
+  add(count);
+  console.log(count);
+}
+
+

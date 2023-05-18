@@ -19,20 +19,25 @@ for (let i = 0; i < 10; i++) {
 }
 
 //生成统计数据
+// { id: "2666", date: "2023-05-15", count: "3", type: "click" },
 const count = [];
 // 时间范围
 const startDate = new Date("2023-04-14");
 const endDate = new Date("2023-05-17");
 
 // 假设有5个id和2个type
-const ids = ["1", "2", "3",];
+const ids = ["1", "2", "3"];
 const types = ["view", "click"];
 
 // 遍历所有id和type的组合
 for (let id of ids) {
   for (let type of types) {
     // 为每个id的每个type在每个日期生成随机数据
-    for (let date = new Date(startDate); date <= endDate; date.setDate(date.getDate() + 1)) {
+    for (
+      let date = new Date(startDate);
+      date <= endDate;
+      date.setDate(date.getDate() + 1)
+    ) {
       const dateString = date.toISOString().slice(0, 10);
       count.push({
         id,
