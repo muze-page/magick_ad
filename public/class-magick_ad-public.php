@@ -79,10 +79,9 @@ class Magick_ad_Public
 		//基本展示数据
 		$arr['config'] = $obj->p($config);
 		//说明文本
-		$arr['msg'] = $obj->p("下面是处理过的");
+		$arr['msg'] = $obj->p("下面是处理过的更多广告");
 		//处理过的数据
-
-		//$arr['handle'] = $obj->p($obj->handle_ad_content_arr($config));
+		$arr['handle'] = $obj->p($obj->handle_more_ad($config));
 	}
 
 	/**

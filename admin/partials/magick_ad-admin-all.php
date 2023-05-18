@@ -78,9 +78,9 @@ class Magick_ad_Admin_All
      */
     public  function handle_ad_content_arr($array)
     {
-        //判断数组是否存在且有值
-        $switch_arr = isset($array) && !empty($array);
-        if (!$switch_arr) {
+
+        // 判断数组是否存在且有值
+        if (empty($array)) {
             return "数组无值或不存在！";
         }
 
