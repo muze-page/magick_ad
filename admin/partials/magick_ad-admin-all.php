@@ -33,7 +33,7 @@ class Magick_ad_Admin_All
      */
     public function __construct()
     {
-
+        //载入模块
         $this->load_dependencies();
     }
 

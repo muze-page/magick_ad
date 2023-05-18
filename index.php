@@ -34,17 +34,17 @@ function transfer_comments_to_article($post_id, $comment_ids)
         return get_permalink($target_post->ID);
     });
 }
-add_action('save_post', function ($post_id, $post, $update) {
-    if ($post_id === 2533) {
-        return; // Don't transfer comments from article 222 to itself.
-    }
-
-    // Get the comment IDs to transfer.
-    $comment_ids = array(64, 63, 60); // Replace with your own IDs.
-
-    // Transfer comments to target article.
-    transfer_comments_to_article($post_id, $comment_ids);
-}, 10, 3);
+//add_action('save_post', function ($post_id, $post, $update) {
+//    if ($post_id === 2533) {
+//        return; // Don't transfer comments from article 222 to itself.
+//    }
+//
+//    // Get the comment IDs to transfer.
+//    $comment_ids = array(64, 63, 60); // Replace with your own IDs.
+//
+//    // Transfer comments to target article.
+//    transfer_comments_to_article($post_id, $comment_ids);
+//}, 10, 3);
 
 
 //前台加载
