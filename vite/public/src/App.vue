@@ -19,7 +19,7 @@ const dataLocal = readLocal
       }
     })
   : "";
-console.info(dataLocal);
+
 //待传递的数据
 const data = ref(dataLocal);
 //计算下，若没有拿到值，则不显示广告

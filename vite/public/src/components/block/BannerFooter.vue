@@ -32,7 +32,10 @@ const checkLocalStorage = () => {
   const currentTime = new Date().getTime();
   const storedTime = localStorage.getItem(localStorageName);
 
-  if (!storedTime || (currentTime - Number(storedTime)) / 1000 >= time) {
+  if (
+    !storedTime ||
+    (currentTime - Number(storedTime)) / 1000 >= time * 60 * 60
+  ) {
     localStorage.setItem(localStorageName, String(currentTime));
     return true;
   } else {
@@ -79,7 +82,6 @@ watchEffect(() => {
 </template>
 <style scoped lang="less">
 #magcik_ad_bottom_bar .bottom-bar-box {
-  
   width: 100%;
   height: auto;
   bottom: 0px;
@@ -107,7 +109,6 @@ watchEffect(() => {
   line-height: 38px;
 }
 #magcik_ad_bottom_bar .bottom-bar-content {
- 
   max-height: 200px;
   margin: 0 auto;
   display: table-cell;

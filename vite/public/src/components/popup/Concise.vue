@@ -33,8 +33,11 @@ const clearLocal = () => {
 // 检查指定的 localStorage 是否存在，不存在则创建并存入时间为当前时间
 // 若存在，则对比当前时间差值，大于 2 秒则继续展示广告，反之不展示广告
 const checkLocalStorage = () => {
+  //定时器
   const localStorageName = "magick_ad_display_time";
+  //拿到现在的时间
   const currentTime = new Date().getTime();
+  //拿到本地存储的时间
   const storedTime = localStorage.getItem(localStorageName);
 
   if (!storedTime) {
@@ -42,8 +45,10 @@ const checkLocalStorage = () => {
     return true;
   }
 
+  //现在的时间减去本地存储的时间的差值
   const timeDiff = (currentTime - Number(storedTime)) / 1000; // 毫秒转换成秒
-  if (timeDiff >= time) {
+  if (timeDiff >= time * 60 * 60) {
+    //展示广告
     localStorage.setItem(localStorageName, String(currentTime));
     return true;
   } else {
