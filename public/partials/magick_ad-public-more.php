@@ -22,6 +22,22 @@
 
 class Magick_ad_Public_More
 {
+    public function __construct()
+    {
+        //载入模块
+        self::load_id();
+    }
+    /**
+     * 页面中添加ID节点
+     */
+    private static function load_id()
+    {
+       
+        $add_id =  function () {
+            echo '<div id="mgad_public"></div>';
+        };
+        add_action('wp_head', $add_id);
+    }
     /*
     *打印数组用
     */
