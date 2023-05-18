@@ -138,7 +138,7 @@ class Magick_ad_Public
 
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/magick_ad-public.js', array('jquery'), $this->version, false);
 		//加载打包后的js文件
-		wp_enqueue_script($this->plugin_name . "-vite", plugin_dir_url(__FILE__) . 'js/vite.js', array(), $this->version, false);
+		wp_enqueue_script($this->plugin_name . "-vite", plugin_dir_url(__FILE__) . 'js/vite.js', array(), $this->version, true);
 		//传递一些变量给JS
 		wp_localize_script($this->plugin_name, 'public', array(
 			'ajaxurl' => admin_url('admin-ajax.php'),

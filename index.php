@@ -60,7 +60,7 @@ function public_ad_style()
 
 function add_hello_footers()
 {
-    echo '<div style="background-color: yellow; text-align: center;">你好</div>';
+    
     echo '<div id="mgad_public"></div>';
 }
-//add_action('wp_footer', 'add_hello_footers');
+//add_action('wp_head', 'add_hello_footers');
