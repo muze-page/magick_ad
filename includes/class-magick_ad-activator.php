@@ -40,7 +40,7 @@ class Magick_ad_Activator
 	{
 		global $wpdb;
 		//表名
-		$table_name = $wpdb->prefix . 'npc_ad_counts';
+		$table_name = $wpdb->prefix . 'npc_ad_count';
 		$charset_collate = $wpdb->get_charset_collate();
 		// 检查数据库中是否已存在该表格
 		$table_exists = $wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name;
