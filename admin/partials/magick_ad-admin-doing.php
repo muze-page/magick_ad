@@ -31,9 +31,8 @@ class Magick_ad_Admin_Doing
      */
     public static function do_ad_content($config)
     {
-        //判断数组是否存在且有值
-        $switch_arr = isset($config) && !empty($config);
-        if (!$switch_arr) {
+        // 判断数组是否存在且有值
+        if (empty($config)) {
             return "数组无值或不存在！";
         }
 
