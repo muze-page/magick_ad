@@ -1288,7 +1288,15 @@
                 "type": "range",
                 "instructions": "当浏览器页面宽度小于该值，广告自动隐藏，默认1200",
                 "required": 0,
-                "conditional_logic": 0,
+                "conditional_logic": [
+                  [
+                    {
+                      "field": "field_63e371b0e7d7c",
+                      "operator": "==",
+                      "value": "1"
+                    }
+                  ]
+                ],
                 "wrapper": {
                   "width": "",
                   "class": "",
@@ -1296,7 +1304,7 @@
                 },
                 "default_value": 1200,
                 "min": "",
-                "max": "",
+                "max": 3000,
                 "step": "",
                 "prepend": "",
                 "append": "px"
@@ -1537,7 +1545,7 @@
       },
       {
         "key": "field_63dc5e8a13f29",
-        "label": "设置",
+        "label": "设置（开发中）",
         "name": "",
         "aria-label": "",
         "type": "tab",

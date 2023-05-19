@@ -95,9 +95,10 @@ class Magick_ad_Admin
 	{
 		//准备数据
 		$config = get_field('ad_all', 'options');
-		echo '<h1>有趣的内容</h1>';
+
 		//实例化用到的类
 		$obj = new Magick_ad_Admin_All();
+		$arr['title'] = $obj->p("<h1>原始内容</h1>");
 		//基本展示数据
 		$arr['config'] = $obj->p($config);
 		//说明文本

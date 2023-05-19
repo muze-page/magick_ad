@@ -32,7 +32,7 @@ class Magick_ad_Public_More
      */
     private static function load_id()
     {
-       
+
         $add_id =  function () {
             echo '<div id="mgad_public"></div>';
         };
@@ -64,7 +64,7 @@ class Magick_ad_Public_More
     {
         // 判断数组是否存在且有值
         if (empty($arr)) {
-            return "数组无值或不存在！";
+            return "数组无值或不存在！ - Magick_ad_Public_More";
         }
 
         // 定义输出对象

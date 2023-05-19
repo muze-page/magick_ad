@@ -81,7 +81,7 @@ class Magick_ad_Admin_All
 
         // 判断数组是否存在且有值
         if (empty($array)) {
-            return "数组无值或不存在！";
+            return "数组无值或不存在！- Magick_ad_Admin_All";
         }
 
 
