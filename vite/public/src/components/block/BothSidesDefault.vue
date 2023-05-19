@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 //两侧悬浮广告
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 
 interface Item {
   left_content?: string;
@@ -23,7 +23,7 @@ const {
 } = props.data || {};
 
 const item = ref({ left_content, right_content, page_width, sides, top });
-console.log(item.value.page_width);
+
 //获取节点
 const myDiv = ref();
 //添加样式方法
@@ -53,13 +53,24 @@ onMounted(() => {
   //定时执行
   setTimeout(scoll, 1500);
 });
+// 监听屏幕宽度，动态计算 pageWidth 变量的值
+const pageWidth = computed(() => {
+  return window.innerWidth < item.value.page_width ? false : true;
+});
+
+const sidesCss = computed(() => {
+  return item.value.sides + "px";
+});
+const topCss = computed(() => {
+  return item.value.top + "px";
+});
 
 </script>
 
 <template>
   {{ props.data }}
 
-  <div ref="myDiv" class="magick_ad_both_sides">
+  <div ref="myDiv" class="magick_ad_both_sides" v-show="pageWidth">
     <div class="magick_ad_go-top magick_ad_left-s">
       <span v-html="item.left_content"></span>
     </div>
@@ -75,17 +86,20 @@ onMounted(() => {
 }
 
 .magick_ad_both_sides > .magick_ad_left-s {
-  left: v-bind("item.sides");
+  left: v-bind("sidesCss");
+ 
 }
 
 .magick_ad_both_sides > .magick_ad_right-s {
-  right: v-bind("item.sides");
+  right: v-bind("sidesCss");
+   
 }
 
 .magick_ad_both_sides > .magick_ad_go-top {
   position: fixed;
   /* 设置fixed固定定位 */
-  top: v-bind("item.top");
+ 
+  top: v-bind("topCss");
   /* 距离浏览器窗口下边框20px */
   word-break: break-all;
   max-width: 300px;
@@ -142,9 +156,9 @@ onMounted(() => {
     opacity: 1;
   }
 }
-@media only screen and (max-width: 1400px) {
-  .magick_ad_both_sides {
-    display: none;
-  }
-}
+//@media only screen and (max-width: 1400px) {
+//  .magick_ad_both_sides {
+//    display: none;
+//  }
+//}
 </style>
