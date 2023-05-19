@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-//两侧悬浮广告
 import { ref, onMounted, computed } from "vue";
 
 interface Item {
@@ -14,62 +13,36 @@ const props = defineProps({
   data: Object as () => Item,
 });
 
-const {
-  left_content = "",
-  right_content = "",
-  page_width = 0,
-  sides = 0,
-  top = 0,
-} = props.data || {};
+const item = ref<Item>(props.data || {});
 
-const item = ref({ left_content, right_content, page_width, sides, top });
-
-//获取节点
-const myDiv = ref();
-//添加样式方法
+// 获取节点并添加样式
+const myDiv = ref<HTMLDivElement>();
 const scrollFunction = () => {
-  if (
-    document.body.scrollTop > 300 ||
-    document.documentElement.scrollTop > 300
-  ) {
-    //显示
-    myDiv.value.classList.add("magick_ad_isashow");
-    myDiv.value.classList.remove("magick_ad_noshow");
+  if (window.scrollY > 300) {
+    myDiv.value?.classList.add("magick_ad_isashow");
+    myDiv.value?.classList.remove("magick_ad_noshow");
   } else {
-    //隐藏
-    myDiv.value.classList.add("magick_ad_noshow");
-    myDiv.value.classList.remove("magick_ad_isashow");
+    myDiv.value?.classList.add("magick_ad_noshow");
+    myDiv.value?.classList.remove("magick_ad_isashow");
   }
 };
-//准备执行
 const scoll = () => {
-  window.onscroll = function () {
-    scrollFunction();
-  };
+  window.addEventListener("scroll", scrollFunction);
 };
 
 onMounted(() => {
-  //此时才能拿到节点
-  //定时执行
   setTimeout(scoll, 1500);
 });
-// 监听屏幕宽度，动态计算 pageWidth 变量的值
-const pageWidth = computed(() => {
-  return window.innerWidth < item.value.page_width ? false : true;
-});
 
-const sidesCss = computed(() => {
-  return item.value.sides + "px";
-});
-const topCss = computed(() => {
-  return item.value.top + "px";
-});
+const pageWidth = computed(
+  () => window.innerWidth >= (item.value?.page_width || 0)
+);
 
+const sidesCss = computed(() => item.value?.sides + "px" || "");
+const topCss = computed(() => item.value?.top + "px" || "");
 </script>
 
 <template>
-  {{ props.data }}
-
   <div ref="myDiv" class="magick_ad_both_sides" v-show="pageWidth">
     <div class="magick_ad_go-top magick_ad_left-s">
       <span v-html="item.left_content"></span>
@@ -87,18 +60,16 @@ const topCss = computed(() => {
 
 .magick_ad_both_sides > .magick_ad_left-s {
   left: v-bind("sidesCss");
- 
 }
 
 .magick_ad_both_sides > .magick_ad_right-s {
   right: v-bind("sidesCss");
-   
 }
 
 .magick_ad_both_sides > .magick_ad_go-top {
   position: fixed;
   /* 设置fixed固定定位 */
- 
+
   top: v-bind("topCss");
   /* 距离浏览器窗口下边框20px */
   word-break: break-all;

@@ -13,10 +13,5 @@ const handleFloat = computed<boolean>(() => props.data?.type === "default");
     <!--底部横幅广告-->
     <BothSidesDefault :data="props.data?.default"></BothSidesDefault>
   </div>
-  <div class="test" v-show="true"></div>
 </template>
-<style scoped lang="less">
-.test {
-  height: 5000px;
-}
-</style>
+<style scoped lang="less"></style>
