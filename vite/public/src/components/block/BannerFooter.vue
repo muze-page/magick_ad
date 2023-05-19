@@ -1,19 +1,26 @@
 <script lang="ts" setup>
 //底部横幅功能
 import { ref, onMounted, watchEffect } from "vue";
+interface Item {
+  display?: string;
+  content?: string;
+  cycle?: number;
+  debug?: boolean;
+}
 const props = defineProps({
-  data: Object,
+  data: Object as () => Item,
 });
+const { display = "", content = "", debug = false } = props.data || {};
 
-//是否展示，内容和debug开关
-const item = ref({
-  display: props.data?.display,
-  content: props.data?.content,
-  debug: props.data?.debug,
-});
+const item = ref({ display, content, debug });
 
 //定时
-const time = props.data?.cycle * 60 * 60;
+const time = (props.data?.cycle || 0) * 60 * 60;
+
+
+
+
+
 //local名
 const local = "magick_ad_display_time_banner-footer";
 

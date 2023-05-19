@@ -159,6 +159,7 @@ class Magick_ad_Public_More
                 'default' => array(
                     'left_content' => $arr['left_content'],
                     'right_content' => $arr['right_content'],
+                    'page_width' => $arr['page-width'],
                     'sides' => $arr['sides'],
                     'top' => $arr['top'],
                 ),

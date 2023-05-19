@@ -1,18 +1,24 @@
 <script lang="ts" setup>
+//简洁广告
 import { ref } from "vue";
+interface Item {
+  title?: string;
+  content?: string;
+  cycle?: number;
+  debug?: boolean;
+ 
+}
+
 const props = defineProps({
-  data: Object,
+  data: Object as () => Item,
 });
 
-//标题、内容和debug开关
-const item = ref({
-  title: props.data?.title,
-  content: props.data?.content,
-  debug: props.data?.debug,
-});
+const { title = "", content = "", debug = false } = props.data || {};
+
+const item = ref({ title, content, debug });
 
 //定时
-const time = props.data?.cycle * 60 * 60;
+const time = (props.data?.cycle || 0) * 60 * 60;
 //local名
 const localData = "magick_ad_display_time_popup-concise";
 

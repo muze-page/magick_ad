@@ -1,31 +1,47 @@
 <script lang="ts" setup>
+//Google广告
 import { ref } from "vue";
+interface Link {
+  title?: string;
+  url?: string;
+  target?: string;
+}
+
+interface Item {
+  title?: string;
+  content?: string;
+  logo?: string;
+  link?: Link;
+  text_open?: number;
+  debug?: boolean;
+  cycle?: number;
+}
 const props = defineProps({
-  data: Object,
+  data: Object as () => Item,
 });
 //标题、内容和debug开关
-const item = ref({
-  title: props.data?.title,
-  content: props.data?.content,
-  logo: props.data?.logo,
-  link: {
-    title: props.data?.link.title,
-    url: props.data?.link.url,
-    target: props.data?.link.target,
-  },
-  text_open: props.data?.text_open,
-  debug: props.data?.debug,
-});
+const {
+  title = "",
+  content = "",
+  logo = "",
+  link = {},
+  text_open = 0,
+  debug = false,
+} = props.data || {};
+
+const item = ref({ title, content, logo, link, text_open, debug });
+
+const CYCLE_IN_SECONDS = props.data?.cycle || 0;
 
 //定时
-const time = props.data?.cycle * 60 * 60;
+const time = CYCLE_IN_SECONDS * 60 * 60;
 //local名
 const localData = "magick_ad_display_time_popup-google";
 
 //准备链接
 const openUrl = () => {
   //打开的链接
-  location.href = item.value.link.url;
+  location.href = item.value.link.url || "#";
 };
 // 默认显示广告
 const showAd = ref(true);
@@ -67,7 +83,6 @@ const checkLocalStorage = () => {
 showAd.value = checkLocalStorage();
 </script>
 <template>
-  
   <button @click="clearLocal">展示弹窗</button>
 
   <div class="pop" v-show="showAd">

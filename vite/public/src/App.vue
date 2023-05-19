@@ -47,6 +47,9 @@ const handleAd = computed<boolean>(() => (dataLocal !== "" ? true : false));
       <Banner :data="data.bottom_banner"></Banner>
     </div>
   </div>
+ 
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
