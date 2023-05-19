@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PopUp from "./components/PopUp.vue";
+import Float from "./components/Float.vue";
 import Banner from "./components/Banner.vue";
 import { computed, ref } from "vue";
 //准备配置数据
@@ -36,11 +37,15 @@ const handleAd = computed<boolean>(() => (dataLocal !== "" ? true : false));
       <PopUp :data="data.popup"></PopUp>
     </div>
 
+    <!--两侧悬浮广告-->
+    <div v-if="data.both_sides.switch">
+      <Float :data="data.both_sides"></Float>
+    </div>
+
     <!--横幅广告-->
     <div v-if="data.bottom_banner.switch">
       <Banner :data="data.bottom_banner"></Banner>
     </div>
-    <div v-else>没有广告</div>
   </div>
 </template>
 
