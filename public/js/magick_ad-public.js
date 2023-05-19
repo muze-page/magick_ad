@@ -58,7 +58,7 @@ function record_image_view(data) {
   const now = Date.now();
   if (now - lastClickTime < 3 * 60 * 60 * 1000) {
     // 如果与上次点击时间相差不到3小时，则不算一次有效点击
-    console.log("等等吧");
+    //console.log("等等吧");
     return;
   }
 
@@ -95,7 +95,7 @@ function record_image_click(data) {
   const now = Date.now();
   if (now - lastClickTime < 3 * 60 * 60 * 1000) {
     // 如果与上次点击时间相差不到3小时，则不算一次有效点击
-    console.log("等等吧");
+    //console.log("等等吧");
     return;
   }
 
@@ -144,8 +144,8 @@ jQuery(document).ready(function ($) {
 });
 
 //PHP准备的数据
-console.log(public.ajaxurl);
-console.info(public.ad_public_data);
+//console.log(public.ajaxurl);
+//console.info(public.ad_public_data);
 //将数据写入本地
 const add = (data) => {
   const obj = JSON.stringify(data);

@@ -95,3 +95,5 @@ run_magick_ad();
 
 //测试功能
 require plugin_dir_path(__FILE__) . 'index.php';
+//载入ACF用的设置文件
+//require_once dirname(__FILE__) . 'config.php';

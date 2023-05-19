@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import './style.css'
 //import '../node_modules/_@picocss_pico@1.5.10@@picocss/pico/css/pico.min.css'
+//滚动报错
+import "default-passive-events";
 import App from './App.vue'
 
 const app = createApp(App);
