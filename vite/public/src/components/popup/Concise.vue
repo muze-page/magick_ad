@@ -12,7 +12,9 @@ const item = ref({
 });
 
 //定时
-const time = props.data?.cycle;
+const time = props.data?.cycle * 60 * 60;
+//local名
+const localData = "magick_ad_display_time_popup-concise";
 
 // 默认显示广告
 const showAd = ref(true);
@@ -25,7 +27,7 @@ const offAd = () => {
 // 清除 localStorage
 const clearLocal = () => {
   // TODO: 实现清除 localStorage 的逻辑
-  localStorage.removeItem("magick_ad_display_time");
+  localStorage.removeItem(localData);
   alert("页面刷新后展示广告");
   location.reload();
 };
@@ -34,21 +36,15 @@ const clearLocal = () => {
 // 若存在，则对比当前时间差值，大于 2 秒则继续展示广告，反之不展示广告
 const checkLocalStorage = () => {
   //定时器
-  const localStorageName = "magick_ad_display_time";
+  const localStorageName = localData;
   //拿到现在的时间
   const currentTime = new Date().getTime();
   //拿到本地存储的时间
   const storedTime = localStorage.getItem(localStorageName);
 
-  if (!storedTime) {
-    localStorage.setItem(localStorageName, String(currentTime));
-    return true;
-  }
-
   //现在的时间减去本地存储的时间的差值
-  const timeDiff = (currentTime - Number(storedTime)) / 1000; // 毫秒转换成秒
-  if (timeDiff >= time * 60 * 60) {
-    //展示广告
+  // 毫秒转换成秒
+  if (!storedTime || (currentTime - Number(storedTime)) / 1000 >= time) {
     localStorage.setItem(localStorageName, String(currentTime));
     return true;
   } else {
@@ -63,9 +59,10 @@ showAd.value = checkLocalStorage();
   <div class="magick_main" v-show="showAd">
     <div class="sec">
       <div class="set">
-        <button class="dashicons dashicons-dismiss offAd" @click="offAd()">
-          x
-        </button>
+        <button
+          class="dashicons dashicons-dismiss offAd"
+          @click="offAd()"
+        ></button>
       </div>
 
       <div class="ad_box">
@@ -105,10 +102,11 @@ showAd.value = checkLocalStorage();
 }
 
 .magick_main .sec .set {
+  overflow: hidden;
   width: 60%;
   display: block;
   margin: auto;
-  overflow: hidden;
+  padding-bottom: 20px;
 }
 
 @media screen and (max-width: 768px) {
@@ -173,10 +171,10 @@ showAd.value = checkLocalStorage();
   }
 }
 /*临时修改*/
-.magick_main {
-  background: none !important;
-  backdrop-filter: none !important;
-}
+//.magick_main {
+//background: none !important;
+//backdrop-filter: none !important;
+//}
 .magick_main .sec .ad_main {
   background-color: #fff !important;
 }

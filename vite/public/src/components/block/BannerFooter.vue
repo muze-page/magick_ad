@@ -5,15 +5,17 @@ const props = defineProps({
   data: Object,
 });
 
-//标题、内容和debug开关
+//是否展示，内容和debug开关
 const item = ref({
-  device: props.data?.device,
+  display: props.data?.display,
   content: props.data?.content,
   debug: props.data?.debug,
 });
 
 //定时
-const time = props.data?.cycle;
+const time = props.data?.cycle * 60 * 60;
+//local名
+const local = "magick_ad_display_time_banner-footer";
 
 // 定义响应式数据
 const show = ref(false);
@@ -28,14 +30,11 @@ const switchButton = () => {
 // 检查指定的 localStorage 是否存在，不存在则创建并存入时间为当前时间
 // 若存在，则对比当前时间与存储时间差值，大于 20 秒则继续展示广告，反之不展示广告
 const checkLocalStorage = () => {
-  const localStorageName = "magick_ad_display_banner_footer";
+  const localStorageName = local;
   const currentTime = new Date().getTime();
   const storedTime = localStorage.getItem(localStorageName);
 
-  if (
-    !storedTime ||
-    (currentTime - Number(storedTime)) / 1000 >= time * 60 * 60
-  ) {
+  if (!storedTime || (currentTime - Number(storedTime)) / 1000 >= time) {
     localStorage.setItem(localStorageName, String(currentTime));
     return true;
   } else {
@@ -45,7 +44,7 @@ const checkLocalStorage = () => {
 
 // 清除本地记录并刷新页面
 const clearLocal = () => {
-  localStorage.removeItem("magick_ad_display_banner_footer");
+  localStorage.removeItem(local);
   alert("页面刷新后展示广告");
   // 重新加载页面
   location.reload();
@@ -60,7 +59,7 @@ watchEffect(() => {
 });
 </script>
 <template>
-  <div id="magcik_ad_bottom_bar">
+  <div v-if="item.display">
     <button
       class="ad-bar-button"
       :class="{ 'ad-bar-actives': show }"
@@ -75,13 +74,14 @@ watchEffect(() => {
         </div>
       </div>
     </transition>
-  </div>
-  <div v-if="item.debug">
-    <button @click="clearLocal()">展示底部横幅广告</button>
+
+    <div v-if="item.debug">
+      <button @click="clearLocal()">展示底部横幅广告</button>
+    </div>
   </div>
 </template>
 <style scoped lang="less">
-#magcik_ad_bottom_bar .bottom-bar-box {
+.bottom-bar-box {
   width: 100%;
   height: auto;
   bottom: 0px;
@@ -108,13 +108,13 @@ watchEffect(() => {
         */
   line-height: 38px;
 }
-#magcik_ad_bottom_bar .bottom-bar-content {
+.bottom-bar-content {
   max-height: 200px;
   margin: 0 auto;
   display: table-cell;
   vertical-align: middle;
 }
-#magcik_ad_bottom_bar .ad-bar-button {
+.ad-bar-button {
   bottom: 10px;
   position: fixed;
   animation: BottomBarButton 0.1s;
@@ -133,7 +133,7 @@ watchEffect(() => {
     padding: 5px 15px;
   }
 }
-#magcik_ad_bottom_bar .ad-bar-actives {
+.ad-bar-actives {
   animation: adBarAc 0.1s;
   bottom: 200px;
   position: fixed;
@@ -160,25 +160,25 @@ watchEffect(() => {
     height: 70px;
   }
 }
-#magcik_ad_bottom_bar .ad-bar-fade-enter-from {
+.ad-bar-fade-enter-from {
   height: 0px;
 }
-#magcik_ad_bottom_bar .ad-bar-fade-enter-active {
+.ad-bar-fade-enter-active {
   transition: all 0.1s ease;
 }
-#magcik_ad_bottom_bar .ad-bar-fade-enter-to {
+.ad-bar-fade-enter-to {
   height: 70px;
 }
-#magcik_ad_bottom_bar .ad-bar-fade-leave-from {
+.ad-bar-fade-leave-from {
   height: 70px;
 }
-#magcik_ad_bottom_bar .ad-bar-fade-leave-active {
+.ad-bar-fade-leave-active {
   transition: all 0.1s ease;
 }
-#magcik_ad_bottom_bar .ad-bar-fade-leave-to {
+.ad-bar-fade-leave-to {
   height: 0px;
 }
-#magcik_ad_bottom_bar .bottom-bar-content img {
+.bottom-bar-content img {
   max-width: 100%;
   height: auto;
   object-fit: cover;
