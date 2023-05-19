@@ -42,4 +42,25 @@ class Magick_ad_Deactivator
 	{
 		wp_die('您的插件已成功禁用!!!666。');
 	}
+	/**
+	 * 删除数据库表
+	 */
+	public static function remove_sql_table()
+	{
+		// 获取 $wpdb 全局对象
+		global $wpdb;
+
+		// 定义要删除的数据表名
+		$table_name = $wpdb->prefix . 'npc_ad_count';
+
+		// 判断数据表是否存在
+		if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+			return "数据表不存在！";
+		} else {
+			// 执行删除数据表操作
+			$wpdb->query("DROP TABLE IF EXISTS $table_name");
+
+			//return "数据表删除成功！";
+		}
+	}
 }

@@ -52,8 +52,10 @@ function record_image_view(data) {
       },
     });
   };
+  //设定local
+  const local = "magick_ad_lastViewTime" + data.id;
 
-  let lastClickTime = parseInt(localStorage.getItem("mad_lastViewTime")) || "0";
+  let lastClickTime = parseInt(localStorage.getItem(local)) || "0";
   //拿到当前时间
   const now = Date.now();
   if (now - lastClickTime < 3 * 60 * 60 * 1000) {
@@ -63,9 +65,9 @@ function record_image_view(data) {
   }
 
   // 更新lastClickTime并写入localStorage
-  localStorage.setItem("mad_lastViewTime", now);
+  localStorage.setItem(local, now);
   //发出统计请求
-  tj();
+  tj(data);
 }
 //3小时算一次点击
 function record_image_click(data) {
@@ -89,8 +91,9 @@ function record_image_click(data) {
     });
   };
 
-  let lastClickTime =
-    parseInt(localStorage.getItem("mad_lastClickTime")) || "0";
+  //设定local
+  const local = "magick_ad_lastClickTime" + data.id;
+  let lastClickTime = parseInt(localStorage.getItem(local)) || "0";
   //拿到当前时间
   const now = Date.now();
   if (now - lastClickTime < 3 * 60 * 60 * 1000) {
@@ -100,9 +103,9 @@ function record_image_click(data) {
   }
 
   // 更新lastClickTime并写入localStorage
-  localStorage.setItem("mad_lastClickTime", now);
+  localStorage.setItem(local, now);
   //发出统计请求
-  tj();
+  tj(data);
 }
 
 //重复统计
