@@ -35,7 +35,7 @@ if (!defined('WPINC')) {
  * 从1.0.0版本开始，使用SemVer-https://semver.org
  * 将其重命名为您的插件，并在发布新版本时进行更新。
  */
-define('MAGICK_AD_VERSION', '1.0.8');
+define('MAGICK_AD_VERSION', '1.0.9');
 
 /**
  * 插件激活期间运行的代码。

@@ -44,8 +44,8 @@ class Magick_ad_Admin_Ad_Img
         //组装广告统计选项
         $listen_obj = self::handle_listen($listen);
 
-        $load_views = $listen_obj['view'] ? "record_image_view({id:{$listen_obj['id']},type:'view'})" : '';
-        $load_click = $listen_obj['click'] ? "record_image_click({id:{$listen_obj['id']},type:'click'})" : '';
+        $load_views = $listen_obj['view'] ? "record_image_view({id:{$listen_obj['id']},type:\"view\"})" : '';
+        $load_click = $listen_obj['click'] ? "record_image_click({id:{$listen_obj['id']},type:\"click\"})" : '';
 
         //组装水印
         $watermark_switch = $option['watermark'] == 1;
