@@ -42,12 +42,10 @@ class Magick_ad_Admin_Ad_Img
         $img_obj = self::handle_imgs($content['img']);
 
         //组装广告统计选项
-        $name = $listen['ad_name'];
-        $id = $listen['ad_id'];
-        $switch_view = $listen['view'] == 1;
-        $switch_click = $listen['click'] == 1;
-        $load_views = $switch_view ? "record_image_view({id:{$id},type:'view'})" : '';
-        $load_click = $switch_click ? "record_image_click({id:{$id},type:'click'})" : '';
+        $listen_obj = self::handle_listen($listen);
+
+        $load_views = $listen_obj['view'] ? "record_image_view({id:{$listen_obj['id']},type:'view'})" : '';
+        $load_click = $listen_obj['click'] ? "record_image_click({id:{$listen_obj['id']},type:'click'})" : '';
 
         //组装水印
         $watermark_switch = $option['watermark'] == 1;
@@ -74,34 +72,53 @@ class Magick_ad_Admin_Ad_Img
     /**
      * @param Array $array 待处理链接数组
      */
-    private static function handle_url($url)
+    private static function handle_url($array)
     {
         $obj = array();
-        if (is_array($url)) {
+        if (is_array($array) && !empty($array)) {
 
             //拿到链接
-            $obj['link'] = $url['url'];
+            $obj['link'] = $array['url'];
             //拿到描述
-            $obj['title'] = $url['title'];
+            $obj['title'] = $array['title'];
             //拿到跳转
-            $obj['target'] = $url['target'];
+            $obj['target'] = $array['target'];
         }
         return $obj;
     }
     /**
      * @param Array $array 待处理图片资源数组
      */
-    private static function handle_imgs($img)
+    private static function handle_imgs($array)
     {
         $obj = array();
         //非空数组
-        if (!empty($img)) {
+        if (is_array($array) && !empty($array)) {
             //拿到图片链接 - 原图
-            $obj['url'] = $img['url'];
+            $obj['url'] = $array['url'];
             //拿到图片描述
-            $obj['alt'] = $img['alt'];
+            $obj['alt'] = $array['alt'];
             //替代文本
-            $obj['description'] = $img['description'];
+            $obj['description'] = $array['description'];
+        }
+        return $obj;
+    }
+    /**
+     * @param Array $listen 待处理设置数组
+     */
+    private static function handle_listen($array)
+    {
+        $obj = array();
+        //非空数组
+        if (is_array($array) && !empty($array)) {
+            //拿到监听名
+            $obj['name'] = $array['ad_name'];
+            //拿到监听ID
+            $obj['id'] = $array['ad_id'];
+            //拿到监听 - 查阅开关
+            $obj['view'] = $array['view'] == 1;
+            //拿到监听 - 点击开关
+            $obj['click'] = $array['click'] == 1;
         }
         return $obj;
     }
