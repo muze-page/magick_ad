@@ -22,71 +22,7 @@
  * @author     Mzue <1355471563@qq.com>
  */
 
-// [img_content] => Array
-//                                (
-//                                    [img] => Array
-//                                        (
-//                                            [ID] => 2365
-//                                            [id] => 2365
-//                                            [title] => 2023041210122690
-//                                            [filename] => 2023041210122690-scaled.jpg
-//                                            [filesize] => 525902
-//                                            [url] => http://magick.plugin/wp-content/uploads/2023/03/2023041210122690-scaled.jpg
-//                                            [link] => http://magick.plugin/2333/attachment/2023041210122690
-//                                            [alt] => 
-//                                            [author] => 1
-//                                            [description] => 
-//                                            [caption] => 
-//                                            [name] => 2023041210122690
-//                                            [status] => inherit
-//                                            [uploaded_to] => 2333
-//                                            [date] => 2023-04-12 10:12:26
-//                                            [modified] => 2023-04-12 10:12:26
-//                                            [menu_order] => 0
-//                                            [mime_type] => image/jpeg
-//                                            [type] => image
-//                                            [subtype] => jpeg
-//                                            [icon] => http://magick.plugin/wp-includes/images/media/default.png
-//                                            [width] => 2560
-//                                            [height] => 1440
-//                                            [sizes] => Array
-//                                                (
-//                                                    [thumbnail] => http://magick.plugin/wp-content/uploads/2023/03/2023041210122690-150x150.jpg
-//                                                    [thumbnail-width] => 150
-//                                                    [thumbnail-height] => 150
-//                                                    [medium] => http://magick.plugin/wp-content/uploads/2023/03/2023041210122690-300x169.jpg
-//                                                    [medium-width] => 300
-//                                                    [medium-height] => 169
-//                                                    [medium_large] => http://magick.plugin/wp-content/uploads/2023/03/2023041210122690-768x432.jpg
-//                                                    [medium_large-width] => 580
-//                                                    [medium_large-height] => 326
-//                                                    [large] => http://magick.plugin/wp-content/uploads/2023/03/2023041210122690-1024x576.jpg
-//                                                    [large-width] => 580
-//                                                    [large-height] => 326
-//                                                    [1536x1536] => http://magick.plugin/wp-content/uploads/2023/03/2023041210122690-1536x864.jpg
-//                                                    [1536x1536-width] => 1536
-//                                                    [1536x1536-height] => 864
-//                                                    [2048x2048] => http://magick.plugin/wp-content/uploads/2023/03/2023041210122690-2048x1152.jpg
-//                                                    [2048x2048-width] => 2048
-//                                                    [2048x2048-height] => 1152
-//                                                    [post-thumbnail] => http://magick.plugin/wp-content/uploads/2023/03/2023041210122690-1568x882.jpg
-//                                                    [post-thumbnail-width] => 1200
-//                                                    [post-thumbnail-height] => 675
-//                                                    [twentytwenty-fullscreen] => http://magick.plugin/wp-content/uploads/2023/03/2023041210122690-scaled.jpg
-//                                                    [twentytwenty-fullscreen-width] => 1980
-//                                                    [twentytwenty-fullscreen-height] => 1114
-//                                                )
-//
-//                                        )
-//
-//                                    [link] => Array
-//                                        (
-//                                            [title] => Apple 与全球供应商携手推广可再生电力，近 70 家中国生产合作伙伴已承诺仅使用清洁能源
-//                                            [url] => http://magick.plugin/2351
-//                                            [target] => 
-//                                        )
-//
-//                                )
+
 
 class Magick_ad_Admin_Ad_Img
 {
@@ -104,23 +40,18 @@ class Magick_ad_Admin_Ad_Img
 
         //图片链接
         $url = $content['link'];
-        //拿到链接
-        $url_link = $url['url'];
-        //拿到描述
-        $url_title = $url['title'];
-        //拿到跳转
-        $url_target = $url['target'];
+        //进行处理
+        $url_obj = self::handle_url($url);
+
+
 
 
         //拿到图片
         $img = $content['img'];
-        //拿到图片链接 - 原图
-        $img_url = $img['url'];
-        //拿到图片描述
-        $img_alt = $img['alt'];
-        //替代文本
-        $img_title = $img['description'];
-        //合并输出
+        //进行处理
+        $img_obj = self::handle_imgs($img);
+
+
 
         //拿水印开关
         $watermark_switch = $option['watermark'];
@@ -143,10 +74,6 @@ class Magick_ad_Admin_Ad_Img
         $load_views = $switch_view == 1 ? "record_image_view({id:" . $id . ",type:'view'})" : '';
         $load_click = $switch_click == 1 ? "record_image_click({id:" . $id . ",type:'click'})" : '';
 
-        //展示监听
-        //onload="record_image_views({id:2666,type:'click'})"
-        //点击监听
-        //onClick="record_image_views({id:2,type:'click'})"
 
 
 
@@ -154,42 +81,76 @@ class Magick_ad_Admin_Ad_Img
 
 
 
-        //准备链接
-        $head = "<a 
-        href=\"{$url_link}\" 
-        target=\"{$url_target}\" 
-        title=\"{$url_title}\"
-        onClick=\"{$load_click}\"
-        
-        >";
-        $tail = "</a>";
+
 
         //准备图片 - 原图
         $right_img = "<img 
-        src=\"{$img_url}\" 
-        alt=\"{$img_alt}\" 
-        title=\"{$img_title}\"
+        src=\"{$img_obj['url']}\" 
+        alt=\"{$img_obj['alt']}\" 
+        title=\"{$img_obj['description']}\"
         onload=\"{$load_views}\"
         style='border-radius:" . $radian . ";'
         >";
 
+        if (!empty($url_obj)) {
+            //链接中有值
+            $head = "<a 
+        href=\"{$url_obj['link']}\" 
+        target=\"{$url_obj['target']}\" 
+        title=\"{$url_obj['title']}\"
+        onClick=\"{$load_click}\"
+        
+        >";
+            $tail = "</a>";
 
-        //拼接
+            //拼接
 
-        $data = "<div class='mgad_block_img'>" . $watermark . $head . $right_img . $tail  . "</div>";
+            $data = "<div class='mgad_block_img'>" . $watermark . $head . $right_img . $tail  . "</div>";
+        } else {
+            //拼接
+
+            $data = "<div class='mgad_block_img'>" . $watermark  . $right_img   . "</div>";
+        }
+
+
 
         return $data;
     }
 
+
+
     /**
-     * 处理附加信息
-     * @param string $name 待输出标签
+     * @param Array $array 待处理链接数组
      */
-    public static function handle_meat($name, $data)
+    private static function handle_url($url)
     {
-        if ($data) {
-            $content = $name . $data;
+        $obj = array();
+        if (is_array($url)) {
+
+            //拿到链接
+            $obj['link'] = $url['url'];
+            //拿到描述
+            $obj['title'] = $url['title'];
+            //拿到跳转
+            $obj['target'] = $url['target'];
         }
-        return $content;
+        return $obj;
+    }
+    /**
+     * @param Array $array 待处理图片资源数组
+     */
+    private static function handle_imgs($img)
+    {
+        $obj = array();
+        //非空数组
+        if (!empty($img)) {
+            //拿到图片链接 - 原图
+            $obj['url'] = $img['url'];
+            //拿到图片描述
+            $obj['alt'] = $img['alt'];
+            //替代文本
+            $obj['description'] = $img['description'];
+        }
+        return $obj;
     }
 }

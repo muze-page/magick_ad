@@ -276,12 +276,12 @@ class Magick_ad_Admin
 			//acf_add_options_page();
 			acf_add_options_page(array(
 				'page_title' => '魔法广告',
-				'menu_title' => '广告',
+				'menu_title' => '魔法广告',
 				'menu_slug' => 'theme-general-settings',
 				'capability' => 'edit_posts',
 				'redirect' => false,
 				'post_id' => 'options',
-				'icon_url' => 'dashicons-filter',
+				'icon_url' => 'dashicons-carrot',
 				'update_button' => __('保存'),
 				'updated_message' => __("保存成功"),
 			));
