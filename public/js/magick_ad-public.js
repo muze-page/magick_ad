@@ -43,8 +43,14 @@ function record_image_view(data) {
         data: JSON.stringify(data),
       },
       success: function (response) {
-        console.log(response);
-        console.log("数据保存成功！");
+        const msg = JSON.parse(response);
+        if (msg.success) {
+          console.log(msg.data);
+          console.log("数据保存成功！");
+        } else {
+          console.warn(msg.data);
+          console.warn("数据保存失败！");
+        }
       },
       error: function (xhr, status, error) {
         console.error(xhr, status, error);
@@ -81,8 +87,14 @@ function record_image_click(data) {
         data: JSON.stringify(data),
       },
       success: function (response) {
-        console.log(response);
-        console.log("数据保存成功！");
+        const msg = JSON.parse(response);
+        if (msg.success) {
+          console.log(msg.data);
+          console.log("数据保存成功！");
+        } else {
+          console.warn(msg.data);
+          console.warn("数据保存失败！");
+        }
       },
       error: function (xhr, status, error) {
         console.error(xhr, status, error);
@@ -121,8 +133,14 @@ function record_image_views(data) {
         data: JSON.stringify(data),
       },
       success: function (response) {
-        console.log(response);
-        console.log("数据保存成功！");
+        const msg = JSON.parse(response);
+        if (msg.success) {
+          console.log(msg.data);
+          console.log("数据保存成功！");
+        } else {
+          console.warn(msg.data);
+          console.warn("数据保存失败！");
+        }
       },
       error: function (xhr, status, error) {
         console.error(xhr, status, error);

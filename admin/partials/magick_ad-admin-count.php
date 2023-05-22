@@ -45,8 +45,8 @@ class Magick_ad_Admin_Count
             if (!in_array($type, array('click', 'view'))) {
                 // 抛出异常或返回错误响应
                 // throw new Exception('Invalid type value');
-                $response = array('success' => false, 'data' => '无效的类型值');
-                echo json_encode($response);
+                $response = array('success' => false, 'data' => 'type 类型错误，不是click或是view类型');
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
                 wp_die();
             }
 
