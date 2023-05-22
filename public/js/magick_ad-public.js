@@ -53,7 +53,7 @@ function record_image_view(data) {
     });
   };
   //设定local
-  const local = "magick_ad_lastViewTime" + data.id;
+  const local = "magick_ad_lastViewTime-" + data.id;
 
   let lastClickTime = parseInt(localStorage.getItem(local)) || "0";
   //拿到当前时间
@@ -92,7 +92,7 @@ function record_image_click(data) {
   };
 
   //设定local
-  const local = "magick_ad_lastClickTime" + data.id;
+  const local = "magick_ad_lastClickTime-" + data.id;
   let lastClickTime = parseInt(localStorage.getItem(local)) || "0";
   //拿到当前时间
   const now = Date.now();

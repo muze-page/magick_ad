@@ -41,6 +41,14 @@ class Magick_ad_Admin_Count
 
             $ad_id = $data['id'];
             $type = $data['type'];
+            // 验证 $type 的值是否合法
+            if (!in_array($type, array('click', 'view'))) {
+                // 抛出异常或返回错误响应
+                // throw new Exception('Invalid type value');
+                $response = array('success' => false, 'data' => '无效的类型值');
+                echo json_encode($response);
+                wp_die();
+            }
 
 
 
