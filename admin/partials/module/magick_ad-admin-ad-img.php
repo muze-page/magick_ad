@@ -37,85 +37,37 @@ class Magick_ad_Admin_Ad_Img
      */
     public static function handle_img($content, $option, $listen)
     {
-
-        //图片链接
-        $url = $content['link'];
         //进行处理
-        $url_obj = self::handle_url($url);
+        $url_obj = self::handle_url($content['link']);
+        $img_obj = self::handle_imgs($content['img']);
 
-
-
-
-        //拿到图片
-        $img = $content['img'];
-        //进行处理
-        $img_obj = self::handle_imgs($img);
-
-
-
-        //拿水印开关
-        $watermark_switch = $option['watermark'];
-        $watermark = $watermark_switch == 1 ? "<div class='mgad_tag'>广告</div>" : '';
-        //圆角弧度
-        $radian = $option['radian'] . 'px';
-
-
-        //统计选项
-        //获取计划名
+        //组装广告统计选项
         $name = $listen['ad_name'];
-        //获取唯一ID
         $id = $listen['ad_id'];
-        //展示开关
-        $switch_view = $listen['view'];
-        //点击开关
-        $switch_click = $listen['click'];
+        $switch_view = $listen['view'] == 1;
+        $switch_click = $listen['click'] == 1;
+        $load_views = $switch_view ? "record_image_view({id:{$id},type:'view'})" : '';
+        $load_click = $switch_click ? "record_image_click({id:{$id},type:'click'})" : '';
 
-        //组合数据
-        $load_views = $switch_view == 1 ? "record_image_view({id:" . $id . ",type:'view'})" : '';
-        $load_click = $switch_click == 1 ? "record_image_click({id:" . $id . ",type:'click'})" : '';
+        //组装水印
+        $watermark_switch = $option['watermark'] == 1;
+        $watermark = $watermark_switch ? "<div class='mgad_tag'>广告</div>" : '';
 
-
-
-
-
-
-
-
-
-
-        //准备图片 - 原图
-        $right_img = "<img 
-        src=\"{$img_obj['url']}\" 
-        alt=\"{$img_obj['alt']}\" 
-        title=\"{$img_obj['description']}\"
-        onload=\"{$load_views}\"
-        style='border-radius:" . $radian . ";'
-        >";
-
+        //拼接 HTML 代码
+        $html = "<div class='mgad_block_img'>";
+        $html .= $watermark;
         if (!empty($url_obj)) {
-            //链接中有值
-            $head = "<a 
-        href=\"{$url_obj['link']}\" 
-        target=\"{$url_obj['target']}\" 
-        title=\"{$url_obj['title']}\"
-        onClick=\"{$load_click}\"
-        
-        >";
-            $tail = "</a>";
-
-            //拼接
-
-            $data = "<div class='mgad_block_img'>" . $watermark . $head . $right_img . $tail  . "</div>";
-        } else {
-            //拼接
-
-            $data = "<div class='mgad_block_img'>" . $watermark  . $right_img   . "</div>";
+            $html .= "<a href='{$url_obj["link"]}' target='{$url_obj["target"]}' title='{$url_obj["title"]}' onClick='{$load_click}'>";
         }
+        $html .= "<img src='{$img_obj["url"]}' alt='{$img_obj["alt"]}' title='{$img_obj["description"]}' onload='{$load_views}' style='border-radius:{$option["radian"]}px;'>";
+        if (!empty($url_obj)) {
+            $html .= "</a>";
+        }
+        $html .= "</div>";
 
-
-
-        return $data;
+        return $html;
     }
+
 
 
 
