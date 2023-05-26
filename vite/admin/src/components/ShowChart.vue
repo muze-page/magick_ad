@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, shallowRef, onMounted, watch } from "vue";
+import {  ref, shallowRef, onMounted, watch } from "vue";
 import * as echarts from "echarts/core";
 import {
   TitleComponent,
