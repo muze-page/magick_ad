@@ -57,7 +57,12 @@ class Magick_ad_Admin_Ad_Img
         if (!empty($url_obj)) {
             $html .= "<a href='{$url_obj["link"]}' target='{$url_obj["target"]}' title='{$url_obj["title"]}' onClick='{$load_click}'>";
         }
-        $html .= "<img src='{$img_obj["url"]}' alt='{$img_obj["alt"]}' title='{$img_obj["description"]}' onload='{$load_views}' style='border-radius:{$option["radian"]}px;'>";
+        $html .= "<img src='{$img_obj["url"]}' alt='{$img_obj["alt"]}' title='{$img_obj["description"]}' onload='{$load_views}'
+         style='
+         border-radius:{$option["radian"]}px;
+         margin:{$option["top"]}px {$option["right"]}px {$option["bottom"]}px {$option["left"]}px;
+        
+         '>";
         if (!empty($url_obj)) {
             $html .= "</a>";
         }

@@ -61,7 +61,7 @@ class Magick_ad_Admin
 	private function load_dependencies()
 	{
 
-		
+
 
 		//载入广告处理类
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/magick_ad-admin-all.php';
@@ -266,6 +266,7 @@ class Magick_ad_Admin
 				'capability' => 'edit_posts',
 				'redirect' => false,
 				'post_id' => 'options',
+				'position' => '200.1',
 				'icon_url' => 'dashicons-carrot',
 				'update_button' => __('保存'),
 				'updated_message' => __("保存成功"),

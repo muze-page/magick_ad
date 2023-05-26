@@ -200,7 +200,7 @@ class Magick_ad
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
 
 
-		//打印广告数组到前台底部
+		//打印更多广告数组到前台底部
 		//$this->loader->add_action('wp_footer', $plugin_public, 'get_all_ad');
 	}
 
