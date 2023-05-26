@@ -52,17 +52,25 @@ const distinctValues = (rows, field) => [
 ];
 
 // 提供 ID 列表和类型列表
-const distinctIds = computed(() => distinctValues(sortedRows.value, "id"));
-const distinctTypes = computed(() => distinctValues(sortedRows.value, "type"));
+const distinctIds = computed(() => distinctValues(props.data, "id"));
+const distinctTypes = computed(() => {
+  const arr = distinctValues(props.data, "type");
+  const result = arr.map((item) => ({
+    value: item,
+    label: item == "click" ? "点击" : "展示",
+  }));
+  const all = { value: "", label: "全部" };
+  result.unshift(all);
+  return result;
+});
 
-
-//提取筛选后的展示类型
+//提取筛选后的展示类型数值，用于图标渲染
 // 筛选type为"view"的数据，生成新的计算属性viewData
 const viewData = computed(() =>
   sortedRows.value.filter((row) => row.type === "view")
 );
 
-//提取筛选后的点击类型
+//提取筛选后的点击类型数值，用于图标渲染
 const clickData = computed(() =>
   sortedRows.value.filter((row) => row.type === "click")
 );
@@ -91,9 +99,9 @@ const clickData = computed(() =>
   >
     <el-option
       v-for="item in distinctTypes"
-      :key="item"
-      :label="item == 'click' ? '点击' : '展示'"
-      :value="item"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value"
     />
   </el-select>
 

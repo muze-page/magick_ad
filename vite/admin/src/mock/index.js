@@ -27,7 +27,7 @@ const endDate = new Date("2023-05-30");
 
 // 假设有5个id和2个type
 const ids = ["1", "2", "3"];
-const types = ["view", "click"];
+const types = ["view", "click","null"];
 
 // 遍历所有id和type的组合
 for (let id of ids) {
