@@ -74,6 +74,29 @@ require plugin_dir_path(__FILE__) . 'includes/class-magick_ad.php';
 
 
 
+//进行判断，有没有安装ACF插件，有则继续，无则提醒并暂停
+include_once ABSPATH . 'wp-admin/includes/plugin.php';
+if (!is_plugin_active('advanced-custom-fields-pro/acf.php')) {
+	//安装插件提示
+	//载入依赖插件
+	require_once dirname(__FILE__) . '/admin/plugin/plugins.php';
+
+
+	//提醒安装插件
+	$magick_admin_notice_acf = function () {
+?>
+		<div class='notice notice-error '>
+			<p>
+				<?php _e('请安装下方提示插件，或禁用魔法广告插件', 'sample-text-domain'); ?>
+			</p>
+		</div>
+<?php
+	};
+
+	add_action('admin_notices', $magick_admin_notice_acf);
+	return;
+}
+
 /**
  * 开始执行插件。
  *
@@ -97,3 +120,5 @@ run_magick_ad();
 require plugin_dir_path(__FILE__) . 'index.php';
 //载入ACF用的设置文件
 //require_once dirname(__FILE__) . '/config.php';
+// 隐藏ACF菜单
+//add_filter('acf/settings/show_admin', '__return_false');

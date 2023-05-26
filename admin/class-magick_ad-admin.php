@@ -61,8 +61,7 @@ class Magick_ad_Admin
 	private function load_dependencies()
 	{
 
-		//载入依赖插件
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/plugin/plugins.php';
+		
 
 		//载入广告处理类
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/magick_ad-admin-all.php';
@@ -186,21 +185,7 @@ class Magick_ad_Admin
 	}
 
 
-	/**
-	 * 未安装ACF 插件的警告信息
-	 *
-	 * @since    1.0.0
-	 */
-	public function magick_admin_notice_acf()
-	{
-?>
-		<div class='notice notice-error '>
-			<p>
-				<?php _e('请安装下方提示插件，或禁用魔法广告插件', 'sample-text-domain'); ?>
-			</p>
-		</div>
-<?php
-	}
+
 
 
 	/**

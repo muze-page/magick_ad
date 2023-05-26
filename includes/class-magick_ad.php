@@ -147,13 +147,7 @@ class Magick_ad
 	{
 
 		$plugin_admin = new Magick_ad_Admin($this->get_plugin_name(), $this->get_version());
-		//进行判断，有没有安装ACF插件，有则继续，无则提醒并暂停
-		include_once ABSPATH . 'wp-admin/includes/plugin.php';
-		if (!is_plugin_active('advanced-custom-fields-pro/acf.php')) {
-			//提醒安装插件
-			$this->loader->add_action('admin_notices', $plugin_admin, 'magick_admin_notice_acf');
-			return;
-		}
+
 		//加载后台的css文件和JS文件
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
@@ -209,6 +203,7 @@ class Magick_ad
 		//打印广告数组到前台底部
 		//$this->loader->add_action('wp_footer', $plugin_public, 'get_all_ad');
 	}
+
 
 	/**
 	 * 运行加载程序以使用WordPress执行所有挂钩。
