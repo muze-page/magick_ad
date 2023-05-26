@@ -12,8 +12,15 @@ app.mount("#mgad_public");
 //const datas = {
 //    "popup": {
 //        "switch": "true",
-//        "type": "google",
-//        "concise": [],
+//        "type": "concise",
+//        "concise": {
+//            "cycle": "42", 
+//            "title": "弹窗标题", 
+//            "content": "<p>弹窗内容哦</p>↵", 
+//            "debug": "true"
+//        },
+//       
+//
 //        "google": {
 //            "cycle": "72",
 //            "title": "我是简单标题",

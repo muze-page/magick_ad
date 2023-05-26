@@ -6,7 +6,6 @@ interface Item {
   content?: string;
   cycle?: number;
   debug?: boolean;
- 
 }
 
 const props = defineProps({
@@ -18,7 +17,7 @@ const { title = "", content = "", debug = false } = props.data || {};
 const item = ref({ title, content, debug });
 
 //定时
-const time = (props.data?.cycle || 0) * 60 * 60;
+const time = (props.data?.cycle || 0) * 60 * 60 * 24;
 //local名
 const localData = "magick_ad_display_time_popup-concise";
 
@@ -64,18 +63,15 @@ showAd.value = checkLocalStorage();
 <template>
   <div class="magick_main" v-show="showAd">
     <div class="sec">
-      <div class="set">
-        <button
-          class="dashicons dashicons-dismiss offAd"
-          @click="offAd()"
-        ></button>
-      </div>
-
       <div class="ad_box">
         <div class="ad_main">
           <h2>{{ item.title }}</h2>
           <span v-html="item.content"></span>
         </div>
+      </div>
+
+      <div class="set">
+        <button class="offAd" @click="offAd()">X</button>
       </div>
     </div>
   </div>
@@ -88,7 +84,7 @@ showAd.value = checkLocalStorage();
   display: flex;
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 70vh;
   top: 0;
   left: 0;
   z-index: 9999;
@@ -99,59 +95,56 @@ showAd.value = checkLocalStorage();
   background: var(--heo-maskbgdeep);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: blur(20px);
-}
+  .sec {
+    max-width: 600px;
+    margin: 0.9rem auto;
+    .set {
+      overflow: hidden;
+      width: 60%;
+      display: block;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      .offAd {
+        width: 48px;
+        height: 48px;
+        right: 50px;
+        top: auto;
+        font-size: 35px;
+        color: var(--heo-fontcolor);
+        cursor: pointer;
+        transition: 0.3s;
 
-.magick_main .sec {
-  width: 80%;
-  /*height: 500px;*/
-  margin: 0.9rem auto;
-}
-
-.magick_main .sec .set {
-  overflow: hidden;
-  width: 60%;
-  display: block;
-  margin: auto;
-  padding-bottom: 20px;
-}
-
-@media screen and (max-width: 768px) {
-  .magick_main .sec .set {
-    width: 100%;
+        padding: 1px 8px;
+        float: right;
+        border-radius: 100px;
+        border: 0px;
+      }
+      .offAd:hover {
+        color: #fff;
+        background: #58595b;
+        border-radius: 32px;
+      }
+    }
+    .ad_box {
+      
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /*height: 100%;*/
+      overflow: hidden;
+    }
+    .ad_main {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      border: var(--style-border);
+      box-shadow: var(--heo-shadow-border);
+      padding: 40px;
+    }
   }
-}
-
-.magick_main .sec .set .offAd {
-  width: 48px;
-  height: 48px;
-  right: 50px;
-  top: auto;
-  font-size: 35px;
-  color: var(--heo-fontcolor);
-  cursor: pointer;
-  transition: 0.3s;
-  display: flex;
-  padding: 1px 8px;
-  float: right;
-}
-
-.magick_main .sec .ad_box {
-  width: 60%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /*height: 100%;*/
-  overflow: hidden;
-}
-
-.magick_main .sec .ad_main {
-  background: var(--card-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  border: var(--style-border);
-  box-shadow: var(--heo-shadow-border);
-  padding: 40px;
 }
 
 .magick_main {
@@ -164,24 +157,23 @@ showAd.value = checkLocalStorage();
 }
 
 @media screen and (max-width: 768px) {
-  .magick_main .sec .ad_box {
-    width: 100%;
-  }
-
-  .magick_main .sec .ad_main {
-    padding: 6px !important;
-  }
-
   .magick_main .sec {
-    width: 96%;
+    width: 90%;
+    .set {
+      width: 100%;
+    }
+    .ad_box {
+      width: 100%;
+    }
+    .ad_main {
+      padding: 20px;
+    }
   }
 }
+
 /*临时修改*/
 //.magick_main {
 //background: none !important;
 //backdrop-filter: none !important;
 //}
-.magick_main .sec .ad_main {
-  background-color: #fff !important;
-}
 </style>

@@ -15,11 +15,7 @@ const { display = "", content = "", debug = false } = props.data || {};
 const item = ref({ display, content, debug });
 
 //定时
-const time = (props.data?.cycle || 0) * 60 * 60;
-
-
-
-
+const time = (props.data?.cycle || 0) * 60 * 60 * 24;
 
 //local名
 const local = "magick_ad_display_time_banner-footer";
@@ -105,7 +101,7 @@ watchEffect(() => {
   right: auto;
   top: auto;
   visibility: visible;
-  z-index: 2147483647;
+  z-index: 1;
   background: #fafafa;
   /*核心内容框动画*/
   animation: BarBoxA 0.1s;

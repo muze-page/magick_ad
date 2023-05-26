@@ -34,7 +34,7 @@ const item = ref({ title, content, logo, link, text_open, debug });
 const CYCLE_IN_SECONDS = props.data?.cycle || 0;
 
 //定时
-const time = CYCLE_IN_SECONDS * 60 * 60;
+const time = CYCLE_IN_SECONDS * 60 * 60 * 24;
 //local名
 const localData = "magick_ad_display_time_popup-google";
 
@@ -159,7 +159,7 @@ showAd.value = checkLocalStorage();
   width: 100vw;
   top: 0;
   left: 0;
-
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: center;
