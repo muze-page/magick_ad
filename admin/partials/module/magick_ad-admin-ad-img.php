@@ -52,7 +52,12 @@ class Magick_ad_Admin_Ad_Img
         $watermark = $watermark_switch ? "<div class='mgad_tag'>广告</div>" : '';
 
         //拼接 HTML 代码
-        $html = "<div class='mgad_block_img'>";
+        $html = "<div class='mgad_block_img'
+        style='
+    max-width: {$option["max-width"]}px;
+    margin: 0 auto;
+'
+        >";
         $html .= $watermark;
         if (!empty($url_obj)) {
             $html .= "<a href='{$url_obj["link"]}' target='{$url_obj["target"]}' title='{$url_obj["title"]}' onClick='{$load_click}'>";
