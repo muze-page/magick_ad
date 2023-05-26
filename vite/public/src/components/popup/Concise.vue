@@ -125,10 +125,10 @@ showAd.value = checkLocalStorage();
         color: #fff;
         background: #58595b;
         border-radius: 32px;
+        text-decoration: none;
       }
     }
     .ad_box {
-      
       margin: 0 auto;
       display: flex;
       flex-direction: column;

@@ -22,8 +22,8 @@ for (let i = 0; i < 10; i++) {
 // { id: "2666", date: "2023-05-15", count: "3", type: "click" },
 const count = [];
 // 时间范围
-const startDate = new Date("2023-04-14");
-const endDate = new Date("2023-05-17");
+const startDate = new Date("2023-05-14");
+const endDate = new Date("2023-05-30");
 
 // 假设有5个id和2个type
 const ids = ["1", "2", "3"];

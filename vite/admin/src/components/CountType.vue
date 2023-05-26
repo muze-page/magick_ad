@@ -55,6 +55,7 @@ const distinctValues = (rows, field) => [
 const distinctIds = computed(() => distinctValues(sortedRows.value, "id"));
 const distinctTypes = computed(() => distinctValues(sortedRows.value, "type"));
 
+
 //提取筛选后的展示类型
 // 筛选type为"view"的数据，生成新的计算属性viewData
 const viewData = computed(() =>
@@ -91,7 +92,7 @@ const clickData = computed(() =>
     <el-option
       v-for="item in distinctTypes"
       :key="item"
-      :label="item"
+      :label="item == 'click' ? '点击' : '展示'"
       :value="item"
     />
   </el-select>
