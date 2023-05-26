@@ -157,8 +157,7 @@ class Magick_ad_Admin
 
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/magick_ad-admin.css', array(), $this->version, 'all');
 
-		//拿到变量值
-		//wp_add_inline_script($this->plugin_name, sprintf('const imageViewsData = %s;', json_encode($data)), 'before');
+		wp_enqueue_style($this->plugin_name . "-admin-vite", plugin_dir_url(__FILE__) . 'css/vite.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -182,7 +181,17 @@ class Magick_ad_Admin
 		 */
 
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/magick_ad-admin.js', array('jquery'), $this->version, false);
+
+		wp_enqueue_script($this->plugin_name . "-admin-vite", plugin_dir_url(__FILE__) . 'js/vite.js', array('jquery'), $this->version, false);
+
+		//实例化类
+		$obj = new Magick_ad_Admin_Count();
+		$data =  $obj->count_data();
+
+		//将值传给JS，存储在本地
+		wp_add_inline_script($this->plugin_name, sprintf('const adCountData = %s;', json_encode($data)), 'before');
 	}
+
 
 
 
