@@ -13,16 +13,6 @@ const props = defineProps({
 //{id: "58", ad_id: "95266", ad_type: "view", ad_time: "2023-05-11 17:47:20"}
 // { id: "95266", date: "2023-05-11", count: "13" },
 
-//时间排序
-//b.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-// 筛选数据
-const filterRows = (rows, id, type) => {
-  return rows
-    .filter((row) => !id || row.id.toString() === id)
-    .filter((row) => !type || row.type === type);
-};
-
 // 响应式变量
 const selectedId = ref(""); //ID 筛选
 const selectedType = ref(""); //类型筛选
@@ -37,6 +27,17 @@ const rows = computed(() =>
     date: item.date,
   }))
 );
+
+//进行筛选
+const filterRows = (rows, ids, type) => {
+  //ID数组为空，仅筛选type
+  if (ids.length === 0) {
+    return rows.filter((row) => !type || row.type === type);
+  }
+  return rows
+    .filter((row) => ids.includes(row.id.toString()))
+    .filter((row) => !type || row.type === type);
+};
 
 // 筛选后的数据
 const sortedRows = computed(() =>
@@ -81,6 +82,7 @@ const clickData = computed(() =>
     v-model="selectedId"
     filterable
     clearable
+    multiple
     placeholder="请选择现有 ID"
   >
     <el-option
@@ -91,12 +93,7 @@ const clickData = computed(() =>
     />
   </el-select>
 
-  <el-select
-    v-model="selectedType"
-    filterable
-    clearable
-    placeholder="请选择类型"
-  >
+  <el-select v-model="selectedType" filterable placeholder="请选择类型">
     <el-option
       v-for="item in distinctTypes"
       :key="item.value"
