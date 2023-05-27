@@ -80,10 +80,9 @@ const clickData = computed(() =>
 <template>
   <el-select
     v-model="selectedId"
-    filterable
-    clearable
     multiple
     placeholder="请选择现有 ID"
+    style="border: 0"
   >
     <el-option
       v-for="item in distinctIds"

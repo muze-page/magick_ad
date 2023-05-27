@@ -6,7 +6,6 @@ const props = defineProps({
   data: Array,
 });
 
-
 //{ id: "62", ad_id: "95270", ad_type: "view", ad_time: "2023-05-16 16:55:10" },
 //{id: '95225', type: 'click', date: '2023-05-14', count: 65}
 
@@ -14,7 +13,7 @@ const props = defineProps({
 //拿到当前时间戳
 const today = new Date(); // 获取当前时间
 today.setHours(0, 0, 0, 0); // 设置为今天的0点
-const startTimestamp = today.getTime()- 3600 * 1000 * 24 * 7; // 获取一周前0点的时间戳
+const startTimestamp = today.getTime() - 3600 * 1000 * 24 * 7; // 获取一周前0点的时间戳
 today.setHours(23, 59, 59, 999); // 设置为今天的23点59分59秒
 const endTimestamp = today.getTime(); // 获取今天24点的时间戳
 
