@@ -16,7 +16,7 @@
  * Plugin Name:       魔法广告
  * Plugin URI:        https://www.npc.ink
  * Description:       简单使用的广告插件，可在全站或指定文章、页面中的诸多位置添加自定义广告
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Mzue
  * Author URI:        https://www.npc.ink
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if (!defined('WPINC')) {
  * 从1.0.0版本开始，使用SemVer-https://semver.org
  * 将其重命名为您的插件，并在发布新版本时进行更新。
  */
-define('MAGICK_AD_VERSION', '1.0.5');
+define('MAGICK_AD_VERSION', '1.0.1');
 
 /**
  * 插件激活期间运行的代码。
