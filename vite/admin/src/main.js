@@ -1,9 +1,13 @@
 import { createApp } from "vue";
-import "./style.css";
+
 import App from "./App.vue";
 import ElementPlus from "element-plus";
 import zhCn from "element-plus/dist/locale/zh-cn.mjs";
 
+/**
+ * 测试样式
+ */
+//import "./style.css";
 /**
  * 测试数据
  */
