@@ -67,6 +67,11 @@ class Magick_ad_Admin_Doing
                     self::add_ad_loop_end($condition, $ad_content);
                     break;
 
+                    //文章/页面前
+                case 'the_post':
+                    self::add_ad_the_post($condition, $ad_content);
+                    break;
+
                     //文章内容前
                 case 'single_before':
                     self::add_ad_single_before($condition, $ad_content);
@@ -153,6 +158,24 @@ class Magick_ad_Admin_Doing
                 }
             }
         });
+    }
+
+    /**
+     * 添加广告到文章或页面内容前
+     */
+    private static function add_ad_the_post($condition, $ad_content)
+    {
+
+        $add = function () use ($condition, $ad_content) {
+            //保底输出空值
+            $new_content = "";
+            if (call_user_func($condition)) {
+                $new_content = $ad_content;
+            }
+            echo $new_content;
+            return $new_content;
+        };
+        add_filter('the_post', $add);
     }
 
     /**
