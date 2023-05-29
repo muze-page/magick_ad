@@ -119,6 +119,10 @@ class Magick_ad_Admin_All
 
 
 
+            if (!is_array($ad)) {
+                return "数组无值或不存在！- Magick_ad_Admin_All-2";
+            }
+
             //准备展示的内容
             $show_content = "";
             //将同一位置展示的内容按次序拼接
@@ -157,6 +161,10 @@ class Magick_ad_Admin_All
      */
     public function handle_type_data($data)
     {
+        if (!is_array($data)) {
+            return "数组无值或不存在！- Magick_ad_Admin_All-3";
+        }
+
         //在 foreach 循环中，使用引用（&）可以让当前遍历的元素的变化直接作用于原数组。
         //如果不使用引用，则只是将当前遍历的元素值复制到一个临时变量中，
         //而对临时变量的修改并不会影响原数组。

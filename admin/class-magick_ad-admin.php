@@ -93,18 +93,23 @@ class Magick_ad_Admin
 	public function get_all_ad()
 	{
 		//准备数据
+		//全局广告
 		$config = get_field('ad_all', 'options');
+		//局部广告
+		$partData = get_field('ad_part', 'options');
 
 		//实例化用到的类
 		$obj = new Magick_ad_Admin_All();
-		$arr['title'] = $obj->p("<h1>原始内容</h1>");
-		//基本展示数据
-		$arr['config'] = $obj->p($config);
-		//说明文本
-		$arr['msg'] = $obj->p("下面是处理过的");
-		//处理过的数据
+		//$arr['ad_all'] = $obj->p("<h1>原始全局广告内容</h1>");
+		////基本展示数据
+		//$arr['config'] = $obj->p($config);
+		////说明文本
+		//$arr['msg'] = $obj->p("下面是处理过的");
+		////处理过的数据
+		//$arr['handle'] = $obj->p($obj->handle_ad_content_arr($config));
 
-		$arr['handle'] = $obj->p($obj->handle_ad_content_arr($config));
+		$arr['ad_part'] = $obj->p("<h1>原始指定广告内容</h1>");
+		$arr['ad_part_data'] = $obj->p($partData);
 	}
 
 	/**

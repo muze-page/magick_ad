@@ -63,7 +63,7 @@ class Magick_ad_Public_More
     public function handle_more_ad($arr)
     {
         // 判断数组是否存在且有值
-        if (empty($arr)) {
+        if (!is_array($arr)) {
             return "数组无值或不存在！ - Magick_ad_Public_More";
         }
 
