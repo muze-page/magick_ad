@@ -15,11 +15,4 @@ function add_type_attribute_to_script($tag, $handle)
 add_filter('script_loader_tag', 'add_type_attribute_to_script', 10, 2);
 
 
-//文章或页面前
-function add_text_after_menu()
-{
-    if (is_single()) {
-        echo '<h2>666</h2>';
-    }
-}
-//add_filter('the_post', 'add_text_after_menu');
+
