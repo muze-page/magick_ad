@@ -2,13 +2,13 @@
 import PopUp from "./components/PopUp.vue";
 import Float from "./components/Float.vue";
 import Banner from "./components/Banner.vue";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 //准备配置数据
 
 //读取本地浏览器数据
 const readLocal = localStorage.getItem("magick_ad_public_data");
 
-//解析JSON字符串
+//解析JSON字符串，将字节true改为布尔值
 const dataLocal = readLocal
   ? JSON.parse(readLocal, (_key, value) => {
       if (value === "true") {
@@ -22,16 +22,20 @@ const dataLocal = readLocal
   : "";
 
 //待传递的数据
-const data = ref(dataLocal);
+const data = dataLocal;
 //计算下，若没有拿到值，则不显示广告
 
-//逻辑，判断是否开启广告
-const handleAd = computed<boolean>(() => (dataLocal !== "" ? true : false));
+
+//判断有没有弹窗
+const popup = computed(() => {
+  const hasPopup = Object.keys(dataLocal).includes("popup");
+  return hasPopup ? true : false;
+});
 </script>
 
 <template>
   <!--判断是否拿到值-->
-  <div v-if="handleAd">
+  <div v-if="popup">
     <!--弹窗广告-->
     <div v-if="data.popup.switch">
       <PopUp :data="data.popup"></PopUp>
@@ -47,9 +51,6 @@ const handleAd = computed<boolean>(() => (dataLocal !== "" ? true : false));
       <Banner :data="data.bottom_banner"></Banner>
     </div>
   </div>
- 
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
