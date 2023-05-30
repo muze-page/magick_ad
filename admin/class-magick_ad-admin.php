@@ -108,8 +108,10 @@ class Magick_ad_Admin
 		////处理过的数据
 		//$arr['handle'] = $obj->p($obj->handle_ad_content_arr($config));
 
-		$arr['ad_part'] = $obj->p("<h1>原始指定广告内容</h1>");
+		$arr['ad_part'] = $obj->p("<h3>原始指定广告内容</h3>");
 		$arr['ad_part_data'] = $obj->p($partData);
+		$arr['msg_part'] = $obj->p("<h3>下面是处理过的</h3>");
+		$arr['handle_part'] = $obj->p($obj->handle_ad_content_arr($partData));
 	}
 
 	/**
@@ -118,15 +120,21 @@ class Magick_ad_Admin
 	public function show_ad()
 	{
 
-		//获取选项值
+		//全局广告
 		$configs = get_field('ad_all', 'options');
+		//局部广告
+		$partData = get_field('ad_part', 'options');
 
 		//实例化用到的类
 		$obj = new Magick_ad_Admin_All();
 		//将选项进行处理
 		$data = $obj->handle_ad_content_arr($configs);
+		$part = $obj->handle_ad_content_arr($partData);
 
 		Magick_ad_Admin_Doing::do_ad_content($data);
+		
+
+		Magick_ad_Admin_Doing::do_ad_content($part);
 	}
 
 	//加载广告展示处理类

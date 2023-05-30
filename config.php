@@ -1,12 +1,12 @@
 <?php
-if (function_exists('acf_add_local_field_group')) :
+if ( function_exists('acf_add_local_field_group') ):
 
     acf_add_local_field_group(array(
-        'key' => 'group_6373638767615',
-        'title' => '广告位',
+        'key' => 'group_6474617708bd0',
+        'title' => '广告位 (复制)',
         'fields' => array(
             array(
-                'key' => 'field_6385de0251210',
+                'key' => 'field_6474617709d62',
                 'label' => '全局广告',
                 'name' => '',
                 'aria-label' => '',
@@ -23,7 +23,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'endpoint' => 0,
             ),
             array(
-                'key' => 'field_6385de0b51211',
+                'key' => 'field_6474617709d66',
                 'label' => '全局广告',
                 'name' => 'ad_all',
                 'aria-label' => '',
@@ -45,7 +45,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'rows_per_page' => 20,
                 'sub_fields' => array(
                     array(
-                        'key' => 'field_6385de8c51215',
+                        'key' => 'field_647461770a974',
                         'label' => '内容',
                         'name' => 'content',
                         'aria-label' => '',
@@ -66,7 +66,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'display' => 'block',
                                 'sub_fields' => array(
                                     array(
-                                        'key' => 'field_63e2178e29143',
+                                        'key' => 'field_647461770aeb2',
                                         'label' => '内容',
                                         'name' => '',
                                         'aria-label' => '',
@@ -83,7 +83,7 @@ if (function_exists('acf_add_local_field_group')) :
                                         'endpoint' => 0,
                                     ),
                                     array(
-                                        'key' => 'field_6449d36940565',
+                                        'key' => 'field_647461770aeb6',
                                         'label' => '内容',
                                         'name' => 'img_content',
                                         'aria-label' => '',
@@ -99,7 +99,7 @@ if (function_exists('acf_add_local_field_group')) :
                                         'layout' => 'block',
                                         'sub_fields' => array(
                                             array(
-                                                'key' => 'field_6385deb051216',
+                                                'key' => 'field_647461770b737',
                                                 'label' => '图片',
                                                 'name' => 'img',
                                                 'aria-label' => '',
@@ -124,7 +124,7 @@ if (function_exists('acf_add_local_field_group')) :
                                                 'preview_size' => 'medium',
                                             ),
                                             array(
-                                                'key' => 'field_6385debc51217',
+                                                'key' => 'field_647461770b73b',
                                                 'label' => '链接',
                                                 'name' => 'link',
                                                 'aria-label' => '',
@@ -142,7 +142,7 @@ if (function_exists('acf_add_local_field_group')) :
                                         ),
                                     ),
                                     array(
-                                        'key' => 'field_63e217b829144',
+                                        'key' => 'field_647461770aeb9',
                                         'label' => '配置',
                                         'name' => '',
                                         'aria-label' => '',
@@ -159,7 +159,7 @@ if (function_exists('acf_add_local_field_group')) :
                                         'endpoint' => 0,
                                     ),
                                     array(
-                                        'key' => 'field_63e30d57ec6bd',
+                                        'key' => 'field_647461770aebc',
                                         'label' => '配置',
                                         'name' => 'img_option',
                                         'aria-label' => '',
@@ -175,7 +175,7 @@ if (function_exists('acf_add_local_field_group')) :
                                         'layout' => 'block',
                                         'sub_fields' => array(
                                             array(
-                                                'key' => 'field_63e217c629145',
+                                                'key' => 'field_647461770ccd1',
                                                 'label' => '水印',
                                                 'name' => 'watermark',
                                                 'aria-label' => '',
@@ -195,7 +195,7 @@ if (function_exists('acf_add_local_field_group')) :
                                                 'ui' => 1,
                                             ),
                                             array(
-                                                'key' => 'field_64701ed8604e7',
+                                                'key' => 'field_647461770ccd5',
                                                 'label' => '附加样式',
                                                 'name' => '',
                                                 'aria-label' => '',
@@ -213,8 +213,8 @@ if (function_exists('acf_add_local_field_group')) :
                                                 'esc_html' => 0,
                                             ),
                                             array(
-                                                'key' => 'field_645a329e785e2',
-                                                'label' => '圆角',
+                                                'key' => 'field_647461770ccd8',
+                                                'label' => '圆角效果',
                                                 'name' => 'radian',
                                                 'aria-label' => '',
                                                 'type' => 'number',
@@ -226,21 +226,21 @@ if (function_exists('acf_add_local_field_group')) :
                                                     'class' => '',
                                                     'id' => '',
                                                 ),
-                                                'default_value' => '',
+                                                'default_value' => 0,
                                                 'min' => '',
                                                 'max' => '',
-                                                'placeholder' => '',
+                                                'placeholder' => '图片圆角效果',
                                                 'step' => '',
                                                 'prepend' => '',
-                                                'append' => '',
+                                                'append' => '像素',
                                             ),
                                             array(
-                                                'key' => 'field_647088ef39890',
+                                                'key' => 'field_647461770ccdb',
                                                 'label' => '最大宽度',
                                                 'name' => 'max-width',
                                                 'aria-label' => '',
                                                 'type' => 'number',
-                                                'instructions' => '默认1200像素',
+                                                'instructions' => '',
                                                 'required' => 0,
                                                 'conditional_logic' => 0,
                                                 'wrapper' => array(
@@ -251,13 +251,13 @@ if (function_exists('acf_add_local_field_group')) :
                                                 'default_value' => 1200,
                                                 'min' => '',
                                                 'max' => '',
-                                                'placeholder' => '最大宽度',
+                                                'placeholder' => '默认1200像素',
                                                 'step' => '',
                                                 'prepend' => '',
                                                 'append' => '像素',
                                             ),
                                             array(
-                                                'key' => 'field_64701b0d96e93',
+                                                'key' => 'field_647461770ccde',
                                                 'label' => '距离顶部',
                                                 'name' => 'top',
                                                 'aria-label' => '',
@@ -276,10 +276,10 @@ if (function_exists('acf_add_local_field_group')) :
                                                 'placeholder' => '',
                                                 'step' => '',
                                                 'prepend' => '',
-                                                'append' => '',
+                                                'append' => '像素',
                                             ),
                                             array(
-                                                'key' => 'field_64701b3496e94',
+                                                'key' => 'field_647461770cce1',
                                                 'label' => '距离底部',
                                                 'name' => 'bottom',
                                                 'aria-label' => '',
@@ -288,7 +288,7 @@ if (function_exists('acf_add_local_field_group')) :
                                                 'required' => 0,
                                                 'conditional_logic' => 0,
                                                 'wrapper' => array(
-                                                    'width' => '22',
+                                                    'width' => '25',
                                                     'class' => '',
                                                     'id' => '',
                                                 ),
@@ -298,10 +298,10 @@ if (function_exists('acf_add_local_field_group')) :
                                                 'placeholder' => '',
                                                 'step' => '',
                                                 'prepend' => '',
-                                                'append' => '',
+                                                'append' => '像素',
                                             ),
                                             array(
-                                                'key' => 'field_64701e52604e5',
+                                                'key' => 'field_647461770cce4',
                                                 'label' => '距离左边',
                                                 'name' => 'left',
                                                 'aria-label' => '',
@@ -323,7 +323,7 @@ if (function_exists('acf_add_local_field_group')) :
                                                 'append' => '像素',
                                             ),
                                             array(
-                                                'key' => 'field_64701e83604e6',
+                                                'key' => 'field_647461770cce7',
                                                 'label' => '距离右边',
                                                 'name' => 'right',
                                                 'aria-label' => '',
@@ -347,7 +347,7 @@ if (function_exists('acf_add_local_field_group')) :
                                         ),
                                     ),
                                     array(
-                                        'key' => 'field_6449e202393c8',
+                                        'key' => 'field_647461770aebf',
                                         'label' => '监听',
                                         'name' => '',
                                         'aria-label' => '',
@@ -364,7 +364,7 @@ if (function_exists('acf_add_local_field_group')) :
                                         'endpoint' => 0,
                                     ),
                                     array(
-                                        'key' => 'field_6449e20c393c9',
+                                        'key' => 'field_647461770aec3',
                                         'label' => '监听',
                                         'name' => 'img_listen',
                                         'aria-label' => '',
@@ -380,7 +380,7 @@ if (function_exists('acf_add_local_field_group')) :
                                         'layout' => 'block',
                                         'sub_fields' => array(
                                             array(
-                                                'key' => 'field_6447316bc189e',
+                                                'key' => 'field_647461770f19b',
                                                 'label' => '广告计划',
                                                 'name' => 'ad_name',
                                                 'aria-label' => '',
@@ -400,7 +400,7 @@ if (function_exists('acf_add_local_field_group')) :
                                                 'append' => '',
                                             ),
                                             array(
-                                                'key' => 'field_645c9c9b85a2f',
+                                                'key' => 'field_647461770f19f',
                                                 'label' => '广告ID',
                                                 'name' => 'ad_id',
                                                 'aria-label' => '',
@@ -422,7 +422,7 @@ if (function_exists('acf_add_local_field_group')) :
                                                 'append' => '',
                                             ),
                                             array(
-                                                'key' => 'field_6449d3dbb3654',
+                                                'key' => 'field_647461770f1a2',
                                                 'label' => '展示监听',
                                                 'name' => 'view',
                                                 'aria-label' => '',
@@ -442,7 +442,7 @@ if (function_exists('acf_add_local_field_group')) :
                                                 'ui' => 1,
                                             ),
                                             array(
-                                                'key' => 'field_6449d3fcb3655',
+                                                'key' => 'field_647461770f1a5',
                                                 'label' => '点击监听',
                                                 'name' => 'click',
                                                 'aria-label' => '',
@@ -474,7 +474,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'display' => 'block',
                                 'sub_fields' => array(
                                     array(
-                                        'key' => 'field_6385def851219',
+                                        'key' => 'field_647461770aec6',
                                         'label' => 'HTML',
                                         'name' => 'h5_content',
                                         'aria-label' => '',
@@ -504,7 +504,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'display' => 'block',
                                 'sub_fields' => array(
                                     array(
-                                        'key' => 'field_639c19d6607bd',
+                                        'key' => 'field_647461770aec9',
                                         'label' => '幻灯片',
                                         'name' => 'box',
                                         'aria-label' => '',
@@ -525,7 +525,7 @@ if (function_exists('acf_add_local_field_group')) :
                                         'rows_per_page' => 20,
                                         'sub_fields' => array(
                                             array(
-                                                'key' => 'field_639c1ac315c4d',
+                                                'key' => 'field_6474617710996',
                                                 'label' => '图片',
                                                 'name' => 'img',
                                                 'aria-label' => '',
@@ -548,10 +548,10 @@ if (function_exists('acf_add_local_field_group')) :
                                                 'max_height' => '',
                                                 'max_size' => '',
                                                 'mime_types' => '',
-                                                'parent_repeater' => 'field_639c19d6607bd',
+                                                'parent_repeater' => 'field_647461770aec9',
                                             ),
                                             array(
-                                                'key' => 'field_639c1aab15c4c',
+                                                'key' => 'field_647461771099b',
                                                 'label' => '链接',
                                                 'name' => 'link',
                                                 'aria-label' => '',
@@ -565,7 +565,7 @@ if (function_exists('acf_add_local_field_group')) :
                                                     'id' => '',
                                                 ),
                                                 'return_format' => 'array',
-                                                'parent_repeater' => 'field_639c19d6607bd',
+                                                'parent_repeater' => 'field_647461770aec9',
                                             ),
                                         ),
                                     ),
@@ -577,10 +577,10 @@ if (function_exists('acf_add_local_field_group')) :
                         'min' => '',
                         'max' => '',
                         'button_label' => '添加广告',
-                        'parent_repeater' => 'field_6385de0b51211',
+                        'parent_repeater' => 'field_6474617709d66',
                     ),
                     array(
-                        'key' => 'field_639822553c59d',
+                        'key' => 'field_647461770a978',
                         'label' => '配置',
                         'name' => 'options',
                         'aria-label' => '',
@@ -594,10 +594,10 @@ if (function_exists('acf_add_local_field_group')) :
                             'id' => '',
                         ),
                         'layout' => 'block',
-                        'parent_repeater' => 'field_6385de0b51211',
+                        'parent_repeater' => 'field_6474617709d66',
                         'sub_fields' => array(
                             array(
-                                'key' => 'field_6385de2151212',
+                                'key' => 'field_6474617711a73',
                                 'label' => '是否展示',
                                 'name' => 'judge',
                                 'aria-label' => '',
@@ -621,7 +621,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'layout' => 'horizontal',
                             ),
                             array(
-                                'key' => 'field_63e2fc02593a7',
+                                'key' => 'field_6474617711a76',
                                 'label' => '登录展示',
                                 'name' => 'login',
                                 'aria-label' => '',
@@ -645,7 +645,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'layout' => 'horizontal',
                             ),
                             array(
-                                'key' => 'field_6385de5551213',
+                                'key' => 'field_6474617711a79',
                                 'label' => '展示平台',
                                 'name' => 'device',
                                 'aria-label' => '',
@@ -669,7 +669,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'layout' => 'horizontal',
                             ),
                             array(
-                                'key' => 'field_6449da6eb43bd',
+                                'key' => 'field_6474617711a7c',
                                 'label' => '展示位置',
                                 'name' => '',
                                 'aria-label' => '',
@@ -687,7 +687,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'esc_html' => 0,
                             ),
                             array(
-                                'key' => 'field_6449d6a357acc',
+                                'key' => 'field_6474617711a7f',
                                 'label' => '展示页面',
                                 'name' => 'show_page',
                                 'aria-label' => '',
@@ -704,9 +704,9 @@ if (function_exists('acf_add_local_field_group')) :
                                     'is_main_site' => '全站',
                                     'is_home' => '仅首页',
                                     'is_single' => '仅文章页',
+                                    'is_page' => '仅单页',
                                     'is_category' => '仅分类页',
                                     'is_tag' => '仅标签页',
-                                    'is_page' => '仅单页',
                                     'is_search' => '仅搜索结果页',
                                     'is_404' => '仅404页',
                                     'is_author' => '仅作者页',
@@ -720,8 +720,8 @@ if (function_exists('acf_add_local_field_group')) :
                                 'placeholder' => '',
                             ),
                             array(
-                                'key' => 'field_6449d6d157acd',
-                                'label' => '展示位置',
+                                'key' => 'field_6474617711a81',
+                                'label' => '通用位置',
                                 'name' => 'show_position',
                                 'aria-label' => '',
                                 'type' => 'select',
@@ -730,12 +730,12 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_6449d6a357acc',
+                                            'field' => 'field_6474617711a7f',
                                             'operator' => '!=',
                                             'value' => 'is_single',
                                         ),
                                         array(
-                                            'field' => 'field_6449d6a357acc',
+                                            'field' => 'field_6474617711a7f',
                                             'operator' => '!=',
                                             'value' => 'is_page',
                                         ),
@@ -747,10 +747,10 @@ if (function_exists('acf_add_local_field_group')) :
                                     'id' => '',
                                 ),
                                 'choices' => array(
-                                    'wp_head' => '顶部',
-                                    'wp_footer' => '底部',
+                                    'loop_start' => '循环前',
+                                    'loop_end' => '循环后',
                                 ),
-                                'default_value' => 'wp_head',
+                                'default_value' => 'loop_start',
                                 'return_format' => 'value',
                                 'multiple' => 0,
                                 'allow_null' => 0,
@@ -759,8 +759,8 @@ if (function_exists('acf_add_local_field_group')) :
                                 'placeholder' => '',
                             ),
                             array(
-                                'key' => 'field_6449d71457ace',
-                                'label' => '页面展示',
+                                'key' => 'field_647471e58a09a',
+                                'label' => '文章或页面',
                                 'name' => 'show_position',
                                 'aria-label' => '',
                                 'type' => 'select',
@@ -769,14 +769,14 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_6449d6a357acc',
+                                            'field' => 'field_6474617711a7f',
                                             'operator' => '==',
                                             'value' => 'is_single',
                                         ),
                                     ),
                                     array(
                                         array(
-                                            'field' => 'field_6449d6a357acc',
+                                            'field' => 'field_6474617711a7f',
                                             'operator' => '==',
                                             'value' => 'is_page',
                                         ),
@@ -788,8 +788,7 @@ if (function_exists('acf_add_local_field_group')) :
                                     'id' => '',
                                 ),
                                 'choices' => array(
-                                    'wp_head' => '顶部',
-                                    'wp_footer' => '底部',
+                                    'the_post' => '文章或页面前',
                                     'loop_start' => '循环前',
                                     'loop_end' => '循环后',
                                     'single_before' => '文章顶部',
@@ -799,7 +798,7 @@ if (function_exists('acf_add_local_field_group')) :
                                     'comment_form_before' => '评论框上方',
                                     'comment_form_after' => '评论框下方',
                                 ),
-                                'default_value' => 'wp_head',
+                                'default_value' => 'loop_start',
                                 'return_format' => 'value',
                                 'multiple' => 0,
                                 'allow_null' => 0,
@@ -812,8 +811,8 @@ if (function_exists('acf_add_local_field_group')) :
                 ),
             ),
             array(
-                'key' => 'field_6392f4b78f5a2',
-                'label' => '指定广告（开发中）',
+                'key' => 'field_6474617709d6a',
+                'label' => '指定广告',
                 'name' => '',
                 'aria-label' => '',
                 'type' => 'tab',
@@ -829,29 +828,14 @@ if (function_exists('acf_add_local_field_group')) :
                 'endpoint' => 0,
             ),
             array(
-                'key' => 'field_6392f441d86e3',
+                'key' => 'field_647461f381e90',
                 'label' => '指定广告',
-                'name' => 'ad_appoint',
+                'name' => 'ad_part',
                 'aria-label' => '',
                 'type' => 'repeater',
                 'instructions' => '',
                 'required' => 0,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_6449d6a357acc',
-                            'operator' => '==',
-                            'value' => 'is_single',
-                        ),
-                    ),
-                    array(
-                        array(
-                            'field' => 'field_6449d6a357acc',
-                            'operator' => '==',
-                            'value' => 'is_page',
-                        ),
-                    ),
-                ),
+                'conditional_logic' => 0,
                 'wrapper' => array(
                     'width' => '',
                     'class' => '',
@@ -861,13 +845,13 @@ if (function_exists('acf_add_local_field_group')) :
                 'pagination' => 0,
                 'min' => 0,
                 'max' => 0,
-                'collapsed' => 'field_6392f441d86e4',
-                'button_label' => '添加新广告',
+                'collapsed' => '',
+                'button_label' => '添加行',
                 'rows_per_page' => 20,
                 'sub_fields' => array(
                     array(
-                        'key' => 'field_646445efbb903',
-                        'label' => '内容',
+                        'key' => 'field_6474621581e91',
+                        'label' => '广告内容',
                         'name' => 'content',
                         'aria-label' => '',
                         'type' => 'clone',
@@ -880,16 +864,16 @@ if (function_exists('acf_add_local_field_group')) :
                             'id' => '',
                         ),
                         'clone' => array(
-                            0 => 'field_6385de8c51215',
+                            0 => 'field_647461770a974',
                         ),
                         'display' => 'seamless',
                         'layout' => 'block',
                         'prefix_label' => 0,
                         'prefix_name' => 0,
-                        'parent_repeater' => 'field_6392f441d86e3',
+                        'parent_repeater' => 'field_647461f381e90',
                     ),
                     array(
-                        'key' => 'field_6392fbe59ffd2',
+                        'key' => 'field_6474622a81e92',
                         'label' => '配置',
                         'name' => 'options',
                         'aria-label' => '',
@@ -898,48 +882,16 @@ if (function_exists('acf_add_local_field_group')) :
                         'required' => 0,
                         'conditional_logic' => 0,
                         'wrapper' => array(
-                            'width' => '0',
+                            'width' => '',
                             'class' => '',
                             'id' => '',
                         ),
                         'layout' => 'block',
-                        'parent_repeater' => 'field_6392f441d86e3',
                         'sub_fields' => array(
                             array(
-                                'key' => 'field_6392f463d86f7',
-                                'label' => '指定文章或页面',
-                                'name' => 'location',
-                                'aria-label' => '',
-                                'type' => 'relationship',
-                                'instructions' => '选择您需要添加广告的文章或页面，注意，在展示页面中，选择对应正确的仅文章页或仅单页',
-                                'required' => 0,
-                                'conditional_logic' => 0,
-                                'wrapper' => array(
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                ),
-                                'post_type' => array(
-                                    0 => 'post',
-                                    1 => 'page',
-                                ),
-                                'taxonomy' => '',
-                                'filters' => array(
-                                    0 => 'search',
-                                    1 => 'post_type',
-                                    2 => 'taxonomy',
-                                ),
-                                'return_format' => 'id',
-                                'min' => '',
-                                'max' => '',
-                                'elements' => array(
-                                    0 => 'featured_image',
-                                ),
-                            ),
-                            array(
-                                'key' => 'field_6464466c512d1',
-                                'label' => '测试下',
-                                'name' => '测试下',
+                                'key' => 'field_6474624c81e93',
+                                'label' => '1',
+                                'name' => '1',
                                 'aria-label' => '',
                                 'type' => 'clone',
                                 'instructions' => '',
@@ -951,25 +903,83 @@ if (function_exists('acf_add_local_field_group')) :
                                     'id' => '',
                                 ),
                                 'clone' => array(
-                                    0 => 'field_6385de2151212',
-                                    1 => 'field_63e2fc02593a7',
-                                    2 => 'field_6385de5551213',
-                                    3 => 'field_6449da6eb43bd',
-                                    4 => 'field_6449d6d157acd',
-                                    5 => 'field_6449d71457ace',
-                                    6 => 'field_6449d6a357acc',
+                                    0 => 'field_6474617711a73',
+                                    1 => 'field_6474617711a76',
+                                    2 => 'field_6474617711a79',
+                                    3 => 'field_6474617711a84',
                                 ),
                                 'display' => 'seamless',
-                                'layout' => 'row',
+                                'layout' => 'block',
                                 'prefix_label' => 0,
                                 'prefix_name' => 0,
                             ),
+                            array(
+                                'key' => 'field_647462e9b9331',
+                                'label' => '文章或页面',
+                                'name' => 'post',
+                                'aria-label' => '',
+                                'type' => 'post_object',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'post_type' => array(
+                                    0 => 'post',
+                                    1 => 'page',
+                                ),
+                                'post_status' => array(
+                                    0 => 'publish',
+                                ),
+                                'taxonomy' => '',
+                                'return_format' => 'id',
+                                'multiple' => 1,
+                                'allow_null' => 0,
+                                'ui' => 1,
+                            ),
+                            array(
+                                'key' => 'field_6474624c81e93_field_6474617711a84',
+                                'label' => '文章或页面展示',
+                                'name' => 'show_position',
+                                'aria-label' => '',
+                                'type' => 'select',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array(
+                                    'width' => '50',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'choices' => array(
+                                    'the_post' => '文章或页面前',
+                                    'loop_start' => '循环前',
+                                    'loop_end' => '循环后',
+                                    'single_before' => '文章顶部',
+                                    'single_three' => '文章第三段',
+                                    'single_after' => '文章底部',
+                                    'add_comment_text_before' => '评论列表上方',
+                                    'comment_form_before' => '评论框上方',
+                                    'comment_form_after' => '评论框下方',
+                                ),
+                                'default_value' => 'loop_start',
+                                'return_format' => 'value',
+                                'multiple' => 0,
+                                'allow_null' => 0,
+                                'ui' => 0,
+                                'ajax' => 0,
+                                'placeholder' => '',
+                            ),
                         ),
+                        'parent_repeater' => 'field_647461f381e90',
                     ),
                 ),
             ),
             array(
-                'key' => 'field_63787c457b45b',
+                'key' => 'field_6474617709d72',
                 'label' => '更多广告',
                 'name' => '',
                 'aria-label' => '',
@@ -986,7 +996,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'endpoint' => 0,
             ),
             array(
-                'key' => 'field_6449cfe586dc3',
+                'key' => 'field_6474617709d76',
                 'label' => '更多广告',
                 'name' => 'ad_more',
                 'aria-label' => '',
@@ -1002,7 +1012,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'layout' => 'block',
                 'sub_fields' => array(
                     array(
-                        'key' => 'field_6449cffc86dc4',
+                        'key' => 'field_647461771c22e',
                         'label' => '弹窗广告',
                         'name' => '',
                         'aria-label' => '',
@@ -1019,7 +1029,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'endpoint' => 0,
                     ),
                     array(
-                        'key' => 'field_6377620532919',
+                        'key' => 'field_647461771c232',
                         'label' => '弹窗广告',
                         'name' => 'popup',
                         'aria-label' => '',
@@ -1035,7 +1045,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'layout' => 'block',
                         'sub_fields' => array(
                             array(
-                                'key' => 'field_63787bfac1dc9',
+                                'key' => 'field_647461771c883',
                                 'label' => '是否启用',
                                 'name' => 'switch',
                                 'aria-label' => '',
@@ -1055,7 +1065,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'ui' => 1,
                             ),
                             array(
-                                'key' => 'field_6465ce1d34bb6',
+                                'key' => 'field_647461771c886',
                                 'label' => '广告类型',
                                 'name' => 'type',
                                 'aria-label' => '',
@@ -1065,7 +1075,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_63787bfac1dc9',
+                                            'field' => 'field_647461771c883',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
@@ -1086,7 +1096,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'layout' => 'horizontal',
                             ),
                             array(
-                                'key' => 'field_63787c8fb7c39',
+                                'key' => 'field_647461771c889',
                                 'label' => '弹出周期',
                                 'name' => 'cycle',
                                 'aria-label' => '',
@@ -1096,14 +1106,14 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_6465ce1d34bb6',
+                                            'field' => 'field_647461771c886',
                                             'operator' => '==',
                                             'value' => 'concise',
                                         ),
                                     ),
                                     array(
                                         array(
-                                            'field' => 'field_6465ce1d34bb6',
+                                            'field' => 'field_647461771c886',
                                             'operator' => '==',
                                             'value' => 'google',
                                         ),
@@ -1123,7 +1133,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'append' => '天',
                             ),
                             array(
-                                'key' => 'field_6378aa4aafc4c',
+                                'key' => 'field_647461771c88b',
                                 'label' => '调试按钮',
                                 'name' => 'debug',
                                 'aria-label' => '',
@@ -1133,14 +1143,14 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_6465ce1d34bb6',
+                                            'field' => 'field_647461771c886',
                                             'operator' => '==',
                                             'value' => 'concise',
                                         ),
                                     ),
                                     array(
                                         array(
-                                            'field' => 'field_6465ce1d34bb6',
+                                            'field' => 'field_647461771c886',
                                             'operator' => '==',
                                             'value' => 'google',
                                         ),
@@ -1158,7 +1168,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'ui' => 1,
                             ),
                             array(
-                                'key' => 'field_63787cd5b7c3a',
+                                'key' => 'field_647461771c88e',
                                 'label' => '弹窗标题',
                                 'name' => 'title',
                                 'aria-label' => '',
@@ -1168,14 +1178,14 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_6465ce1d34bb6',
+                                            'field' => 'field_647461771c886',
                                             'operator' => '==',
                                             'value' => 'concise',
                                         ),
                                     ),
                                     array(
                                         array(
-                                            'field' => 'field_6465ce1d34bb6',
+                                            'field' => 'field_647461771c886',
                                             'operator' => '==',
                                             'value' => 'google',
                                         ),
@@ -1193,7 +1203,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'append' => '',
                             ),
                             array(
-                                'key' => 'field_63787cf2b7c3b',
+                                'key' => 'field_647461771c891',
                                 'label' => '弹窗内容',
                                 'name' => 'content',
                                 'aria-label' => '',
@@ -1203,14 +1213,14 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_6465ce1d34bb6',
+                                            'field' => 'field_647461771c886',
                                             'operator' => '==',
                                             'value' => 'concise',
                                         ),
                                     ),
                                     array(
                                         array(
-                                            'field' => 'field_6465ce1d34bb6',
+                                            'field' => 'field_647461771c886',
                                             'operator' => '==',
                                             'value' => 'google',
                                         ),
@@ -1228,7 +1238,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'delay' => 1,
                             ),
                             array(
-                                'key' => 'field_63848b629b9fb',
+                                'key' => 'field_647461771c894',
                                 'label' => '谷歌广告-打开按钮',
                                 'name' => 'google_button-link',
                                 'aria-label' => '',
@@ -1238,7 +1248,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_6465ce1d34bb6',
+                                            'field' => 'field_647461771c886',
                                             'operator' => '==',
                                             'value' => 'google',
                                         ),
@@ -1252,7 +1262,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'return_format' => 'array',
                             ),
                             array(
-                                'key' => 'field_63849ed007a1a',
+                                'key' => 'field_647461771c897',
                                 'label' => '谷歌广告-打开按钮文本',
                                 'name' => 'google_button-text',
                                 'aria-label' => '',
@@ -1262,7 +1272,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_6465ce1d34bb6',
+                                            'field' => 'field_647461771c886',
                                             'operator' => '==',
                                             'value' => 'google',
                                         ),
@@ -1280,7 +1290,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'append' => '',
                             ),
                             array(
-                                'key' => 'field_63848ba09b9fc',
+                                'key' => 'field_647461771c899',
                                 'label' => '谷歌广告-品牌LOGO',
                                 'name' => 'google_logo',
                                 'aria-label' => '',
@@ -1290,7 +1300,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_6465ce1d34bb6',
+                                            'field' => 'field_647461771c886',
                                             'operator' => '==',
                                             'value' => 'google',
                                         ),
@@ -1315,7 +1325,7 @@ if (function_exists('acf_add_local_field_group')) :
                         ),
                     ),
                     array(
-                        'key' => 'field_6449d00a86dc5',
+                        'key' => 'field_647461771c234',
                         'label' => '两侧广告',
                         'name' => '',
                         'aria-label' => '',
@@ -1332,7 +1342,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'endpoint' => 0,
                     ),
                     array(
-                        'key' => 'field_63e37182292db',
+                        'key' => 'field_647461771c237',
                         'label' => '两侧广告',
                         'name' => 'both_sides',
                         'aria-label' => '',
@@ -1348,7 +1358,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'layout' => 'block',
                         'sub_fields' => array(
                             array(
-                                'key' => 'field_63e371b0e7d7c',
+                                'key' => 'field_647461771ebc2',
                                 'label' => '是否启用',
                                 'name' => 'switch',
                                 'aria-label' => '',
@@ -1368,7 +1378,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'ui' => 1,
                             ),
                             array(
-                                'key' => 'field_63e371c1e7d7d',
+                                'key' => 'field_647461771ebc5',
                                 'label' => '左内容',
                                 'name' => 'left_content',
                                 'aria-label' => '',
@@ -1378,7 +1388,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_63e371b0e7d7c',
+                                            'field' => 'field_647461771ebc2',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
@@ -1396,7 +1406,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'delay' => 1,
                             ),
                             array(
-                                'key' => 'field_63e371cee7d7e',
+                                'key' => 'field_647461771ebc9',
                                 'label' => '右内容',
                                 'name' => 'right_content',
                                 'aria-label' => '',
@@ -1406,7 +1416,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_63e371b0e7d7c',
+                                            'field' => 'field_647461771ebc2',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
@@ -1424,7 +1434,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'delay' => 1,
                             ),
                             array(
-                                'key' => 'field_6466f0a2a4a05',
+                                'key' => 'field_647461771ebcc',
                                 'label' => '页面宽度',
                                 'name' => 'page-width',
                                 'aria-label' => '',
@@ -1434,7 +1444,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_63e371b0e7d7c',
+                                            'field' => 'field_647461771ebc2',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
@@ -1454,7 +1464,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'append' => '像素',
                             ),
                             array(
-                                'key' => 'field_63e371f0e7d80',
+                                'key' => 'field_647461771ebcf',
                                 'label' => '顶部距离',
                                 'name' => 'top',
                                 'aria-label' => '',
@@ -1464,7 +1474,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_63e371b0e7d7c',
+                                            'field' => 'field_647461771ebc2',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
@@ -1484,7 +1494,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'append' => '像素',
                             ),
                             array(
-                                'key' => 'field_63e371dbe7d7f',
+                                'key' => 'field_647461771ebd2',
                                 'label' => '两边距离',
                                 'name' => 'sides',
                                 'aria-label' => '',
@@ -1494,7 +1504,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_63e371b0e7d7c',
+                                            'field' => 'field_647461771ebc2',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
@@ -1516,7 +1526,7 @@ if (function_exists('acf_add_local_field_group')) :
                         ),
                     ),
                     array(
-                        'key' => 'field_6449d02ddab06',
+                        'key' => 'field_647461771c23a',
                         'label' => '底部横栏广告',
                         'name' => '',
                         'aria-label' => '',
@@ -1533,7 +1543,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'endpoint' => 0,
                     ),
                     array(
-                        'key' => 'field_63e4572e63967',
+                        'key' => 'field_647461771c23d',
                         'label' => '底部横栏广告',
                         'name' => 'bottom_banner',
                         'aria-label' => '',
@@ -1549,7 +1559,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'layout' => 'block',
                         'sub_fields' => array(
                             array(
-                                'key' => 'field_63e457c2f0c8e',
+                                'key' => 'field_647461772092c',
                                 'label' => '是否启用',
                                 'name' => 'switch',
                                 'aria-label' => '',
@@ -1569,7 +1579,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'ui' => 1,
                             ),
                             array(
-                                'key' => 'field_63ea0b546a954',
+                                'key' => 'field_6474617720930',
                                 'label' => '展示平台',
                                 'name' => 'display',
                                 'aria-label' => '',
@@ -1579,7 +1589,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_63e457c2f0c8e',
+                                            'field' => 'field_647461772092c',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
@@ -1601,7 +1611,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'layout' => 'horizontal',
                             ),
                             array(
-                                'key' => 'field_63e45826f0c8f',
+                                'key' => 'field_6474617720932',
                                 'label' => '弹出周期',
                                 'name' => 'cycle',
                                 'aria-label' => '',
@@ -1611,7 +1621,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_63e457c2f0c8e',
+                                            'field' => 'field_647461772092c',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
@@ -1631,7 +1641,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'append' => '天',
                             ),
                             array(
-                                'key' => 'field_63e48e07724fa',
+                                'key' => 'field_6474617720935',
                                 'label' => '开启调试',
                                 'name' => 'debug',
                                 'aria-label' => '',
@@ -1641,7 +1651,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_63e457c2f0c8e',
+                                            'field' => 'field_647461772092c',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
@@ -1659,7 +1669,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'ui' => 1,
                             ),
                             array(
-                                'key' => 'field_63e4574e63968',
+                                'key' => 'field_6474617720938',
                                 'label' => '底部广告内容',
                                 'name' => 'content',
                                 'aria-label' => '',
@@ -1669,7 +1679,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'conditional_logic' => array(
                                     array(
                                         array(
-                                            'field' => 'field_63e457c2f0c8e',
+                                            'field' => 'field_647461772092c',
                                             'operator' => '==',
                                             'value' => '1',
                                         ),
@@ -1691,7 +1701,7 @@ if (function_exists('acf_add_local_field_group')) :
                 ),
             ),
             array(
-                'key' => 'field_63dc5e8a13f29',
+                'key' => 'field_6474617709d79',
                 'label' => '设置（开发中）',
                 'name' => '',
                 'aria-label' => '',
@@ -1708,7 +1718,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'endpoint' => 0,
             ),
             array(
-                'key' => 'field_6449d24c99da4',
+                'key' => 'field_6474617709d7e',
                 'label' => '设置',
                 'name' => '设置',
                 'aria-label' => '',
@@ -1724,7 +1734,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'layout' => 'block',
                 'sub_fields' => array(
                     array(
-                        'key' => 'field_6449d26699da5',
+                        'key' => 'field_6474617722468',
                         'label' => 'ACF',
                         'name' => '',
                         'aria-label' => '',
@@ -1741,7 +1751,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'endpoint' => 0,
                     ),
                     array(
-                        'key' => 'field_6449d27999da6',
+                        'key' => 'field_647461772246c',
                         'label' => 'ACF',
                         'name' => 'acf',
                         'aria-label' => '',
@@ -1757,7 +1767,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'layout' => 'block',
                         'sub_fields' => array(
                             array(
-                                'key' => 'field_63e34dc5be713',
+                                'key' => 'field_6474617722a01',
                                 'label' => '隐藏字段',
                                 'name' => 'acf_hide',
                                 'aria-label' => '',
@@ -1779,7 +1789,7 @@ if (function_exists('acf_add_local_field_group')) :
                         ),
                     ),
                     array(
-                        'key' => 'field_6449d28b99da7',
+                        'key' => 'field_647461772246e',
                         'label' => '监听',
                         'name' => '',
                         'aria-label' => '',
@@ -1796,7 +1806,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'endpoint' => 0,
                     ),
                     array(
-                        'key' => 'field_6449d29e99da8',
+                        'key' => 'field_6474617722471',
                         'label' => '监听',
                         'name' => '监听',
                         'aria-label' => '',
@@ -1812,7 +1822,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'layout' => 'block',
                         'sub_fields' => array(
                             array(
-                                'key' => 'field_6449d2ab99da9',
+                                'key' => 'field_647461772351a',
                                 'label' => '有效浏览',
                                 'name' => '有效浏览',
                                 'aria-label' => '',
@@ -1833,7 +1843,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'append' => '秒',
                             ),
                             array(
-                                'key' => 'field_6449d2fb99daa',
+                                'key' => 'field_647461772351d',
                                 'label' => '有效点击',
                                 'name' => '有效点击',
                                 'aria-label' => '',
@@ -1858,7 +1868,7 @@ if (function_exists('acf_add_local_field_group')) :
                 ),
             ),
             array(
-                'key' => 'field_63856f5ccbb8d',
+                'key' => 'field_6474617709d81',
                 'label' => '选项卡（测试中）',
                 'name' => '',
                 'aria-label' => '',
@@ -1875,7 +1885,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'endpoint' => 0,
             ),
             array(
-                'key' => 'field_63dc62c06f8d4',
+                'key' => 'field_6474617709d85',
                 'label' => '高级广告（调试中）',
                 'name' => 'asdfsadf',
                 'aria-label' => '',
@@ -1891,7 +1901,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'layout' => 'block',
                 'sub_fields' => array(
                     array(
-                        'key' => 'field_63784ea0bda63',
+                        'key' => 'field_647461772469c',
                         'label' => '专业元素添加（开发中）',
                         'name' => 'repeater_element',
                         'aria-label' => '',
@@ -1912,7 +1922,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'rows_per_page' => 20,
                         'sub_fields' => array(
                             array(
-                                'key' => 'field_63784fb9bda67',
+                                'key' => 'field_64746177249e6',
                                 'label' => '添加的内容',
                                 'name' => 'element_content',
                                 'aria-label' => '',
@@ -1930,10 +1940,10 @@ if (function_exists('acf_add_local_field_group')) :
                                 'toolbar' => 'full',
                                 'media_upload' => 1,
                                 'delay' => 0,
-                                'parent_repeater' => 'field_63784ea0bda63',
+                                'parent_repeater' => 'field_647461772469c',
                             ),
                             array(
-                                'key' => 'field_63784f1dbda64',
+                                'key' => 'field_64746177249e9',
                                 'label' => '修改的页面',
                                 'name' => 'element_page',
                                 'aria-label' => '',
@@ -1957,10 +1967,10 @@ if (function_exists('acf_add_local_field_group')) :
                                 'layout' => 'vertical',
                                 'return_format' => 'value',
                                 'save_other_choice' => 0,
-                                'parent_repeater' => 'field_63784ea0bda63',
+                                'parent_repeater' => 'field_647461772469c',
                             ),
                             array(
-                                'key' => 'field_63784f7abda65',
+                                'key' => 'field_64746177249ec',
                                 'label' => '目标ID元素',
                                 'name' => 'element_id',
                                 'aria-label' => '',
@@ -1978,10 +1988,10 @@ if (function_exists('acf_add_local_field_group')) :
                                 'prepend' => '',
                                 'append' => '',
                                 'maxlength' => '',
-                                'parent_repeater' => 'field_63784ea0bda63',
+                                'parent_repeater' => 'field_647461772469c',
                             ),
                             array(
-                                'key' => 'field_63784fa1bda66',
+                                'key' => 'field_64746177249ef',
                                 'label' => '离目标最近的class',
                                 'name' => 'element_class',
                                 'aria-label' => '',
@@ -1999,14 +2009,14 @@ if (function_exists('acf_add_local_field_group')) :
                                 'prepend' => '',
                                 'append' => '',
                                 'maxlength' => '',
-                                'parent_repeater' => 'field_63784ea0bda63',
+                                'parent_repeater' => 'field_647461772469c',
                             ),
                         ),
                     ),
                 ),
             ),
             array(
-                'key' => 'field_63dc621fab631',
+                'key' => 'field_6474617709d89',
                 'label' => '测试下字段',
                 'name' => '测试下字段',
                 'aria-label' => '',
@@ -2022,7 +2032,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'layout' => '',
                 'sub_fields' => array(
                     array(
-                        'key' => 'field_6392fe18eee8c',
+                        'key' => 'field_6474617725d4f',
                         'label' => '大段内容',
                         'name' => '大段内容',
                         'aria-label' => '',
@@ -2043,7 +2053,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'display' => 'block',
                                 'sub_fields' => array(
                                     array(
-                                        'key' => 'field_6392fe29eee8d',
+                                        'key' => 'field_64746177260d8',
                                         'label' => '阿斯顿发斯蒂芬',
                                         'name' => '阿斯顿发斯蒂芬',
                                         'aria-label' => '',
@@ -2063,7 +2073,7 @@ if (function_exists('acf_add_local_field_group')) :
                                         'maxlength' => '',
                                     ),
                                     array(
-                                        'key' => 'field_6392fe31eee8e',
+                                        'key' => 'field_64746177260db',
                                         'label' => '阿斯顿发斯蒂芬阿斯蒂芬阿斯蒂芬',
                                         'name' => '阿斯顿发斯蒂芬阿斯蒂芬阿斯蒂芬',
                                         'aria-label' => '',
@@ -2092,7 +2102,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'max' => '',
                     ),
                     array(
-                        'key' => 'field_639824e6b2251',
+                        'key' => 'field_6474617725d52',
                         'label' => 'img',
                         'name' => 'img',
                         'aria-label' => '',
@@ -2115,7 +2125,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'return_format' => 'value',
                     ),
                     array(
-                        'key' => 'field_63dc5ff562e65',
+                        'key' => 'field_6474617725d54',
                         'label' => '简单分组',
                         'name' => '水电费撒打发斯蒂芬',
                         'aria-label' => '',
@@ -2131,7 +2141,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'layout' => 'block',
                         'sub_fields' => array(
                             array(
-                                'key' => 'field_63e2fbb846fe3',
+                                'key' => 'field_6474617726ec8',
                                 'label' => '1',
                                 'name' => '11',
                                 'aria-label' => '',
@@ -2151,7 +2161,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'append' => '',
                             ),
                             array(
-                                'key' => 'field_63e2fbbf46fe4',
+                                'key' => 'field_6474617726ecd',
                                 'label' => '2',
                                 'name' => '22',
                                 'aria-label' => '',
@@ -2173,7 +2183,7 @@ if (function_exists('acf_add_local_field_group')) :
                         ),
                     ),
                     array(
-                        'key' => 'field_63dc65940f5f0',
+                        'key' => 'field_6474617725d57',
                         'label' => '消息',
                         'name' => '',
                         'aria-label' => '',
@@ -2283,7 +2293,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'esc_html' => 0,
                     ),
                     array(
-                        'key' => 'field_63e2fb782639a',
+                        'key' => 'field_6474617725d5a',
                         'label' => '重复器',
                         'name' => '重复器',
                         'aria-label' => '',
@@ -2305,7 +2315,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'rows_per_page' => 20,
                         'sub_fields' => array(
                             array(
-                                'key' => 'field_63e2fb852639b',
+                                'key' => 'field_6474617727ca0',
                                 'label' => '1',
                                 'name' => '11',
                                 'aria-label' => '',
@@ -2323,10 +2333,10 @@ if (function_exists('acf_add_local_field_group')) :
                                 'placeholder' => '',
                                 'prepend' => '',
                                 'append' => '',
-                                'parent_repeater' => 'field_63e2fb782639a',
+                                'parent_repeater' => 'field_6474617725d5a',
                             ),
                             array(
-                                'key' => 'field_63e2fb8e2639c',
+                                'key' => 'field_6474617727ca3',
                                 'label' => '2',
                                 'name' => '22',
                                 'aria-label' => '',
@@ -2344,7 +2354,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'placeholder' => '',
                                 'prepend' => '',
                                 'append' => '',
-                                'parent_repeater' => 'field_63e2fb782639a',
+                                'parent_repeater' => 'field_6474617725d5a',
                             ),
                         ),
                     ),
@@ -2370,5 +2380,7 @@ if (function_exists('acf_add_local_field_group')) :
         'description' => '功能强大且丰富的广告',
         'show_in_rest' => 0,
     ));
-
-endif;
+    
+    endif;
+    
+    

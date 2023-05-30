@@ -158,7 +158,7 @@ class Magick_ad
 		$this->loader->add_action('wp_footer', $plugin_admin, 'get_all_ad');
 
 		//加载广告内容
-		$this->loader->add_action('init', $plugin_admin, 'show_ad');
+		$this->loader->add_action('wp', $plugin_admin, 'show_ad');
 
 		//统计广告内容 - 在插件初始化时添加菜单和子页面
 		$this->loader->add_action('plugins_loaded', $plugin_admin, 'ad_view');
