@@ -1,2 +1,3 @@
 node_modules
 vite/build/index.css
+.DS_Store
