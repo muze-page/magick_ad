@@ -104,30 +104,21 @@ class Magick_ad_Admin_All
             //拿到展示设备判断条件
             $device = $options['device'];
 
-            //判断展示效果
+            //判断展示效果处理
             $judge_content = self::judge_show($content, $judge);
 
-
-            //进行登录条件判断
+            //进行登录条件处理
             $login_content = self::login_show($judge_content, $login);
 
-            //进行设备条件判断
+            //进行设备条件处理
             $device_content = self::device_show($login_content, $device);
 
 
 
-            //进行页面判断
-            if (isset($options['post'])) {
-                //存在ID数组
-                $post_content = self::post_show($device_content, $options['post']);
-                //给数组添加新判断
-                $options['show_page'] = 'is_singular';
-                //对广告内容进行处理
-                $ad = self::handle_type_data($post_content);
-            } else {
-                //对广告内容进行处理
-                $ad = self::handle_type_data($device_content);
-            }
+          
+
+            //对广告内容进行处理
+            $ad = self::handle_type_data($device_content);
 
 
 
@@ -288,25 +279,5 @@ class Magick_ad_Admin_All
         return [];
     }
 
-    /**
-     * 进行文章或页面判断
-     * @since    1.0.0
-     * @param    array $content 待处理的广告内容
-     * @param    array $arr ID数组
-     * @return array 处理好的广告内容
-     */
-    public function post_show($content, $arr)
-    {
 
-
-
-        //获取当前页面ID
-        $id = get_the_ID();
-
-        if (in_array($id, $arr)) {
-           
-            return $content;
-        }
-        return [];
-    }
 }

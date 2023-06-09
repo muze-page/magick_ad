@@ -100,13 +100,13 @@ class Magick_ad_Admin
 
 		//实例化用到的类
 		$obj = new Magick_ad_Admin_All();
-		//$arr['ad_all'] = $obj->p("<h1>原始全局广告内容</h1>");
-		////基本展示数据
-		//$arr['config'] = $obj->p($config);
-		////说明文本
-		//$arr['msg'] = $obj->p("下面是处理过的");
-		////处理过的数据
-		//$arr['handle'] = $obj->p($obj->handle_ad_content_arr($config));
+		$arr['ad_all'] = $obj->p("<h3>原始全局广告内容</h3>");
+		//基本展示数据
+		$arr['config'] = $obj->p($config);
+		//说明文本
+		$arr['msg'] = $obj->p("<h3>下面是处理过的</h3>");
+		//处理过的数据
+		$arr['handle'] = $obj->p($obj->handle_ad_content_arr($config));
 
 		$arr['ad_part'] = $obj->p("<h3>原始指定广告内容</h3>");
 		$arr['ad_part_data'] = $obj->p($partData);
@@ -132,7 +132,7 @@ class Magick_ad_Admin
 		$part = $obj->handle_ad_content_arr($partData);
 
 		Magick_ad_Admin_Doing::do_ad_content($data);
-		
+
 
 		Magick_ad_Admin_Doing::do_ad_content($part);
 	}

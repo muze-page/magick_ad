@@ -13,7 +13,3 @@ function add_type_attribute_to_script($tag, $handle)
     return $tag;
 }
 add_filter('script_loader_tag', 'add_type_attribute_to_script', 10, 2);
-
-
-
-

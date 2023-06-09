@@ -38,14 +38,50 @@ class Magick_ad_Admin_Doing
         }
 
         foreach ($config as $my_content) {
+            $options = $my_content['option'];
             //拿到广告内容
             $ad_content = $my_content['content'];
             //拿到展示页面
-            $condition = $my_content['option']['show_page'];
-            //拿到展示位置
-            $position = $my_content['option']['show_position'];
+            $condition = $options['show_page'];
+            //指定广告兼容
+            //拿到展示位置-若存在就拿，若不存在，就是指定广告
+            if (isset($options['show_position'])) {
+                $position = $options['show_position'];
+            } else {
+                $position = "is_404"; //给个默认值以防报错，反正下面的判断会覆盖这里的值
+
+            }
 
 
+
+            //指定广告兼容
+            //如果展示页面是is_singular,开始检查是否存在post数组，存在则使用该数组中的值
+            if ($condition === "is_singular") {
+                //判断是否存在post数组
+                if (isset($options['post'])) {
+
+                    //判断当前页面ID是否是指定的ID
+                    global $post;
+                    if (in_array($post->ID, $options['post']['data'])) {
+                        //改为指定文章设置的位置
+                        $position = $options['post']['position'];
+                    }
+                }
+            }
+            //如果展示页面是is_Category,开始检查是否存在Category数组，存在则使用该数组中的值
+            if ($condition === "is_category") {
+
+                //判断是否存在post数组
+                if (isset($options['category'])) {
+
+                    //判断当前页面ID是否是指定的ID
+                    global $cat;
+                    if (in_array($cat, $options['category']['data'])) {
+                        //改为指定文章设置的位置
+                        $position = $options['category']['position'];
+                    }
+                }
+            }
             //通用
             switch ($position) {
                     //页面顶部
