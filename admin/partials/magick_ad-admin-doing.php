@@ -67,49 +67,30 @@ class Magick_ad_Admin_Doing
             if (isset($options['show_position'])) {
                 $position = $options['show_position'];
             } else {
-                $position = "is_404"; //给个默认值以防报错，反正下面的判断会覆盖这里的值
+                $position = ""; //给个空值以防报错，反正下面的判断会覆盖这里的值
 
             }
 
 
 
             //指定广告兼容
-            //如果展示页面是is_singular,开始检查是否存在post数组，存在则使用该数组中的值
-            if ($condition === "is_singular") {
-                //在ACF插件页会报错，这里再判断下
-                //获取当前页的ID
-                $current_page_id = get_queried_object_id();
-                if ($current_page_id !== 0) {
-                    //判断是否存在post数组
-                    if (isset($options['post'])) {
-
-                        //判断当前页面ID是否是指定的ID
-                        global $post;
-
-                        echo "<pre>";
-                        print_r($post);
-                        echo "</pre>";
-
-                        echo "669";
-                        if (in_array($post->ID, $options['post']['data'])) {
-                            //改为指定文章设置的位置
-                            $position = $options['post']['position'];
-                        }
-                    }
+            //如果展示页面是is_singular且存在post数组，则使用该数组中的值
+            if ($condition === "is_singular" && isset($options['post'])) {
+                // 获取当前页的对象
+                $post = get_queried_object();
+                if (in_array($post->ID, $options['post']['data'])) {
+                    //改为指定文章设置的位置
+                    $position = $options['post']['position'];
                 }
             }
             //如果展示页面是is_Category,开始检查是否存在Category数组，存在则使用该数组中的值
-            if ($condition === "is_category") {
-
-                //判断是否存在post数组
-                if (isset($options['category'])) {
-
-                    //判断当前页面ID是否是指定的ID
-                    global $cat;
-                    if (in_array($cat, $options['category']['data'])) {
-                        //改为指定文章设置的位置
-                        $position = $options['category']['position'];
-                    }
+            if ($condition === "is_category" && isset($options['category'])) {
+                //判断当前页面ID是否在指定的ID数组中
+                // 获取当前分类目录的 ID
+                $cat = get_query_var('cat');
+                if (in_array($cat, $options['category']['data'])) {
+                    //改为指定文章设置的位置
+                    $position = $options['category']['position'];
                 }
             }
             //通用
