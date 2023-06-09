@@ -76,11 +76,20 @@ class Magick_ad_Admin_Doing
                 //当前页面、文章、分类的ID
                 $id = get_queried_object_id(); // 获取当前标签ID
 
-                $singular = self::find_position("is_singular", $options, $id);
-                $category = self::find_position("is_category", $options, $id);
-                $tag = self::find_position("is_tag", $options, $id);
-                //因为判断条件同一时间只有一个，所有下面只有一个是有值的，用“或”运算就行。
-                $position = $singular || $category || $tag;
+                $positions = array(
+                    self::find_position("is_singular", $options, $id),
+                    self::find_position("is_category", $options, $id),
+                    self::find_position("is_tag", $options, $id)
+                );
+
+                $position = NULL;
+
+                foreach ($positions as $p) {
+                    if ($p !== NULL) {
+                        $position = $p;
+                        break;
+                    }
+                }
             }
 
 
@@ -166,11 +175,17 @@ class Magick_ad_Admin_Doing
      * @param string $condition 条件类型
      * @param Array $options 选项数组
      * @param Array $id 当前页的ID，如文章、页面、分类、标签ID等，若没则为0
+     * 函数返回一个表示位置的整数值或者 NULL 表示没有找到指定的 ID 值
      */
     private static function find_position($condition, $options, $id)
     {
+        //获取键值，例如singular
         $key = str_replace('is_', '', $condition);
+        //过滤：是数组不然就NULL
+        //过滤：确定拿到的值都是数组类型
         $data = array_filter([$options[$key]['data'] ?? NULL], 'is_array');
+        //当 $key 对应的选项中的数组 $data 中包含 $id 元素时，返回该选项中的 position 值；否则，返回 NULL。
+
         return in_array($id, $data[0] ?? []) ? $options[$key]['position'] : NULL;
     }
 
