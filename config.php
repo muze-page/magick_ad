@@ -1,5 +1,8 @@
 <?php
-if ( function_exists('acf_add_local_field_group') ):
+add_action('acf/include_fields', function () {
+    if (!function_exists('acf_add_local_field_group')) {
+        return;
+    }
 
     acf_add_local_field_group(array(
         'key' => 'group_6474617708bd0',
@@ -747,8 +750,10 @@ if ( function_exists('acf_add_local_field_group') ):
                                     'id' => '',
                                 ),
                                 'choices' => array(
-                                    'loop_start' => '循环前',
-                                    'loop_end' => '循环后',
+                                    'loop_start' => '内容前',
+                                    'loop_end' => '内容后',
+                                    'wp_head' => '顶部',
+                                    'wp_footer' => '底部',
                                 ),
                                 'default_value' => 'loop_start',
                                 'return_format' => 'value',
@@ -788,15 +793,16 @@ if ( function_exists('acf_add_local_field_group') ):
                                     'id' => '',
                                 ),
                                 'choices' => array(
-                                    'the_post' => '文章或页面前',
-                                    'loop_start' => '循环前',
-                                    'loop_end' => '循环后',
+                                    'loop_start' => '内容前',
+                                    'loop_end' => '内容后',
                                     'single_before' => '文章顶部',
                                     'single_three' => '文章第三段',
                                     'single_after' => '文章底部',
                                     'add_comment_text_before' => '评论列表上方',
                                     'comment_form_before' => '评论框上方',
                                     'comment_form_after' => '评论框下方',
+                                    'wp_head' => '顶部',
+                                    'wp_footer' => '底部',
                                 ),
                                 'default_value' => 'loop_start',
                                 'return_format' => 'value',
@@ -890,7 +896,7 @@ if ( function_exists('acf_add_local_field_group') ):
                         'sub_fields' => array(
                             array(
                                 'key' => 'field_6474624c81e93',
-                                'label' => '1',
+                                'label' => '通用选项',
                                 'name' => '1',
                                 'aria-label' => '',
                                 'type' => 'clone',
@@ -914,38 +920,11 @@ if ( function_exists('acf_add_local_field_group') ):
                                 'prefix_name' => 0,
                             ),
                             array(
-                                'key' => 'field_647462e9b9331',
-                                'label' => '文章或页面',
-                                'name' => 'post',
+                                'key' => 'field_648283661a30d',
+                                'label' => '类型',
+                                'name' => 'show_page',
                                 'aria-label' => '',
-                                'type' => 'post_object',
-                                'instructions' => '',
-                                'required' => 0,
-                                'conditional_logic' => 0,
-                                'wrapper' => array(
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                ),
-                                'post_type' => array(
-                                    0 => 'post',
-                                    1 => 'page',
-                                ),
-                                'post_status' => array(
-                                    0 => 'publish',
-                                ),
-                                'taxonomy' => '',
-                                'return_format' => 'id',
-                                'multiple' => 1,
-                                'allow_null' => 0,
-                                'ui' => 1,
-                            ),
-                            array(
-                                'key' => 'field_6474624c81e93_field_6474617711a84',
-                                'label' => '文章或页面展示',
-                                'name' => 'show_position',
-                                'aria-label' => '',
-                                'type' => 'select',
+                                'type' => 'button_group',
                                 'instructions' => '',
                                 'required' => 0,
                                 'conditional_logic' => 0,
@@ -955,23 +934,178 @@ if ( function_exists('acf_add_local_field_group') ):
                                     'id' => '',
                                 ),
                                 'choices' => array(
-                                    'the_post' => '文章或页面前',
-                                    'loop_start' => '循环前',
-                                    'loop_end' => '循环后',
-                                    'single_before' => '文章顶部',
-                                    'single_three' => '文章第三段',
-                                    'single_after' => '文章底部',
-                                    'add_comment_text_before' => '评论列表上方',
-                                    'comment_form_before' => '评论框上方',
-                                    'comment_form_after' => '评论框下方',
+                                    'is_singular' => '文章或页面',
+                                    'is_category' => '分类',
                                 ),
-                                'default_value' => 'loop_start',
+                                'default_value' => 'is_singular',
                                 'return_format' => 'value',
-                                'multiple' => 0,
                                 'allow_null' => 0,
-                                'ui' => 0,
-                                'ajax' => 0,
-                                'placeholder' => '',
+                                'layout' => 'horizontal',
+                            ),
+                            array(
+                                'key' => 'field_64829a7745b1d',
+                                'label' => '文章或页面',
+                                'name' => 'post',
+                                'aria-label' => '',
+                                'type' => 'group',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
+                                            'field' => 'field_648283661a30d',
+                                            'operator' => '==',
+                                            'value' => 'is_singular',
+                                        ),
+                                    ),
+                                ),
+                                'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'layout' => 'block',
+                                'sub_fields' => array(
+                                    array(
+                                        'key' => 'field_647462e9b9331',
+                                        'label' => '文章或页面',
+                                        'name' => 'data',
+                                        'aria-label' => '',
+                                        'type' => 'post_object',
+                                        'instructions' => '',
+                                        'required' => 0,
+                                        'conditional_logic' => 0,
+                                        'wrapper' => array(
+                                            'width' => '',
+                                            'class' => '',
+                                            'id' => '',
+                                        ),
+                                        'post_type' => array(
+                                            0 => 'post',
+                                            1 => 'page',
+                                        ),
+                                        'post_status' => array(
+                                            0 => 'publish',
+                                        ),
+                                        'taxonomy' => '',
+                                        'return_format' => 'id',
+                                        'multiple' => 1,
+                                        'allow_null' => 0,
+                                        'ui' => 1,
+                                    ),
+                                    array(
+                                        'key' => 'field_6474624c81e93_field_6474617711a84',
+                                        'label' => '文章或页面展示',
+                                        'name' => 'position',
+                                        'aria-label' => '',
+                                        'type' => 'select',
+                                        'instructions' => '',
+                                        'required' => 0,
+                                        'conditional_logic' => 0,
+                                        'wrapper' => array(
+                                            'width' => '50',
+                                            'class' => '',
+                                            'id' => '',
+                                        ),
+                                        'choices' => array(
+                                            'loop_start' => '内容上',
+                                            'loop_end' => '内容下',
+                                            'single_before' => '文章顶部',
+                                            'single_three' => '文章第三段',
+                                            'single_after' => '文章底部',
+                                            'add_comment_text_before' => '评论列表上方',
+                                            'comment_form_before' => '评论框上方',
+                                            'comment_form_after' => '评论框下方',
+                                            'wp_head' => '顶部',
+                                            'wp_footer' => '底部',
+                                        ),
+                                        'default_value' => 'loop_start',
+                                        'return_format' => 'value',
+                                        'multiple' => 0,
+                                        'allow_null' => 0,
+                                        'ui' => 0,
+                                        'ajax' => 0,
+                                        'placeholder' => '',
+                                    ),
+                                ),
+                            ),
+                            array(
+                                'key' => 'field_64829b26f3918',
+                                'label' => '分类',
+                                'name' => 'category',
+                                'aria-label' => '',
+                                'type' => 'group',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => array(
+                                    array(
+                                        array(
+                                            'field' => 'field_648283661a30d',
+                                            'operator' => '==',
+                                            'value' => 'is_category',
+                                        ),
+                                    ),
+                                ),
+                                'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'layout' => 'block',
+                                'sub_fields' => array(
+                                    array(
+                                        'key' => 'field_6482823a41e81',
+                                        'label' => '分类',
+                                        'name' => 'data',
+                                        'aria-label' => '',
+                                        'type' => 'taxonomy',
+                                        'instructions' => '',
+                                        'required' => 0,
+                                        'conditional_logic' => 0,
+                                        'wrapper' => array(
+                                            'width' => '',
+                                            'class' => '',
+                                            'id' => '',
+                                        ),
+                                        'taxonomy' => 'category',
+                                        'add_term' => 0,
+                                        'save_terms' => 0,
+                                        'load_terms' => 0,
+                                        'return_format' => 'id',
+                                        'field_type' => 'multi_select',
+                                        'allow_null' => 0,
+                                        'multiple' => 0,
+                                    ),
+                                    array(
+                                        'key' => 'field_648283fd1a30e',
+                                        'label' => '分类展示',
+                                        'name' => 'position',
+                                        'aria-label' => '',
+                                        'type' => 'select',
+                                        'instructions' => '',
+                                        'required' => 0,
+                                        'conditional_logic' => 0,
+                                        'wrapper' => array(
+                                            'width' => '',
+                                            'class' => '',
+                                            'id' => '',
+                                        ),
+                                        'choices' => array(
+                                            'loop_start' => '内容上',
+                                            'loop_end' => '内容下',
+                                            'category_description' => '分类描述后',
+                                            'wp_head' => '顶部',
+                                            'wp_footer' => '底部',
+                                        ),
+                                        'default_value' => 'loop_start',
+                                        'return_format' => 'value',
+                                        'multiple' => 0,
+                                        'allow_null' => 0,
+                                        'ui' => 0,
+                                        'ajax' => 0,
+                                        'placeholder' => '',
+                                    ),
+                                ),
                             ),
                         ),
                         'parent_repeater' => 'field_647461f381e90',
@@ -1885,137 +2019,6 @@ if ( function_exists('acf_add_local_field_group') ):
                 'endpoint' => 0,
             ),
             array(
-                'key' => 'field_6474617709d85',
-                'label' => '高级广告（调试中）',
-                'name' => 'asdfsadf',
-                'aria-label' => '',
-                'type' => 'group',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'layout' => 'block',
-                'sub_fields' => array(
-                    array(
-                        'key' => 'field_647461772469c',
-                        'label' => '专业元素添加（开发中）',
-                        'name' => 'repeater_element',
-                        'aria-label' => '',
-                        'type' => 'repeater',
-                        'instructions' => '专业人士使用，很强大的自定义添加',
-                        'required' => 0,
-                        'conditional_logic' => 0,
-                        'wrapper' => array(
-                            'width' => '',
-                            'class' => '',
-                            'id' => '',
-                        ),
-                        'collapsed' => '',
-                        'min' => 0,
-                        'max' => 0,
-                        'layout' => 'table',
-                        'button_label' => '添加行',
-                        'rows_per_page' => 20,
-                        'sub_fields' => array(
-                            array(
-                                'key' => 'field_64746177249e6',
-                                'label' => '添加的内容',
-                                'name' => 'element_content',
-                                'aria-label' => '',
-                                'type' => 'wysiwyg',
-                                'instructions' => '',
-                                'required' => 0,
-                                'conditional_logic' => 0,
-                                'wrapper' => array(
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                ),
-                                'default_value' => '',
-                                'tabs' => 'all',
-                                'toolbar' => 'full',
-                                'media_upload' => 1,
-                                'delay' => 0,
-                                'parent_repeater' => 'field_647461772469c',
-                            ),
-                            array(
-                                'key' => 'field_64746177249e9',
-                                'label' => '修改的页面',
-                                'name' => 'element_page',
-                                'aria-label' => '',
-                                'type' => 'radio',
-                                'instructions' => '',
-                                'required' => 0,
-                                'conditional_logic' => 0,
-                                'wrapper' => array(
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                ),
-                                'choices' => array(
-                                    0 => '首页',
-                                    1 => '文章页',
-                                    2 => '单页',
-                                ),
-                                'allow_null' => 0,
-                                'other_choice' => 0,
-                                'default_value' => '',
-                                'layout' => 'vertical',
-                                'return_format' => 'value',
-                                'save_other_choice' => 0,
-                                'parent_repeater' => 'field_647461772469c',
-                            ),
-                            array(
-                                'key' => 'field_64746177249ec',
-                                'label' => '目标ID元素',
-                                'name' => 'element_id',
-                                'aria-label' => '',
-                                'type' => 'text',
-                                'instructions' => '离目标最近的ID元素',
-                                'required' => 0,
-                                'conditional_logic' => 0,
-                                'wrapper' => array(
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                ),
-                                'default_value' => '',
-                                'placeholder' => '',
-                                'prepend' => '',
-                                'append' => '',
-                                'maxlength' => '',
-                                'parent_repeater' => 'field_647461772469c',
-                            ),
-                            array(
-                                'key' => 'field_64746177249ef',
-                                'label' => '离目标最近的class',
-                                'name' => 'element_class',
-                                'aria-label' => '',
-                                'type' => 'text',
-                                'instructions' => '',
-                                'required' => 0,
-                                'conditional_logic' => 0,
-                                'wrapper' => array(
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                ),
-                                'default_value' => '',
-                                'placeholder' => '',
-                                'prepend' => '',
-                                'append' => '',
-                                'maxlength' => '',
-                                'parent_repeater' => 'field_647461772469c',
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            array(
                 'key' => 'field_6474617709d89',
                 'label' => '测试下字段',
                 'name' => '测试下字段',
@@ -2031,6 +2034,29 @@ if ( function_exists('acf_add_local_field_group') ):
                 ),
                 'layout' => '',
                 'sub_fields' => array(
+                    array(
+                        'key' => 'field_6482d42a07453',
+                        'label' => '分类法-标签',
+                        'name' => '文章对象',
+                        'aria-label' => '',
+                        'type' => 'taxonomy',
+                        'instructions' => '',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'taxonomy' => 'post_tag',
+                        'add_term' => 0,
+                        'save_terms' => 0,
+                        'load_terms' => 0,
+                        'return_format' => 'id',
+                        'field_type' => 'multi_select',
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                    ),
                     array(
                         'key' => 'field_6474617725d4f',
                         'label' => '大段内容',
@@ -2197,98 +2223,98 @@ if ( function_exists('acf_add_local_field_group') ):
                             'id' => '',
                         ),
                         'message' => '<div class="user-data">
-                    <div class="data-item">
-                            <div class="icon" style="background-image:url(https://p5.ssl.qhimg.com/t01bda78253a6640398.png)"></div>
-                            <div class="right">
-                                    <div class="amount"><span class="num">100</span>万</div>
-                                    <div class="desc">注册客户数</div>
-                            </div>
-                    </div>
-                    <div class="data-item">
-                            <div class="icon" style="background-image:url(https://p4.ssl.qhimg.com/t010319dab6802cfbfe.png)"></div>
-                            <div class="right">
-                                    <div class="amount"><span class="num">1500</span>万</div>
-                                    <div class="desc">最高同时在线人数</div>
-                            </div>
-                    </div>
-                    <div class="data-item">
-                            <div class="icon" style="background-image:url(https://p1.ssl.qhimg.com/t01f9fbff16eb500869.png)"></div>
-                            <div class="right">
-                                    <div class="amount"><span class="num">2000</span>万</div>
-                                    <div class="desc">终端用户数</div>
-                            </div>
-                    </div>
-            </div>
-            <style>
-                    .user-data {
-                            position: absolute;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            width: 1200px;
-                            height: 100px;
-                            border: 1px solid #fff;
-                            border-radius: 8px;
-                            background: linear-gradient(180deg, #f4f5f8 4%, hsla(0, 0%, 100%, .7));
-                            box-shadow: -4px 0 8px 0 rgb(37 56 108 / 5%), 0 2px 6px 0 rgb(37 56 108 / 15%), 0 10px 20px 0 rgb(49 70 125 / 10%);
-                            -webkit-backdrop-filter: blur(27px);
-                            backdrop-filter: blur(27px);
-                            z-index: 20;
-                    }
-    
-                    .data-item {
-                            width: 33.33333%;
-                            height: 66px;
-                            position: relative;
-                            display: flex;
-                            align-items: center;
-                    }
-    
-                    .icon {
-                            margin-left: 105px;
-                            width: 70px;
-                            height: 70px;
-                            background-size: cover;
-                            background-repeat: no-repeat;
-                    }
-    
-                    .right {
-                            margin-left: 16px;
-                            font-size: 14px;
-                            color: #191919;
-                    }
-    
-                    .amount {
-                            height: 44px;
-                            line-height: 44px;
-                    }
-    
-                    .num {
-                            font-family: PingFangSC-Medium;
-                            color: #0256ff;
-                            font-size: 36px;
-                    }
-    
-                    .desc {
-                            height: 22px;
-                            line-height: 22px;
-                    }
-    
-                    .user-data .data-item:after {
-                            position: absolute;
-                            right: 0;
-                            content: "";
-                            width: 2px;
-                            height: 48px;
-                            background-image: linear-gradient(90deg, #fff 0, #fff 50%, #dedede 0, #dedede);
-                    }
-    
-                    .user-data {
-                            margin-top: 8em;
-                    }
-            </style>',
+					<div class="data-item">
+							<div class="icon" style="background-image:url(https://p5.ssl.qhimg.com/t01bda78253a6640398.png)"></div>
+							<div class="right">
+									<div class="amount"><span class="num">100</span>万</div>
+									<div class="desc">注册客户数</div>
+							</div>
+					</div>
+					<div class="data-item">
+							<div class="icon" style="background-image:url(https://p4.ssl.qhimg.com/t010319dab6802cfbfe.png)"></div>
+							<div class="right">
+									<div class="amount"><span class="num">1500</span>万</div>
+									<div class="desc">最高同时在线人数</div>
+							</div>
+					</div>
+					<div class="data-item">
+							<div class="icon" style="background-image:url(https://p1.ssl.qhimg.com/t01f9fbff16eb500869.png)"></div>
+							<div class="right">
+									<div class="amount"><span class="num">2000</span>万</div>
+									<div class="desc">终端用户数</div>
+							</div>
+					</div>
+			</div>
+			<style>
+					.user-data {
+							position: absolute;
+							left: 50%;
+							transform: translate(-50%, -50%);
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							width: 1200px;
+							height: 100px;
+							border: 1px solid #fff;
+							border-radius: 8px;
+							background: linear-gradient(180deg, #f4f5f8 4%, hsla(0, 0%, 100%, .7));
+							box-shadow: -4px 0 8px 0 rgb(37 56 108 / 5%), 0 2px 6px 0 rgb(37 56 108 / 15%), 0 10px 20px 0 rgb(49 70 125 / 10%);
+							-webkit-backdrop-filter: blur(27px);
+							backdrop-filter: blur(27px);
+							z-index: 20;
+					}
+	
+					.data-item {
+							width: 33.33333%;
+							height: 66px;
+							position: relative;
+							display: flex;
+							align-items: center;
+					}
+	
+					.icon {
+							margin-left: 105px;
+							width: 70px;
+							height: 70px;
+							background-size: cover;
+							background-repeat: no-repeat;
+					}
+	
+					.right {
+							margin-left: 16px;
+							font-size: 14px;
+							color: #191919;
+					}
+	
+					.amount {
+							height: 44px;
+							line-height: 44px;
+					}
+	
+					.num {
+							font-family: PingFangSC-Medium;
+							color: #0256ff;
+							font-size: 36px;
+					}
+	
+					.desc {
+							height: 22px;
+							line-height: 22px;
+					}
+	
+					.user-data .data-item:after {
+							position: absolute;
+							right: 0;
+							content: "";
+							width: 2px;
+							height: 48px;
+							background-image: linear-gradient(90deg, #fff 0, #fff 50%, #dedede 0, #dedede);
+					}
+	
+					.user-data {
+							margin-top: 8em;
+					}
+			</style>',
                         'new_lines' => '',
                         'esc_html' => 0,
                     ),
@@ -2360,6 +2386,137 @@ if ( function_exists('acf_add_local_field_group') ):
                     ),
                 ),
             ),
+            array(
+                'key' => 'field_6474617709d85',
+                'label' => '高级广告（调试中）',
+                'name' => 'asdfsadf',
+                'aria-label' => '',
+                'type' => 'group',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'layout' => 'block',
+                'sub_fields' => array(
+                    array(
+                        'key' => 'field_647461772469c',
+                        'label' => '专业元素添加（开发中）',
+                        'name' => 'repeater_element',
+                        'aria-label' => '',
+                        'type' => 'repeater',
+                        'instructions' => '专业人士使用，很强大的自定义添加',
+                        'required' => 0,
+                        'conditional_logic' => 0,
+                        'wrapper' => array(
+                            'width' => '',
+                            'class' => '',
+                            'id' => '',
+                        ),
+                        'collapsed' => '',
+                        'min' => 0,
+                        'max' => 0,
+                        'layout' => 'table',
+                        'button_label' => '添加行',
+                        'rows_per_page' => 20,
+                        'sub_fields' => array(
+                            array(
+                                'key' => 'field_64746177249e6',
+                                'label' => '添加的内容',
+                                'name' => 'element_content',
+                                'aria-label' => '',
+                                'type' => 'wysiwyg',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'default_value' => '',
+                                'tabs' => 'all',
+                                'toolbar' => 'full',
+                                'media_upload' => 1,
+                                'delay' => 0,
+                                'parent_repeater' => 'field_647461772469c',
+                            ),
+                            array(
+                                'key' => 'field_64746177249e9',
+                                'label' => '修改的页面',
+                                'name' => 'element_page',
+                                'aria-label' => '',
+                                'type' => 'radio',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'choices' => array(
+                                    0 => '首页',
+                                    1 => '文章页',
+                                    2 => '单页',
+                                ),
+                                'allow_null' => 0,
+                                'other_choice' => 0,
+                                'default_value' => '',
+                                'layout' => 'vertical',
+                                'return_format' => 'value',
+                                'save_other_choice' => 0,
+                                'parent_repeater' => 'field_647461772469c',
+                            ),
+                            array(
+                                'key' => 'field_64746177249ec',
+                                'label' => '目标ID元素',
+                                'name' => 'element_id',
+                                'aria-label' => '',
+                                'type' => 'text',
+                                'instructions' => '离目标最近的ID元素',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'default_value' => '',
+                                'placeholder' => '',
+                                'prepend' => '',
+                                'append' => '',
+                                'maxlength' => '',
+                                'parent_repeater' => 'field_647461772469c',
+                            ),
+                            array(
+                                'key' => 'field_64746177249ef',
+                                'label' => '离目标最近的class',
+                                'name' => 'element_class',
+                                'aria-label' => '',
+                                'type' => 'text',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'default_value' => '',
+                                'placeholder' => '',
+                                'prepend' => '',
+                                'append' => '',
+                                'maxlength' => '',
+                                'parent_repeater' => 'field_647461772469c',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
         ),
         'location' => array(
             array(
@@ -2380,7 +2537,4 @@ if ( function_exists('acf_add_local_field_group') ):
         'description' => '功能强大且丰富的广告',
         'show_in_rest' => 0,
     ));
-    
-    endif;
-    
-    
+});

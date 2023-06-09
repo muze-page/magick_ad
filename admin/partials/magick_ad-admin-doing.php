@@ -77,8 +77,8 @@ class Magick_ad_Admin_Doing
             //如果展示页面是is_singular且存在post数组，则使用该数组中的值
             if ($condition === "is_singular" && isset($options['post'])) {
                 // 获取当前页的对象
-                $post = get_queried_object();
-                if (in_array($post->ID, $options['post']['data'])) {
+                $post = get_queried_object_id();
+                if (in_array($post, $options['post']['data'])) {
                     //改为指定文章设置的位置
                     $position = $options['post']['position'];
                 }
