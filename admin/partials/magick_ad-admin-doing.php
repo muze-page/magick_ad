@@ -72,40 +72,24 @@ class Magick_ad_Admin_Doing
             if (isset($options['show_position'])) {
                 $position = $options['show_position'];
             } else {
-                $position = ""; //给个空值以防报错，反正下面的判断会覆盖这里的值
+                //指定广告
+                //当前页面、文章、分类的ID
+                $id = get_queried_object_id(); // 获取当前标签ID
 
+                $singular = self::find_position("is_singular", $options, $id);
+                $category = self::find_position("is_category", $options, $id);
+                $tag = self::find_position("is_tag", $options, $id);
+                //因为判断条件同一时间只有一个，所有下面只有一个是有值的，用“或”运算就行。
+                $position = $singular || $category || $tag;
             }
 
-            //当前页面、文章、分类的ID
-            $id = get_queried_object_id(); // 获取当前标签ID
 
-            //指定广告兼容
-            //如果展示页面是is_singular且存在post数组，则使用该数组中的值
-            if ($condition === "is_singular" && isset($options['post'])) {
 
-                //判断当前页面ID是否在指定的ID数组中
-                if (in_array($id, $options['post']['data'])) {
-                    //改为指定文章设置的位置
-                    $position = $options['post']['position'];
-                }
-            }
-            //如果展示页面是is_Category,开始检查是否存在Category数组，存在则使用该数组中的值
-            if ($condition === "is_category" && isset($options['category'])) {
-                //判断当前分类ID是否在指定的ID数组中
-                if (in_array($id, $options['category']['data'])) {
-                    //改为指定分类设置的位置
-                    $position = $options['category']['position'];
-                }
-            }
 
-            //如果展示页面是is_Category,开始检查是否存在Category数组，存在则使用该数组中的值
-            if ($condition === "is_tag" && isset($options['tag'])) {
-                //如果当前标签ID是指定标签ID数组中
-                if (in_array($id, $options['tag']['data'])) {
-                    //改为指定标签设置的位置
-                    $position = $options['tag']['position'];
-                }
-            }
+
+
+
+
             //通用
             switch ($position) {
                     //页面顶部
@@ -167,6 +151,28 @@ class Magick_ad_Admin_Doing
         }
     }
 
+    //if ($condition === "is_singular" && isset($options['singular'], $options['singular']['data']) && is_array($options['singular']['data'] ?? NULL) && in_array($id, $options['singular']['data'])) {
+    //    // 在数据中找到了当前标签的 ID
+    //    //改为指定标签设置的位置
+    //    $position = $options['singular']['position'];
+    //}
+
+    /**
+     * 判断
+     * 如果展示页面的判断是is_singular且存在singular数组，则使用该数组中的值来对比当前页拿到的值，
+     * 若数组中有当前值则输出广告，没有则输出NULL
+     * 很抱歉，因为拿到的设置值可能是空的，会引起报错，又为了简化代码，这里比较难懂。
+     * 这里是chatGPT写的，我都看不懂，能用就行。理解意思就可以了。
+     * @param string $condition 条件类型
+     * @param Array $options 选项数组
+     * @param Array $id 当前页的ID，如文章、页面、分类、标签ID等，若没则为0
+     */
+    private static function find_position($condition, $options, $id)
+    {
+        $key = str_replace('is_', '', $condition);
+        $data = array_filter([$options[$key]['data'] ?? NULL], 'is_array');
+        return in_array($id, $data[0] ?? []) ? $options[$key]['position'] : NULL;
+    }
 
 
     /**
