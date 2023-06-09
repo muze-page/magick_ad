@@ -1,6 +1,25 @@
 <?php
 
 /**
+ * 添加位置列表
+ * wp_head : 页面顶部
+ * wp_footer : 页面底部
+ * the_post : 文章或页面前（与循环前重复）
+ * loop_start : 循环前
+ * loop_end : 循环后
+ * single_before : 文章顶部
+ * single_three : 文章第三段
+ * single_after : 文章底部
+ * add_comment_text_before : 评论列表上方
+ * comment_form_before : 评论框上方
+ * comment_form_after : 评论框下方
+ */
+/**
+ * 分类
+ * category_description : 分类名下，分类描述广告
+ */
+
+/**
  * 将广告数组加载到页面
  *
  * 将传来的广告数组加载到页面
@@ -57,14 +76,25 @@ class Magick_ad_Admin_Doing
             //指定广告兼容
             //如果展示页面是is_singular,开始检查是否存在post数组，存在则使用该数组中的值
             if ($condition === "is_singular") {
-                //判断是否存在post数组
-                if (isset($options['post'])) {
+                //在ACF插件页会报错，这里再判断下
+                //获取当前页的ID
+                $current_page_id = get_queried_object_id();
+                if ($current_page_id !== 0) {
+                    //判断是否存在post数组
+                    if (isset($options['post'])) {
 
-                    //判断当前页面ID是否是指定的ID
-                    global $post;
-                    if (in_array($post->ID, $options['post']['data'])) {
-                        //改为指定文章设置的位置
-                        $position = $options['post']['position'];
+                        //判断当前页面ID是否是指定的ID
+                        global $post;
+
+                        echo "<pre>";
+                        print_r($post);
+                        echo "</pre>";
+
+                        echo "669";
+                        if (in_array($post->ID, $options['post']['data'])) {
+                            //改为指定文章设置的位置
+                            $position = $options['post']['position'];
+                        }
                     }
                 }
             }
@@ -135,6 +165,10 @@ class Magick_ad_Admin_Doing
                 case 'comment_form_after':
                     self::add_ad_comment_form_after($condition, $ad_content);
                     break;
+                    //分类页-分类名下-分类描述
+                case 'category_description':
+                    self::add_ad_category_description($condition, $ad_content);
+                    break;
             }
         }
     }
@@ -142,35 +176,54 @@ class Magick_ad_Admin_Doing
 
 
     /**
-     * 添加广告到页面顶部
+     * 页面顶部。
+     *
+     * @param callable $condition 指定要显示广告的条件回调函数。
+     *                            如果该函数返回 true，则会显示广告；否则不显示。
+     * @param string   $ad_content   要显示的广告内容。
      */
     private static function add_ad_wp_head($condition, $ad_content)
     {
-        add_filter('wp_head', function () use ($condition, $ad_content) {
-
+        $ad_callback = function () use ($condition, $ad_content) {
             if (call_user_func($condition)) {
                 echo $ad_content;
             }
-        });
+        };
+
+        add_filter('wp_head', $ad_callback);
     }
+
     /**
-     * 添加广告到页面底部
+     * 页面底部。
+     *
+     * @param callable $condition 指定要显示广告的条件回调函数。
+     *                            如果该函数返回 true，则会显示广告；否则不显示。
+     * @param string   $ad_content   要显示的广告内容。
      */
-    private static function add_ad_wp_footer($condition, $ad_content)
+    private static function add_ad_wp_footer(callable $condition, $ad_content)
     {
-        add_filter('wp_footer', function () use ($condition, $ad_content) {
+        // 定义一个广告回调函数
+        $ad_callback = function () use ($condition, $ad_content) {
             if (call_user_func($condition)) {
                 echo $ad_content;
             }
-        });
+        };
+
+        // 在 wp_footer 钩子中添加广告回调函数
+        add_filter('wp_footer', $ad_callback);
     }
 
+
     /**
-     * 添加广告到循环前
+     * 页面主循环前。
+     *
+     * @param callable $condition 指定要显示广告的条件回调函数。
+     *                            如果该函数返回 true，则会显示广告；否则不显示。
+     * @param string   $content   要显示的广告内容。
      */
     private static function add_ad_loop_start($condition, $ad_content)
     {
-        add_filter('loop_start', function () use ($condition, $ad_content) {
+        $ad_callback = function () use ($condition, $ad_content) {
             if (call_user_func($condition)) {
                 //是主循环吗？
                 if (is_main_query()) {
@@ -178,31 +231,43 @@ class Magick_ad_Admin_Doing
                     echo $ad_content;
                 }
             }
-        });
-    }
-    /**
-     * 添加广告到循环后
-     */
-    private static function add_ad_loop_end($condition, $ad_content)
-    {
-        add_filter('loop_end', function () use ($condition, $ad_content) {
-            if (call_user_func($condition)) {
-                //是主循环吗？
-                if (is_main_query()) {
-                    // do stuff
-                    echo $ad_content;
-                }
-            }
-        });
+        };
+        add_filter('loop_start', $ad_callback);
     }
 
     /**
-     * 添加广告到文章或页面内容前
+     * 页面主循环后。
+     *
+     * @param callable $condition 指定要显示广告的条件回调函数。
+     *                            如果该函数返回 true，则会显示广告；否则不显示。
+     * @param string   $ad_content   要显示的广告内容。
+     */
+    private static function add_ad_loop_end($condition, $ad_content)
+    {
+        $ad_callback = function () use ($condition, $ad_content) {
+            if (call_user_func($condition)) {
+                //是主循环吗？
+                if (is_main_query()) {
+                    // do stuff
+                    echo $ad_content;
+                }
+            }
+        };
+        add_filter('loop_end', $ad_callback);
+    }
+
+
+    /**
+     * 文章或页面内容前-功能重复，废弃中。
+     *
+     * @param callable $condition 指定要显示广告的条件回调函数。
+     *                            如果该函数返回 true，则会显示广告；否则不显示。
+     * @param string   $ad_content   要显示的广告内容。
      */
     private static function add_ad_the_post($condition, $ad_content)
     {
 
-        $add = function () use ($condition, $ad_content) {
+        $ad_callback = function () use ($condition, $ad_content) {
             //保底输出空值
             $new_content = "";
             if (call_user_func($condition)) {
@@ -211,16 +276,21 @@ class Magick_ad_Admin_Doing
             echo $new_content;
             return $new_content;
         };
-        add_filter('the_post', $add);
+        add_filter('the_post', $ad_callback);
     }
 
+
     /**
-     * 添加广告到内容前
+     * 文章或页面的内容前
+     *
+     * @param callable $condition 指定要显示广告的条件回调函数。
+     *                            如果该函数返回 true，则会显示广告；否则不显示。
+     * @param string   $ad_content   要显示的广告内容。
      */
     private static function add_ad_single_before($condition, $ad_content)
     {
 
-        $add = function ($content) use ($condition, $ad_content) {
+        $ad_callback = function ($content) use ($condition, $ad_content) {
             //保底输出，有则加，无则原
             $new_content = $content;
             if (call_user_func($condition)) {
@@ -228,14 +298,19 @@ class Magick_ad_Admin_Doing
             }
             return $new_content;
         };
-        add_filter('the_content', $add);
+        add_filter('the_content', $ad_callback);
     }
+
     /**
-     * 添加广告到第三段
+     * 文章或页面的内容第三段后
+     *
+     * @param callable $condition 指定要显示广告的条件回调函数。
+     *                            如果该函数返回 true，则会显示广告；否则不显示。
+     * @param string   $ad_content   要显示的广告内容。
      */
     private static function add_ad_single_three($condition, $ad_content)
     {
-        $add = function ($content) use ($condition, $ad_content) {
+        $ad_callback = function ($content) use ($condition, $ad_content) {
             //保底输出，有则加，无则原
             $res = $content;
             if (call_user_func($condition)) {
@@ -250,14 +325,19 @@ class Magick_ad_Admin_Doing
             return $res;
         };
 
-        add_filter('the_content', $add);
+        add_filter('the_content', $ad_callback);
     }
+
     /**
-     * 添加广告到内容后
+     * 文章或页面的内容后
+     *
+     * @param callable $condition 指定要显示广告的条件回调函数。
+     *                            如果该函数返回 true，则会显示广告；否则不显示。
+     * @param string   $ad_content   要显示的广告内容。
      */
     private static function add_ad_single_after($condition, $ad_content)
     {
-        $add = function ($content) use ($condition, $ad_content) {
+        $ad_callback = function ($content) use ($condition, $ad_content) {
             //保底输出，有则加，无则原
             $res = $content;
             if (call_user_func($condition)) {
@@ -265,49 +345,94 @@ class Magick_ad_Admin_Doing
             }
             return $res;
         };
-        add_filter('the_content', $add);
+        add_filter('the_content', $ad_callback);
     }
 
+
     /**
-     * 添加广告到评论列表开始前
+     * 评论列表开始前
+     *
+     * @param callable $condition 指定要显示广告的条件回调函数。
+     *                            如果该函数返回 true，则会显示广告；否则不显示。
+     * @param string   $ad_content   要显示的广告内容。
      */
     private static function add_ad_add_comment_text_before($condition, $ad_content)
     {
-        add_filter('comments_template', function () use ($condition, $ad_content) {
+        $ad_callback = function () use ($condition, $ad_content) {
             if (call_user_func($condition)) {
                 //判断开启了评论且评论数大于1
                 if (comments_open() && get_comments_number() > 0) {
                     echo $ad_content;
                 }
             }
-        });
+        };
+
+        add_filter('comments_template', $ad_callback);
     }
+
+
     /**
-     * 添加广告到评论框的开始
+     * 评论框开始前
+     *
+     * @param callable $condition 指定要显示广告的条件回调函数。
+     *                            如果该函数返回 true，则会显示广告；否则不显示。
+     * @param string   $ad_content   要显示的广告内容。
      */
     private static function add_ad_comment_form_before($condition, $ad_content)
     {
-        add_filter('comment_form_before', function () use ($condition, $ad_content) {
+        $ad_callback = function () use ($condition, $ad_content) {
             if (call_user_func($condition)) {
                 //是否开启了评论框
                 if (comments_open()) {
+                    //开启评论的
                     echo $ad_content;
                 }
             }
-        });
+        };
+        add_filter('comment_form_before', $ad_callback);
     }
+
+
     /**
-     * 添加广告到评论框结束后
+     * 评论框开始后
+     *
+     * @param callable $condition 指定要显示广告的条件回调函数。
+     *                            如果该函数返回 true，则会显示广告；否则不显示。
+     * @param string   $ad_content   要显示的广告内容。
      */
     private static function add_ad_comment_form_after($condition, $ad_content)
     {
-        add_filter('comment_form_after', function () use ($condition, $ad_content) {
+        $ad_callback = function () use ($condition, $ad_content) {
             if (call_user_func($condition)) {
                 if (comments_open()) {
+                    //开启评论的
                     echo $ad_content;
                 }
             }
-        });
+        };
+        add_filter('comment_form_after', $ad_callback);
+    }
+
+
+    /**
+     * 分类页的分类描述后
+     *
+     * @param callable $condition 指定要显示广告的条件回调函数。
+     *                            如果该函数返回 true，则会显示广告；否则不显示。
+     * @param string   $ad_content   要显示的广告内容。
+     */
+    private static function add_ad_category_description($condition, $ad_content)
+    {
+
+        $ad_callback = function ($content) use ($condition, $ad_content) {
+            //保底输出，有则加，无则原
+            $new_content = $content;
+            if (call_user_func($condition)) {
+                $new_content =  $content . $ad_content;
+            }
+            return $new_content;
+        };
+        add_filter('category_description', $ad_callback);
     }
 
 
