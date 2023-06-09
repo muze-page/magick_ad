@@ -20,6 +20,11 @@
  */
 
 /**
+ * 标签
+ * tag_description : 分类名下，分类描述广告
+ */
+
+/**
  * 将广告数组加载到页面
  *
  * 将传来的广告数组加载到页面
@@ -71,84 +76,92 @@ class Magick_ad_Admin_Doing
 
             }
 
-
+            //当前页面、文章、分类的ID
+            $id = get_queried_object_id(); // 获取当前标签ID
 
             //指定广告兼容
             //如果展示页面是is_singular且存在post数组，则使用该数组中的值
             if ($condition === "is_singular" && isset($options['post'])) {
-                // 获取当前页的对象
-                $post = get_queried_object_id();
-                if (in_array($post, $options['post']['data'])) {
+
+                //判断当前页面ID是否在指定的ID数组中
+                if (in_array($id, $options['post']['data'])) {
                     //改为指定文章设置的位置
                     $position = $options['post']['position'];
                 }
             }
             //如果展示页面是is_Category,开始检查是否存在Category数组，存在则使用该数组中的值
             if ($condition === "is_category" && isset($options['category'])) {
-                //判断当前页面ID是否在指定的ID数组中
-                // 获取当前分类目录的 ID
-                $cat = get_query_var('cat');
-                if (in_array($cat, $options['category']['data'])) {
-                    //改为指定文章设置的位置
+                //判断当前分类ID是否在指定的ID数组中
+                if (in_array($id, $options['category']['data'])) {
+                    //改为指定分类设置的位置
                     $position = $options['category']['position'];
+                }
+            }
+
+            //如果展示页面是is_Category,开始检查是否存在Category数组，存在则使用该数组中的值
+            if ($condition === "is_tag" && isset($options['tag'])) {
+                //如果当前标签ID是指定标签ID数组中
+                if (in_array($id, $options['tag']['data'])) {
+                    //改为指定标签设置的位置
+                    $position = $options['tag']['position'];
                 }
             }
             //通用
             switch ($position) {
                     //页面顶部
                 case 'wp_head':
-                    self::add_ad_wp_head($condition, $ad_content);
+                    self::ad_wp_head($condition, $ad_content);
                     break;
                     //页面底部
                 case 'wp_footer':
-                    self::add_ad_wp_footer($condition, $ad_content);
+                    self::ad_wp_footer($condition, $ad_content);
                     break;
 
                     //页面循环前
                 case 'loop_start':
-                    self::add_ad_loop_start($condition, $ad_content);
+                    self::ad_loop_start($condition, $ad_content);
                     break;
 
                     //页面循环后
                 case 'loop_end':
-                    self::add_ad_loop_end($condition, $ad_content);
+                    self::ad_loop_end($condition, $ad_content);
                     break;
 
                     //文章/页面前
                 case 'the_post':
-                    self::add_ad_the_post($condition, $ad_content);
+                    self::ad_the_post($condition, $ad_content);
                     break;
 
                     //文章内容前
                 case 'single_before':
-                    self::add_ad_single_before($condition, $ad_content);
+                    self::ad_single_before($condition, $ad_content);
                     break;
 
                     //文章内容第三段
                 case 'single_three':
-                    self::add_ad_single_three($condition, $ad_content);
+                    self::ad_single_three($condition, $ad_content);
                     break;
 
                     //文章内容后
                 case 'single_after':
-                    self::add_ad_single_after($condition, $ad_content);
+                    self::ad_single_after($condition, $ad_content);
                     break;
 
                     //评论区列表上方
                 case 'add_comment_text_before':
-                    self::add_ad_add_comment_text_before($condition, $ad_content);
+                    self::ad_add_comment_text_before($condition, $ad_content);
                     break;
                     //评论框上方
                 case 'comment_form_before':
-                    self::add_ad_comment_form_before($condition, $ad_content);
+                    self::ad_comment_form_before($condition, $ad_content);
                     break;
                     //评论框下方
                 case 'comment_form_after':
-                    self::add_ad_comment_form_after($condition, $ad_content);
+                    self::ad_comment_form_after($condition, $ad_content);
                     break;
                     //分类页-分类名下-分类描述
                 case 'category_description':
-                    self::add_ad_category_description($condition, $ad_content);
+                    self::ad_category_description($condition, $ad_content);
                     break;
             }
         }
@@ -163,7 +176,7 @@ class Magick_ad_Admin_Doing
      *                            如果该函数返回 true，则会显示广告；否则不显示。
      * @param string   $ad_content   要显示的广告内容。
      */
-    private static function add_ad_wp_head($condition, $ad_content)
+    private static function ad_wp_head($condition, $ad_content)
     {
         $ad_callback = function () use ($condition, $ad_content) {
             if (call_user_func($condition)) {
@@ -181,7 +194,7 @@ class Magick_ad_Admin_Doing
      *                            如果该函数返回 true，则会显示广告；否则不显示。
      * @param string   $ad_content   要显示的广告内容。
      */
-    private static function add_ad_wp_footer(callable $condition, $ad_content)
+    private static function ad_wp_footer(callable $condition, $ad_content)
     {
         // 定义一个广告回调函数
         $ad_callback = function () use ($condition, $ad_content) {
@@ -202,7 +215,7 @@ class Magick_ad_Admin_Doing
      *                            如果该函数返回 true，则会显示广告；否则不显示。
      * @param string   $content   要显示的广告内容。
      */
-    private static function add_ad_loop_start($condition, $ad_content)
+    private static function ad_loop_start($condition, $ad_content)
     {
         $ad_callback = function () use ($condition, $ad_content) {
             if (call_user_func($condition)) {
@@ -223,7 +236,7 @@ class Magick_ad_Admin_Doing
      *                            如果该函数返回 true，则会显示广告；否则不显示。
      * @param string   $ad_content   要显示的广告内容。
      */
-    private static function add_ad_loop_end($condition, $ad_content)
+    private static function ad_loop_end($condition, $ad_content)
     {
         $ad_callback = function () use ($condition, $ad_content) {
             if (call_user_func($condition)) {
@@ -245,7 +258,7 @@ class Magick_ad_Admin_Doing
      *                            如果该函数返回 true，则会显示广告；否则不显示。
      * @param string   $ad_content   要显示的广告内容。
      */
-    private static function add_ad_the_post($condition, $ad_content)
+    private static function ad_the_post($condition, $ad_content)
     {
 
         $ad_callback = function () use ($condition, $ad_content) {
@@ -268,7 +281,7 @@ class Magick_ad_Admin_Doing
      *                            如果该函数返回 true，则会显示广告；否则不显示。
      * @param string   $ad_content   要显示的广告内容。
      */
-    private static function add_ad_single_before($condition, $ad_content)
+    private static function ad_single_before($condition, $ad_content)
     {
 
         $ad_callback = function ($content) use ($condition, $ad_content) {
@@ -289,7 +302,7 @@ class Magick_ad_Admin_Doing
      *                            如果该函数返回 true，则会显示广告；否则不显示。
      * @param string   $ad_content   要显示的广告内容。
      */
-    private static function add_ad_single_three($condition, $ad_content)
+    private static function ad_single_three($condition, $ad_content)
     {
         $ad_callback = function ($content) use ($condition, $ad_content) {
             //保底输出，有则加，无则原
@@ -316,7 +329,7 @@ class Magick_ad_Admin_Doing
      *                            如果该函数返回 true，则会显示广告；否则不显示。
      * @param string   $ad_content   要显示的广告内容。
      */
-    private static function add_ad_single_after($condition, $ad_content)
+    private static function ad_single_after($condition, $ad_content)
     {
         $ad_callback = function ($content) use ($condition, $ad_content) {
             //保底输出，有则加，无则原
@@ -337,7 +350,7 @@ class Magick_ad_Admin_Doing
      *                            如果该函数返回 true，则会显示广告；否则不显示。
      * @param string   $ad_content   要显示的广告内容。
      */
-    private static function add_ad_add_comment_text_before($condition, $ad_content)
+    private static function ad_add_comment_text_before($condition, $ad_content)
     {
         $ad_callback = function () use ($condition, $ad_content) {
             if (call_user_func($condition)) {
@@ -359,7 +372,7 @@ class Magick_ad_Admin_Doing
      *                            如果该函数返回 true，则会显示广告；否则不显示。
      * @param string   $ad_content   要显示的广告内容。
      */
-    private static function add_ad_comment_form_before($condition, $ad_content)
+    private static function ad_comment_form_before($condition, $ad_content)
     {
         $ad_callback = function () use ($condition, $ad_content) {
             if (call_user_func($condition)) {
@@ -381,7 +394,7 @@ class Magick_ad_Admin_Doing
      *                            如果该函数返回 true，则会显示广告；否则不显示。
      * @param string   $ad_content   要显示的广告内容。
      */
-    private static function add_ad_comment_form_after($condition, $ad_content)
+    private static function ad_comment_form_after($condition, $ad_content)
     {
         $ad_callback = function () use ($condition, $ad_content) {
             if (call_user_func($condition)) {
@@ -402,7 +415,7 @@ class Magick_ad_Admin_Doing
      *                            如果该函数返回 true，则会显示广告；否则不显示。
      * @param string   $ad_content   要显示的广告内容。
      */
-    private static function add_ad_category_description($condition, $ad_content)
+    private static function ad_category_description($condition, $ad_content)
     {
 
         $ad_callback = function ($content) use ($condition, $ad_content) {
@@ -415,6 +428,8 @@ class Magick_ad_Admin_Doing
         };
         add_filter('category_description', $ad_callback);
     }
+
+
 
 
     /*
