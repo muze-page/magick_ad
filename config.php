@@ -1,5 +1,4 @@
 <?php
-
 add_action('acf/include_fields', function () {
     if (!function_exists('acf_add_local_field_group')) {
         return;
@@ -947,7 +946,7 @@ add_action('acf/include_fields', function () {
                             array(
                                 'key' => 'field_64829a7745b1d',
                                 'label' => '文章或页面',
-                                'name' => 'post',
+                                'name' => 'singular',
                                 'aria-label' => '',
                                 'type' => 'group',
                                 'instructions' => '',
@@ -1010,8 +1009,8 @@ add_action('acf/include_fields', function () {
                                             'id' => '',
                                         ),
                                         'choices' => array(
-                                            'loop_start' => '内容上',
-                                            'loop_end' => '内容下',
+                                            'loop_start' => '内容前',
+                                            'loop_end' => '内容后',
                                             'single_before' => '文章顶部',
                                             'single_three' => '文章第三段',
                                             'single_after' => '文章底部',
@@ -1093,8 +1092,8 @@ add_action('acf/include_fields', function () {
                                             'id' => '',
                                         ),
                                         'choices' => array(
-                                            'loop_start' => '内容上',
-                                            'loop_end' => '内容下',
+                                            'loop_start' => '内容前',
+                                            'loop_end' => '内容后',
                                             'category_description' => '分类描述后',
                                             'wp_head' => '顶部',
                                             'wp_footer' => '底部',
@@ -1171,8 +1170,8 @@ add_action('acf/include_fields', function () {
                                             'id' => '',
                                         ),
                                         'choices' => array(
-                                            'loop_start' => '内容上',
-                                            'loop_end' => '内容下',
+                                            'loop_start' => '内容前',
+                                            'loop_end' => '内容后',
                                             'wp_head' => '顶部',
                                             'wp_footer' => '底部',
                                         ),
