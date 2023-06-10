@@ -186,7 +186,14 @@ class Magick_ad_Admin_Doing
         $data = array_filter([$options[$key]['data'] ?? NULL], 'is_array');
         //当 $key 对应的选项中的数组 $data 中包含 $id 元素时，返回该选项中的 position 值；否则，返回 NULL。
 
-        return in_array($id, $data[0] ?? []) ? $options[$key]['position'] : NULL;
+        //return in_array($id, $data[0] ?? []) ? $options[$key]['position'] : NULL;
+        foreach ($data as $datum) {
+            if (is_array($datum) && in_array($id, $datum)) {
+                return $options[$key]['position'];
+            }
+        }
+
+        return NULL;
     }
 
 
