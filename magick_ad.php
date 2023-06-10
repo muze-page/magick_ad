@@ -17,12 +17,15 @@
  * Plugin URI:        https://www.npc.ink
  * Description:       简单使用的广告插件，可在全站或指定文章、页面中的诸多位置添加自定义广告-联系方式：qq,1355471563
  * Version:           1.0.3
+ * Requires at least: 4.6
+ * Requires PHP:      7.0
  * Author:            Mzue
  * Author URI:        https://www.npc.ink
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       magick_ad
  * Domain Path:       /languages
+
  */
 
 // 如果直接调用此文件，请中止。
