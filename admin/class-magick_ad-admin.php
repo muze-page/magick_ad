@@ -285,7 +285,7 @@ class Magick_ad_Admin
 				'page_title' => '魔法广告',
 				'menu_title' => '魔法广告',
 				'menu_slug' => 'theme-general-settings',
-				'capability' => 'edit_posts',
+				'capability' => 'manage_options', // 仅允许管理员访问
 				'redirect' => false,
 				'post_id' => 'options',
 				'position' => '200.1',
