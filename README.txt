@@ -8,7 +8,6 @@ Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 # 介绍
-测试用退款插件 - 开发版
 build文件夹用于打包js和css文件用
 # 建议
 - 单个页面的广告建议控制在3至4个以内
